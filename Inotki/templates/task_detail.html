@@ -8,18 +8,7 @@
     <title>Document</title>
 </head>
 <body>
-<h1>My to do list</h1>
-<table>
-    <tr>
-        <th>Item</th>
-    </tr>
-    {% for task in tasks %}
-        <tr>
-            <td><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a></td>
-        </tr>
-    {% empty %}
-        <h3>No items in list</h3>
-    {% endfor %}
-</table>
+<h1>task: {{ task }}</h1>
+
 </body>
 </html>
