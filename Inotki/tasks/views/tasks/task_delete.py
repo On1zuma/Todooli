@@ -3,8 +3,10 @@ from django.views.generic import DeleteView
 from tasks.models.task import Task
 from django.urls import reverse
 
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-class TaskDelete(DeleteView):
+
+class TaskDelete(LoginRequiredMixin, DeleteView):
     model = Task
     context_object_name = 'task'
     template_name = "tasks/task_delete.html"
