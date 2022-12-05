@@ -9,7 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class TaskCreate(LoginRequiredMixin, CreateView):
     model = Task
     template_name = "tasks/task_form.html"
-    fields = ['title', 'description', 'complete']
+    fields = ['title', 'description', 'date_to_do','complete']
 
     def get_success_url(self):
         return reverse('tasks')
