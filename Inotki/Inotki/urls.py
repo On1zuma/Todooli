@@ -23,12 +23,14 @@ from tasks.views.tasks.task_list import TaskList
 from tasks.views.tasks.task_update import TaskUpdate
 
 from tasks.views.users.user_login import UserLoginView
+from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     #Users
     path('user/login/', UserLoginView.as_view(), name='login'),
+    path('user/logout/', LogoutView.as_view(next_page='login'), name='logout'),
 
     # Tasks
     path('', TaskList.as_view(), name='tasks'),
