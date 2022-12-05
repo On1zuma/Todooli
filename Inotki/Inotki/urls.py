@@ -24,6 +24,7 @@ from tasks.views.tasks.task_update import TaskUpdate
 
 from tasks.views.users.user_login import UserLoginView
 from django.contrib.auth.views import LogoutView
+from tasks.views.users.user_register import RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -31,6 +32,7 @@ urlpatterns = [
     #Users
     path('user/login/', UserLoginView.as_view(), name='login'),
     path('user/logout/', LogoutView.as_view(next_page='login'), name='logout'),
+    path('user/register/', RegisterView.as_view(), name='register'),
 
     # Tasks
     path('', TaskList.as_view(), name='tasks'),
