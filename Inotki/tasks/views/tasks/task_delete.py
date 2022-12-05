@@ -7,7 +7,7 @@ from django.urls import reverse
 class TaskDelete(DeleteView):
     model = Task
     context_object_name = 'task'
-    template_name = "task_delete.html"
+    template_name = "tasks/task_delete.html"
 
     def get_success_url(self):
         return reverse('tasks')
