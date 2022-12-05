@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path
 
 from tasks.views.tasks.task_create import TaskCreate
+from tasks.views.tasks.task_delete import TaskDelete
 from tasks.views.tasks.task_detail import TaskDetail
 from tasks.views.tasks.task_list import TaskList
 from tasks.views.tasks.task_update import TaskUpdate
@@ -28,5 +29,6 @@ urlpatterns = [
     path('task/<int:pk>/', TaskDetail.as_view(), name='task_detail'),
     path('task/create/', TaskCreate.as_view(), name='task_create'),
     path('task/update/<int:pk>/', TaskUpdate.as_view(), name='task_update'),
+    path('task/delete/<int:pk>/', TaskDelete.as_view(), name='task_delete'),
 
 ]

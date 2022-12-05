@@ -17,7 +17,7 @@ class Task(models.Model):
     groups = models.ManyToManyField(Group, related_name='tasks_groups', blank=True)
 
     def __str__(self):
-        return self.title
+        return str(self.title) if self.title else ''
 
 
 class Meta:
