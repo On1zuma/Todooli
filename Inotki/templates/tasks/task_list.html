@@ -5,28 +5,34 @@
 {% endblock %}
 
 {% block body_content %}
-<h1>My to do list: {{ count }}
-    Task{% if count <= 1 %}{% else %}s{% endif %}</h1>
+    <h1>{% if admin %}{{ admin }}{% endif %}
+        {% if count %}
+            List: {{ count }}
+            Task{% if count <= 1 %}{% else %}s{% endif %}
+        {% endif %}</h1>
 
     <form method="GET" action="">
         <input type="text" name="search-area" value="{{ search_input }}">
         <input type="submit" value="Search">
     </form>
-<table>
-    <tr>
-        <th>Item</th>
-    </tr>
-    {% for task in tasks %}
+    <table>
         <tr>
-            <td><a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
-                <a href="{% url 'task_update' task.id %}">edit</a>
-                <a href="{% url 'task_delete' task.id %}">delete</a></td>
+            <th>Item</th>
         </tr>
-    {% empty %}
-        <h3>No items in list</h3>
-    {% endfor %}
-</table>
-<br>
-<a href="{% url 'task_create' %}">Create a task</a>
+        {% for task in tasks %}
+            <tr>
+                <td>
+                    {% if admin %}{{ task.user }} : {% endif %}
+                    <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
+                    <a href="{% url 'task_update' task.id %}">edit</a>
+                    <a href="{% url 'task_delete' task.id %}">delete</a>
+                </td>
+            </tr>
+        {% empty %}
+            <h3>No items in list</h3>
+        {% endfor %}
+    </table>
+    <br>
+    <a href="{% url 'task_create' %}">Create a task</a>
 
 {% endblock %}
