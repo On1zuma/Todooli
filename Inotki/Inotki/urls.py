@@ -16,6 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from tasks.views.error import errorDetail
 from tasks.views.tasks.task_create import TaskCreate
 from tasks.views.tasks.task_delete import TaskDelete
 from tasks.views.tasks.task_detail import TaskDetail
@@ -28,6 +29,9 @@ from tasks.views.users.user_register import RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    #Errors
+    path('error', errorDetail.as_view(), name='error'),
 
     #Users
     path('user/login/', UserLoginView.as_view(), name='login'),
