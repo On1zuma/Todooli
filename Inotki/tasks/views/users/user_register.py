@@ -24,4 +24,3 @@ class RegisterView(FormView):
         if self.request.user.is_authenticated:
             return redirect('tasks')
         return super(RegisterView, self).get(*args, **kwargs)
-

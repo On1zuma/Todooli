@@ -5,15 +5,15 @@
 {% endblock %}
 
 {% block body_content %}
-<a href="{% url 'tasks' %}">go back </a>
-<form method="POST">
-    {% csrf_token %}
-    {% if task %}
-        <p>Are you sure to delete "{{ task }} ?"</p>
-    {% else %}
-        <p>Are you sure about that ?</p>
-    {% endif %}
+    <a href="{% url 'tasks' %}">go back </a>
+    <form method="POST">
+        {% csrf_token %}
+        {% if task %}
+            <p>Are you sure to delete "{{ task }} ?"</p>
+        {% else %}
+            <p>Are you sure about that ?</p>
+        {% endif %}
 
-    <input type="submit" value="Delete">
-</form>
+        <input type="submit" value="Delete">
+    </form>
 {% endblock %}
