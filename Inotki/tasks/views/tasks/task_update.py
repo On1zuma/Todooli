@@ -13,13 +13,20 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     template_name = "tasks/task_form.html"
     fields = ['user', 'title', 'description', 'date_to_do', 'complete']
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        if self.request.user.is_staff:
+            context['admin'] = 'Admin'
+        return context
+
     def get(self, request, *args, **kwargs):
         task = Task.objects.get(pk=kwargs['pk'])
-        # We chek if the user is an admin
+
+        # We check if the user is an admin
         if self.request.user.is_staff:
             return super().get(request, *args, **kwargs)
 
-        # We chek if the user is trying to edit their own data
+        # We check if the user is trying to edit their own data
         if task.user != self.request.user:
             # flash message: messages.add
             return redirect('tasks')

@@ -5,13 +5,40 @@
 {% endblock %}
 
 {% block body_content %}
-<h3>Task form</h3>
-<a href="{% url 'tasks' %}">go back </a>
+    <h3>Task form</h3>
+    {% if admin %}<h4> {{ admin }}</h4>{% endif %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Submit</button>
-</form>
+    <a href="{% url 'tasks' %}">go back </a>
+
+    <form action="" method="post">
+        <div style="flex-direction: column">
+            {% csrf_token %}
+            <div style="margin-bottom: 10px">
+                {% if admin %}
+                    <label for="user">User name : </label>
+                    {{ form.user }}
+                {% endif %}
+            </div>
+
+            <div style="margin-bottom: 10px">
+                <label for="title">Title : </label>
+                {{ form.title }}
+            </div>
+            <label for="description">Description : </label>
+            <div style="margin-bottom: 10px">
+                {{ form.description }}
+            </div>
+            <div style="margin-bottom: 10px">
+                <label for="date">Deadline : </label>
+                {{ form.date_to_do }}
+            </div>
+            <div style="margin-bottom: 10px">
+                <label for="completed">Completed : </label>
+                {{ form.complete }}
+            </div>
+
+            <button type="submit">Submit</button>
+        </div>
+    </form>
 
 {% endblock %}

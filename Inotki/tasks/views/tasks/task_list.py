@@ -13,7 +13,7 @@ class TaskList(LoginRequiredMixin, ListView):
         context = super().get_context_data(**kwargs)
         if self.request.user.is_staff:
             context['admin'] = 'Admin dashboard'
-        #if the user is not an admin, then we filter the data
+        # if the user is not an admin, then we filter the data
         if not self.request.user.is_staff:
             context['tasks'] = context['tasks'].filter(user=self.request.user)
             context['count'] = context['tasks'].filter(complete=False).count
