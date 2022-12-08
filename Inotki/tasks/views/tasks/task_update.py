@@ -3,6 +3,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import UpdateView
 
+from tasks.forms.date_input import DateInputForm
 from tasks.models.task import Task
 
 from django.contrib.auth.mixins import LoginRequiredMixin
@@ -11,7 +12,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     template_name = "tasks/task_form.html"
-    fields = ['user', 'title', 'description', 'date_to_do', 'complete']
+    form_class = DateInputForm
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
