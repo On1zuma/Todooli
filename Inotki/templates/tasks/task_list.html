@@ -25,18 +25,40 @@
         <tr>
             <th>Item</th>
         </tr>
-        {% for task in tasks %}
-            <tr>
-                <td>
-                    <!-- Only the admin can acces to selector-->
-                    {% if admin %}{{ task.user }} : {% endif %}
-                    <a href="{% url 'task_detail' task.id %}">{{ task.title }}</a>
-                    <a href="{% url 'task_update' task.id %}">edit</a>
-                    <a href="{% url 'task_delete' task.id %}">delete</a>
-                </td>
-            </tr>
+
+        <h2>Current task </h2>
+        {% for task in tasks_not_completed %}
+            <ul>
+                    <li>
+                        <!-- Only the admin can acces to selector-->
+                        {% if admin %}{{ task.user }} : {% endif %}
+                        {{ task.title }} -
+                        <a href="{% url 'task_detail' task.id %}">see</a>
+                        <a href="{% url 'task_update' task.id %}">edit</a>
+                        <a href="{% url 'task_delete' task.id %}">delete</a>
+                    </li>
+            </ul>
         {% empty %}
-            <h3>No items in list</h3>
+            <ul><li><h3>No items yet</h3></li></ul>
+        {% endfor %}
+
+        <!-- TODO, user can see of not the completed task, that can be changed in the settings -->
+        <h2>Completed task </h2>
+        {% for task in tasks_completed %}
+
+                <ul>
+                    <li>
+                        <!-- Only the admin can acces to selector-->
+                        {% if admin %}{{ task.user }} : {% endif %}
+                        {{ task.title }} -
+                        <a href="{% url 'task_detail' task.id %}">see</a>
+                        <a href="{% url 'task_update' task.id %}">edit</a>
+                        <a href="{% url 'task_delete' task.id %}">delete</a>
+                    </li>
+                </ul>
+        {% empty %}
+            <ul><li><h3>No items yet</h3></li></ul>
+
         {% endfor %}
     </table>
 
