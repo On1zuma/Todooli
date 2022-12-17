@@ -1,4 +1,3 @@
-from django.http import HttpResponseNotFound
 from django.shortcuts import redirect
 from django.views.generic import DeleteView
 

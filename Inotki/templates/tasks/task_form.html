@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block body_content %}
+
     <h3>Task form</h3>
     {% if admin %}<h4> {{ admin }}</h4>{% endif %}
 
@@ -13,12 +14,13 @@
     <form action="" method="post">
         <div style="flex-direction: column">
             {% csrf_token %}
-            <div style="margin-bottom: 10px">
-                {% if admin %}
+
+            {% if admin %}
+                <div style="margin-bottom: 10px">
                     <label for="user">User name : </label>
                     {{ form.user }}
-                {% endif %}
-            </div>
+                </div>
+            {% endif %}
 
             <div style="margin-bottom: 10px">
                 <label for="title">Title : </label>
@@ -30,15 +32,16 @@
             </div>
             <div style="margin-bottom: 10px">
                 <label for="date">Deadline :</label>
-                    {{ form.date_to_do }} <!-- DATA PICKER DJANGO : https://simpleisbetterthancomplex.com/tutorial/2019/01/03/how-to-use-date-picker-with-django.html -->
+                {{ form.date_to_do }} <!-- DATA PICKER DJANGO : https://simpleisbetterthancomplex.com/tutorial/2019/01/03/how-to-use-date-picker-with-django.html -->
 
             </div>
             <div style="margin-bottom: 10px">
                 <label for="completed">Completed : </label>
                 {{ form.complete }}
             </div>
-
+            <input type='hidden' value='{{lecture.pk}}' name='pk'>
             <button type="submit">Submit</button>
         </div>
     </form>
+
 {% endblock %}

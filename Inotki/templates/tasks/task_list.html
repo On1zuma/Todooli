@@ -17,6 +17,10 @@
     </form>
     <a href="/?search-area=">x</a>
 
+    <br><br>
+    <a href="{% url 'task_create' %}">Create a task</a>
+    <br>
+
     <table>
         <tr>
             <th>Item</th>
@@ -35,7 +39,5 @@
             <h3>No items in list</h3>
         {% endfor %}
     </table>
-    <br>
-    <a href="{% url 'task_create' %}">Create a task</a>
 
 {% endblock %}
