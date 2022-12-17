@@ -23,10 +23,12 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
+        task = Task.objects.get(pk=self.object.id)
+
         if self.request.user.is_staff:
             return super().form_valid(form)
 
-        if self.object.user != self.request.user:
+        if task.user != self.request.user:
             return super().form_invalid(form)
 
         return super().form_valid(form)
