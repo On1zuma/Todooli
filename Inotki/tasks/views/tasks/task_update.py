@@ -1,4 +1,3 @@
-from django.http import HttpResponseNotFound
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import UpdateView
@@ -34,8 +33,10 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
+        task = Task.objects.get(pk=self.object.id)
+
         # if staff user and the data does not belong to the admin
-        if self.request.user.is_staff and self.object.user != self.request.user:
+        if self.request.user.is_staff and task.user != self.request.user:
             return super().form_valid(form)
 
         # if staff user and the data don't is not assigned to any user (normally not possible)
@@ -44,7 +45,7 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
             return super().form_valid(form)
 
         # if the task is not assigned to the user who is editing the task
-        if self.object.user != self.request.user:
+        if task.user != self.request.user:  # Todo FIX self.object.user is null...
             form.add_error(None, "You can't do that")  # add message to the user that are not supposed to do that
             return super().form_invalid(form)
 

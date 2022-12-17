@@ -13,7 +13,8 @@ class DateInputForm(ModelForm):
         model = Task
         fields = ['user', 'title', 'description', 'date_to_do', 'complete']
         widgets = {
-            'date_to_do': forms.DateTimeInput(format='%Y-%m-%dT%H:%M', attrs={'type': 'datetime-local', 'class':'timepicker'})
+            'date_to_do': forms.DateTimeInput(format='%Y-%m-%dT%H:%M',
+                                              attrs={'type': 'datetime-local', 'class': 'timepicker'}),
         }
 
         # widgets = {
