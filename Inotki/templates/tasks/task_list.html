@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block body_content %}
-    <h1>{% if admin %}{{ admin }}{% endif %}
+    <h1>
+        {% if admin %}{{ admin }}{% endif %}
         {% if count %}
             List: {{ count }}
             Task{% if count <= 1 %}{% else %}s{% endif %}
-        {% endif %}</h1>
+        {% endif %}
+    </h1>
 
     <form method="GET" action="">
         <input type="text" name="search-area" value="{{ search_input }}">
@@ -21,45 +23,103 @@
     <a href="{% url 'task_create' %}">Create a task</a>
     <br>
 
-    <table>
-        <tr>
-            <th>Item</th>
-        </tr>
+    <h2>Current task </h2>
+    {% for task in tasks_not_completed %}
+        <!--ADMIN-->
+        <ul>
+            <li>
+                <!-- Only the admin can acces to selector-->
+                {% if admin %}{{ task.user }} :
+                    {{ task.creation_date }} -
+                    {{ task.title }} -
+                    <a href="{% url 'task_detail' task.id %}">see</a>
+                    <a href="{% url 'task_update' task.id %}">edit</a>
+                    <a href="{% url 'task_delete' task.id %}">delete</a>
+                {% endif %}
+            </li>
+        </ul>
+    {% endfor %}
 
-        <h2>Current task </h2>
-        {% for task in tasks_not_completed %}
-            <ul>
-                    <li>
-                        <!-- Only the admin can acces to selector-->
-                        {% if admin %}{{ task.user }} : {% endif %}
-                        {{ task.title }} -
-                        <a href="{% url 'task_detail' task.id %}">see</a>
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}">delete</a>
-                    </li>
-            </ul>
-        {% empty %}
-            <ul><li><h3>No items yet</h3></li></ul>
-        {% endfor %}
+    {% if tasks_to_do_late %}
+        <h3>Late</h3>
+    {% endif %}
+    {% for task in tasks_to_do_late %}
 
-        <!-- TODO, user can see of not the completed task, that can be changed in the settings -->
+        <ul>
+            <li>
+                {{ task.title }} -
+                <a href="{% url 'task_detail' task.id %}">see</a>
+                <a href="{% url 'task_update' task.id %}">edit</a>
+                <a href="{% url 'task_delete' task.id %}">delete</a>
+            </li>
+        </ul>
+    {% endfor %}
+
+    {% if tasks_to_do_today %}
+        <h3>Today</h3>
+    {% endif %}
+    {% for task in tasks_to_do_today %}
+        <ul>
+            <li>
+                {{ task.title }} -
+                <a href="{% url 'task_detail' task.id %}">see</a>
+                <a href="{% url 'task_update' task.id %}">edit</a>
+                <a href="{% url 'task_delete' task.id %}">delete</a>
+            </li>
+        </ul>
+    {% endfor %}
+
+    {% if tasks_to_do_next_weeks %}
+        <h3>Coming</h3>
+    {% endif %}
+    {% for task in tasks_to_do_next_weeks %}
+        <ul>
+            <li>
+                {{ task.title }} -
+                <a href="{% url 'task_detail' task.id %}">see</a>
+                <a href="{% url 'task_update' task.id %}">edit</a>
+                <a href="{% url 'task_delete' task.id %}">delete</a>
+            </li>
+        </ul>
+    {% endfor %}
+
+    {% if tasks_not_completed_no_date %}
+        <h3>No date</h3>
+    {% endif %}
+    {% for task in tasks_not_completed_no_date %}
+        <ul>
+            <li>
+                {{ task.title }} -
+                <a href="{% url 'task_detail' task.id %}">see</a>
+                <a href="{% url 'task_update' task.id %}">edit</a>
+                <a href="{% url 'task_delete' task.id %}">delete</a>
+            </li>
+        </ul>
+    {% endfor %}
+
+    {% for task in tasks_to_do %}
+    {% empty %}
+        <ul><li><h3>No items yet</h3></li></ul>
+    {% endfor %}
+
+    {% if tasks_completed %}
+        <hr>
         <h2>Completed task </h2>
-        {% for task in tasks_completed %}
+    {% endif %}
+    {% for task in tasks_completed %}
 
-                <ul>
-                    <li>
-                        <!-- Only the admin can acces to selector-->
-                        {% if admin %}{{ task.user }} : {% endif %}
-                        {{ task.title }} -
-                        <a href="{% url 'task_detail' task.id %}">see</a>
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}">delete</a>
-                    </li>
-                </ul>
-        {% empty %}
-            <ul><li><h3>No items yet</h3></li></ul>
-
-        {% endfor %}
-    </table>
+        <ul>
+            <li>
+                {% if admin %}
+                    {{ task.user }} :
+                    {{ task.creation_date }} -
+                {% endif %}
+                {{ task.title }} -
+                <a href="{% url 'task_detail' task.id %}">see</a>
+                <a href="{% url 'task_update' task.id %}">edit</a>
+                <a href="{% url 'task_delete' task.id %}">delete</a>
+            </li>
+        </ul>
+    {% endfor %}
 
 {% endblock %}
