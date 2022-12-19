@@ -12,8 +12,8 @@
     <a href="{% url 'tasks' %}">go back </a>
 
     <form action="" method="post">
+        {% csrf_token %}
         <div style="flex-direction: column">
-            {% csrf_token %}
 
             {% if admin %}
                 <div style="margin-bottom: 10px">

@@ -16,9 +16,10 @@ class Task(models.Model):
     tags = models.ManyToManyField(Tag, related_name='tasks_tags', blank=True)
     groups = models.ManyToManyField(Group, related_name='tasks_groups', blank=True)
 
+    class Meta:
+        ordering = ['date_to_do']
+
     def __str__(self):
         return str(self.title) if self.title else ''
 
 
-class Meta:
-    ordering = ['complete']

@@ -13,13 +13,13 @@ class TaskList(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         global yesterday, precedent_time, today, tomorrow, next_time
-        
+
         context = super().get_context_data(**kwargs)
 
         if self.request.user.is_staff:
             context['admin'] = 'Admin dashboard'
-            context['tasks_completed'] = context['tasks'].filter(complete=True)
-            context['tasks_not_completed'] = context['tasks'].filter(complete=False)
+            context['tasks_completed'] = context['tasks'].filter(complete=True).order_by('-creation_date')
+            context['tasks_not_completed'] = context['tasks'].filter(complete=False).order_by('-creation_date')
             context['tasks'] = context['tasks']
             context['tasks_to_do'] = context['tasks'] \
                 .filter(user=self.request.user) \
@@ -67,7 +67,8 @@ class TaskList(LoginRequiredMixin, ListView):
 
             context['tasks_completed'] = context['tasks'] \
                 .filter(user=self.request.user) \
-                .filter(complete=True)
+                .filter(complete=True)\
+                .order_by('-creation_date')
 
             context['tasks'] = context['tasks'].filter(user=self.request.user)
             context['count'] = context['tasks'].filter(complete=False).count
@@ -80,7 +81,8 @@ class TaskList(LoginRequiredMixin, ListView):
                 context['tasks_not_completed'] = context['tasks'].filter(title__icontains=search_input)
             else:
                 context['tasks_completed'] = context['tasks'].filter(title__icontains=search_input) \
-                    .filter(user=self.request.user).filter(complete=True)
+                    .filter(user=self.request.user).filter(complete=True)\
+                    .order_by('-creation_date')
 
                 context['tasks_to_do_late'] = context['tasks'] \
                     .filter(user=self.request.user) \
