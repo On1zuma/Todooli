@@ -14,7 +14,7 @@ class Task(models.Model):
     creation_date = models.DateTimeField(auto_now_add=True)
     date_to_do = models.DateTimeField(blank=True)
     tags = models.ManyToManyField(Tag, related_name='tasks_tags', blank=True)
-    groups = models.ManyToManyField(Group, related_name='tasks_groups', blank=True)
+    group = models.ManyToManyField(Group, related_name='tasks_groups', blank=True)
 
     class Meta:
         ordering = ['date_to_do']
