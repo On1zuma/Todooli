@@ -7,9 +7,10 @@ from tasks.views.tasks.task_detail import TaskDetail
 from tasks.views.tasks.task_list import TaskList
 from tasks.views.tasks.task_update import TaskUpdate
 
-from tasks.views.users.user_login import UserLoginView
 from django.contrib.auth.views import LogoutView
-from tasks.views.users.user_register import RegisterView
+
+from users.views.users.user_login import UserLoginView
+from users.views.users.user_register import RegisterView
 
 urlpatterns = [
     path('admin/', admin.site.urls),

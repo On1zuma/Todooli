@@ -1,6 +1,6 @@
 from django.views.generic import CreateView
 
-from tasks.forms.date_input import DateInputForm
+from tasks.form.date_input import DateInputForm
 from tasks.models.task import Task
 from django.urls import reverse
 

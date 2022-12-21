@@ -8,9 +8,9 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <!--   <script src="{% static 'jquery-3.6.1.min.js' %}"></script> -->
-    <!--  <script src="{% static 'bootstrap.bundle.min.js' %}"></script>-->
-    <!--   <link  rel="stylesheet"  href="{% static 'bootstrap.min.css' %}">-->
+    <script src="{% static 'jquery-3.6.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    <link  rel="stylesheet"  href="{% static 'bootstrap.min.css' %}">
 
     <!-- names: iloni, Inotki, idoka, igora, glomera-->
     <title>
@@ -20,15 +20,21 @@
 <body>
 
 {% if request.user.is_authenticated %}
-    <p>{{ request.user }}</p>
+    <p>username: {{ request.user }}</p>
     <a href="{% url 'logout' %}">Logout</a>
 {% else %}
     <a href="{% url 'login' %}">Login</a>
     <a href="{% url 'register' %}">Register</a>
 {% endif %}
 <hr>
-{% block body_content %}
 
+{% if messages%}
+    {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
+    {% endfor %}
+{% endif %}
+
+{% block body_content %}
 {% endblock %}
 
 </body>

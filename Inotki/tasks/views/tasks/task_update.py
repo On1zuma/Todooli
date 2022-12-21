@@ -2,7 +2,7 @@ from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import UpdateView
 
-from tasks.forms.date_input import DateInputForm
+from tasks.form.date_input import DateInputForm
 from tasks.models.task import Task
 
 from django.contrib.auth.mixins import LoginRequiredMixin
