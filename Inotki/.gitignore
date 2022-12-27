@@ -7,6 +7,8 @@ db.sqlite3
 media
 tasks/__pycache__
 users/__pycache__
+Inotki/__pycache__
+
 
 # Backup files # 
 *.bak 
