@@ -29,3 +29,9 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio', 'image']
+
+
+class UserProfileForm(forms.ModelForm):
+
+    login_form = ProfileUpdateForm()
+    signup_form = UserUpdateForm()

@@ -25,7 +25,8 @@ class RegisterView(FormView):
 
         if user is not None:
             login(self.request, user)
-        return super(RegisterView, self).form_valid(form)
+            return super(RegisterView, self).form_valid(form)
+        return redirect('register')
 
 #  def get(self, *args, **kwargs):
 #     if self.request.user.is_authenticated:

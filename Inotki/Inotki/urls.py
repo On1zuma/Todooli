@@ -11,7 +11,7 @@ from django.contrib.auth.views import LogoutView
 
 from users.views.user_login import UserLoginView
 from users.views.user_register import RegisterView
-from users.views.user_update import UpdateView
+from users.views.user_update import UpdateUserView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -20,9 +20,8 @@ urlpatterns = [
     path('user/login/', UserLoginView.as_view(), name='login'),
     path('user/logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('user/register/', RegisterView.as_view(), name='register'),
-    path('user/updatea/', UpdateView.as_view(), name='profile'),
+    path('user/update/', UpdateUserView.as_view(), name='profile'),
 
-    path('user/update/', UpdateView.as_view(), name='profile'),
 
     # Tasks
     path('', TaskList.as_view(), name='tasks'),
