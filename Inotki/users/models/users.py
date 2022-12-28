@@ -18,7 +18,7 @@ def path_and_rename(path):
         if instance.pk:
             # if i want to put the id on the name
             # filename = '{}.{}'.format(instance.pk, ext)
-            filename = '{}.{}'.format(uuid4().hex, ext)
+            filename = '{}_{}.{}'.format(instance.pk, uuid4().hex, ext)
         else:
             # set filename as random string
             filename = '{}.{}'.format(uuid4().hex, ext)
