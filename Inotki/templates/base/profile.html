@@ -8,6 +8,7 @@
 {% block body_content %}
 
     <h1>Update your profile</h1>
+    <a href="{% url 'tasks' %}">go back to your tasks</a>
 
     <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}

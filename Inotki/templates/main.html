@@ -2,11 +2,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
@@ -19,19 +19,31 @@
         {% filter default:0|add:' -' %}{% block title %}{% endblock title %}{% endfilter %} Inotki
 
     </title>
-  </head>
-  <body>
-    {% if request.user.is_authenticated %}
-    <p>username: {{ request.user }}</p>
+</head>
+<body>
+{% if request.user.is_authenticated %}
+    <div class="media">
+        {% if user.profile.image %}
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url|default_if_none:'/media/profile_pics/default.jpg' }}">
+        {% else %}
+                <img class="rounded-circle account-img" src="/media/profile_pics/default.jpg">
+        {% endif %}
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+        </div>
+    </div>
     <a href="{% url 'logout' %}">Logout</a>
-    {% else %}
+
+
+{% else %}
     <a href="{% url 'login' %}">Login</a>
     <a href="{% url 'register' %}">Register</a>
-    {% endif %}
-    <hr />
+{% endif %}
+<hr />
 
-    {% if messages%} {% for message in messages %}
+{% if messages%} {% for message in messages %}
     <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
-    {% endfor %} {% endif %} {% block body_content %} {% endblock %}
-  </body>
+{% endfor %} {% endif %} {% block body_content %} {% endblock %}
+</body>
 </html>

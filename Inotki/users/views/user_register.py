@@ -28,7 +28,7 @@ class RegisterView(FormView):
             return super(RegisterView, self).form_valid(form)
         return redirect('register')
 
-#  def get(self, *args, **kwargs):
-#     if self.request.user.is_authenticated:
-#        return redirect('tasks')
-#   return super(RegisterView, self).get(*args, **kwargs)
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('tasks')
+        return super(RegisterView, self).get(*args, **kwargs)
