@@ -15,16 +15,12 @@ class UserLoginForm(AuthenticationForm):
     captcha = ReCaptchaField(widget=ReCaptchaV2Checkbox())
 
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'Username or Email'}),
-        label="Username or Email")
+        attrs={'class': 'form-control', 'placeholder': 'Username'}),
+        label="Username")
 
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={'class': 'form-control', 'placeholder': 'Password'}),
         label="Password")
-
-    class Meta:
-        model = User
-        fields = ['username', 'password']
 
 
 class UserRegisterForm(UserCreationForm):
