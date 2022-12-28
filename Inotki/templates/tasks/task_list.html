@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% block body_content %}
-    <h1>
+    <h1>Tasks</h1>
+    <h3>
         {% if admin %}{{ admin }}{% endif %}
         {% if count %}
             List: {{ count }}
             Task{% if count <= 1 %}{% else %}s{% endif %}
         {% endif %}
-    </h1>
+    </h3>
 
     <form method="GET" action="">
         <input type="text" name="search-area" value="{{ search_input }}">
@@ -21,8 +22,6 @@
 
     <br><br>
     <a href="{% url 'task_create' %}">Create a task</a>
-    <a href="{% url 'profile' %}">Update your profile</a>
-    <a href="{% url 'profile' %}">Your profile</a>
 
     <br>
 

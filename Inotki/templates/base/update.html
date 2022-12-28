@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block body_content %}
+
+    <h1 ><a href="{% url 'profile' %}">Tasks /<small> Profile update</small></a> </h1>
+
+    <form method="POST" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset class=form-group">
+            {{ u_form|crispy  }}
+            {{ p_form|crispy  }}
+        </fieldset>
+        <div class=form-group">
+            <button class="btn" type="submit">Update</button>
+        </div>
+    </form>
+{% endblock %}
