@@ -7,6 +7,8 @@ from PIL import Image
 import os
 from uuid import uuid4
 
+from Inotki import settings
+
 
 def path_and_rename(path):
     def wrapper(instance, filename):
@@ -30,7 +32,7 @@ def path_and_rename(path):
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(null=True, blank=True)
-    image = models.ImageField(default='/profile_pics/default.jpg',
+    image = models.ImageField(default=f'{settings.MEDIA_ROOT}/profile_pics/default.jpg',
                               null=False,
                               blank=False,
                               upload_to=path_and_rename('profile_pics'))
