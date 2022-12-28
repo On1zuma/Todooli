@@ -44,7 +44,7 @@ class Profile(models.Model):
         # delete previous image
         try:
             this = Profile.objects.get(id=self.id)
-            if this.image != self.image:
+            if this.image != self.image and this.image != f'{settings.MEDIA_ROOT}/profile_pics/default.jpg':
                 this.image.delete()
         except:
             pass
