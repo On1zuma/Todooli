@@ -30,6 +30,7 @@ urlpatterns = [
     path('user/update/', UpdateUserView.as_view(), name='profile_update'),
     path('user/profile/', UserProfileView.as_view(), name='profile'),
 
+    # Rest password
     path('reset-password/',
          PasswordResetView.as_view(template_name='base/password/password_reset.html'),
          name='password_reset'),
