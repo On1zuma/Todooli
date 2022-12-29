@@ -2,43 +2,43 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta
-                name="viewport"
-                content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-        />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
-        <script src="{% static 'jquery-3.6.1.min.js' %}"></script>
-        <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
-        <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+    <script src="{% static 'jquery-3.6.1.min.js' %}"></script>
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
 
-        <!-- names: iloni, Inotki, idoka, igora, glomera-->
-        <title>
-            {% filter default:0|add:' -' %}{% block title %}{% endblock title %}{% endfilter %} Inotki
-        </title>
-    </head>
-    <body>
-        {% if request.user.is_authenticated %}
-            <div>
-                <h2 class="">{{ user.username }}</h2>
-                <a href="{% url 'tasks' %}">Tasks</a>
-                <a href="{% url 'profile' %}">Profile</a>
-                <a href="{% url 'logout' %}">Logout</a>
-                {% if admin %}
-                    <a href="/admin">Admin Dashboard</a>
-                {% endif %}
+    <!-- names: iloni, Inotkii, idoka, igora, glomera, Inolii-->
+    <title>
+      {% filter default:0|add:' -' %}{% block title %}{% endblock title %}
+      {%endfilter %} Inotkii
+    </title>
+  </head>
+  <body>
+    {% if request.user.is_authenticated %}
+    <div>
+      <h2 class="">{{ user.username }}</h2>
+      <a href="{% url 'tasks' %}">Tasks</a>
+      <a href="{% url 'profile' %}">Profile</a>
+      <a href="{% url 'logout' %}">Logout</a>
+      {% if admin %}
+      <a href="/admin">Admin Dashboard</a>
+      {% endif %}
+    </div>
+    {% else %}
+    <a href="{% url 'login' %}">Login</a>
+    <a href="{% url 'register' %}">Register</a>
+    {% endif %}
+    <hr />
 
-            </div>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-            <a href="{% url 'register' %}">Register</a>
-        {% endif %}
-        <hr />
-
-        {% if messages%} {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
-        {% endfor %} {% endif %} {% block body_content %} {% endblock %}
-    </body>
+    {% if messages%} {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
+    {% endfor %} {% endif %} {% block body_content %} {% endblock %}
+  </body>
 </html>

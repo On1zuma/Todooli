@@ -1,6 +1,7 @@
 from django.contrib import admin
 from django.urls import path
 
+from tasks.views.tags.tag_create import TagCreate
 #tasks
 from tasks.views.tasks.task_create import TaskCreate
 from tasks.views.tasks.task_delete import TaskDelete
@@ -23,7 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    # Users
+    # User
     path('user/login/', UserLoginView.as_view(), name='login'),
     path('user/logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('user/register/', RegisterView.as_view(), name='register'),
@@ -44,12 +45,16 @@ urlpatterns = [
          PasswordResetCompleteView.as_view(template_name='base/password/password_reset_complete.html'),
          name='password_reset_complete'),
 
-    # Tasks
+    # Task
     path('', TaskList.as_view(), name='tasks'),
     path('task/<int:pk>/', TaskDetail.as_view(), name='task_detail'),
     path('task/create/', TaskCreate.as_view(), name='task_create'),
     path('task/update/<int:pk>/', TaskUpdate.as_view(), name='task_update'),
     path('task/delete/<int:pk>/', TaskDelete.as_view(), name='task_delete'),
+
+    #Tag
+    path('tag/create/', TagCreate.as_view(), name='tag_create'),
+
 ]
 
 if settings.DEBUG:

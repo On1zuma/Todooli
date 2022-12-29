@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Tag form
+{% endblock %}
+
+{% block body_content %}
+
+    <h1>New tag</h1>
+
+    <form method="POST" action="">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <input type="submit" value="Submit">
+    </form>
+
+{% endblock %}

@@ -35,10 +35,17 @@
                 {{ form.date_to_do }} <!-- DATA PICKER DJANGO : https://simpleisbetterthancomplex.com/tutorial/2019/01/03/how-to-use-date-picker-with-django.html -->
 
             </div>
+
+            <div style="margin-bottom: 10px">
+                <label for="completed">Tags : </label>
+                {{ form.tags }}
+            </div>
+
             <div style="margin-bottom: 10px">
                 <label for="completed">Completed : </label>
                 {{ form.complete }}
             </div>
+
             <input type='hidden' value='{{lecture.pk}}' name='pk'>
             <button type="submit">Submit</button>
         </div>
