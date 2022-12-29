@@ -8,11 +8,11 @@
 {% block body_content %}
 
     <h1>New tag</h1>
-
+</p>
     <form method="POST" action="">
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" value="Submit">
+        <button type="submit">Create</button>
     </form>
 
 {% endblock %}

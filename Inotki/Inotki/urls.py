@@ -54,7 +54,7 @@ urlpatterns = [
 
     #Tag
     path('tag/create/', TagCreate.as_view(), name='tag_create'),
-
+    path('tag/create/<int:pk>/', TagCreate.as_view(), name='tag_create_pk'),
 ]
 
 if settings.DEBUG:
