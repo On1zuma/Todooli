@@ -4,11 +4,13 @@
 *.pyc
 __pycache__
 db.sqlite3
-media
+/media/profile_pics/*
 tasks/__pycache__
 users/__pycache__
 Inotki/__pycache__
 
+#Don't ignore
+!/media/profile_pics/default.jpg
 
 # Backup files # 
 *.bak 
