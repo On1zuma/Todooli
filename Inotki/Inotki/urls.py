@@ -9,7 +9,8 @@ from tasks.views.tasks.task_list import TaskList
 from tasks.views.tasks.task_update import TaskUpdate
 
 #users
-from django.contrib.auth.views import LogoutView
+from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
+    PasswordResetCompleteView
 from users.views.user_login import UserLoginView
 from users.views.user_profile import UserProfileView
 from users.views.user_register import RegisterView
@@ -28,6 +29,19 @@ urlpatterns = [
     path('user/register/', RegisterView.as_view(), name='register'),
     path('user/update/', UpdateUserView.as_view(), name='profile_update'),
     path('user/profile/', UserProfileView.as_view(), name='profile'),
+
+    path('reset-password/',
+         PasswordResetView.as_view(template_name='base/password/password_reset.html'),
+         name='password_reset'),
+    path('reset-password/done/',
+         PasswordResetDoneView.as_view(template_name='base/password/password_reset_done.html'),
+         name='password_reset_done'),
+    path('password-reset-confirm/<uidb64>/<token>/',
+         PasswordResetConfirmView.as_view(template_name='base/password/password_reset_confirm.html'),
+         name='password_reset_confirm'),
+    path('reset-password-complete/',
+         PasswordResetCompleteView.as_view(template_name='base/password/password_reset_complete.html'),
+         name='password_reset_complete'),
 
     # Tasks
     path('', TaskList.as_view(), name='tasks'),
