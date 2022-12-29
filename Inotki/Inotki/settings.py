@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
-
+import os.path
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -31,13 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'crispy_forms',
+    'captcha',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'tasks.apps.RecipesConfig',
+    'tasks.apps.TasksConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
@@ -125,6 +128,18 @@ STATICFILES_DIRS = (BASE_DIR / "static",)
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 DATETIME_FORMAT = 'd-m-Y H:i'
+
+# Form style
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# media represent the directory where we can find our images #user profile and picture 18min
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+#recaptcha : https://www.google.com/recaptcha/admin/site/599108787
+RECAPTCHA_PUBLIC_KEY = '6LezrLUjAAAAAMiue86n6hta9W7Cbd7Zutud_Ttr'
+RECAPTCHA_PRIVATE_KEY = '6LezrLUjAAAAAH2h0zv_kjKfMBS09WSOJ2YD23e-'
+#SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 # Gestion des logs
 LOGGING = {

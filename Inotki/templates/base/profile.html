@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block body_content %}
+    <h1 ><a href="{% url 'tasks' %}">Tasks /<small> Profile</small></a> </h1>
+
+    <div class="media">
+        {% if user.profile.image %}
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url|default_if_none:'/media/profile_pics/default.jpg' }}">
+        {% else %}
+                <img class="rounded-circle account-img" src="/media/profile_pics/default.jpg">
+        {% endif %}
+        <div class="media-body">
+            <h2 class="account-heading">{{ user.username }}</h2>
+            <p class="text-secondary">{{ user.email }}</p>
+            <p class="text-secondary">{{ user.profile.bio }}</p>
+            <a href="{% url 'profile_update' %}">Edit</a>
+
+        </div>
+    </div>
+
+{% endblock %}
