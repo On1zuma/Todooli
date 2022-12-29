@@ -1,3 +1,5 @@
+from django.contrib import messages
+from django.forms import modelformset_factory
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import UpdateView
@@ -35,20 +37,22 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     def form_valid(self, form):
         task = Task.objects.get(pk=self.object.id)
 
-        # if staff user and the data does not belong to the admin
-        if self.request.user.is_staff and task.user != self.request.user:
-            return super().form_valid(form)
-
         # if staff user and the data don't is not assigned to any user (normally not possible)
         if self.request.user.is_staff and self.object.user is None:
             form.instance.user = self.request.user
             return super().form_valid(form)
 
+        # if staff user and the data does not belong to the admin
+        if self.request.user.is_staff:
+            return super().form_valid(form)
+
         # if the task is not assigned to the user who is editing the task
-        if task.user != self.request.user:  # Todo FIX self.object.user is null...
+        if task.user != form.instance.user or task.user != self.request.user:
             form.add_error(None, "You can't do that")  # add message to the user that are not supposed to do that
+            messages.success(self.request, f'You are not allowed to do that', 'danger')
             return super().form_invalid(form)
 
+        # name of passed object   #name of the user session
         form.instance.user = self.request.user
         return super().form_valid(form)
 
