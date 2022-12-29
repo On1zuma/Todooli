@@ -19,17 +19,17 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-q_c#-eyf^gxg&zhwr)xil9=op9(3i89n_rr1^_h=48x)71wjp5'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 
-# FOR 404 web page
-DEBUG = True
-ALLOWED_HOSTS = []
-# ALLOWED_HOSTS = ['*']
+# DEBUG, disable FOR 404 web page...
+DEBUG = str(os.environ.get('DEBUG')) == "1"
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+if not DEBUG:
+    ALLOWED_HOSTS += [os.environ.get('ALLOWED_HOST')]
 
 # Application definition
-
 INSTALLED_APPS = [
     'crispy_forms',
     'captcha',
@@ -136,10 +136,19 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-#recaptcha : https://www.google.com/recaptcha/admin/site/599108787
+# recaptcha : https://www.google.com/recaptcha/admin/site/599108787
 RECAPTCHA_PUBLIC_KEY = '6LezrLUjAAAAAMiue86n6hta9W7Cbd7Zutud_Ttr'
 RECAPTCHA_PRIVATE_KEY = '6LezrLUjAAAAAH2h0zv_kjKfMBS09WSOJ2YD23e-'
-#SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+# SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+#EMAIL
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+# with env EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # Gestion des logs
 LOGGING = {
