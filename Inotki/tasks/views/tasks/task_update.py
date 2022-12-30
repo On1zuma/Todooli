@@ -40,20 +40,29 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
         # if staff user and the data don't is not assigned to any user (normally not possible)
         if self.request.user.is_staff and self.object.user is None:
             form.instance.user = self.request.user
+            messages.success(self.request, f'Succes, your task has been updated', 'success')
             return super().form_valid(form)
 
         # if staff user and the data does not belong to the admin
         if self.request.user.is_staff:
+            messages.success(self.request, f'Succes, your task has been updated', 'success')
             return super().form_valid(form)
 
         # if the task is not assigned to the user who is editing the task
-        if task.user != form.instance.user or task.user != self.request.user:
+        if form.instance.user is not None:
+            if task.user != form.instance.user or task.user != self.request.user:
+                form.add_error(None, "You can't do that")  # add message to the user that are not supposed to do that
+                messages.success(self.request, f'You are not allowed to do that', 'danger')
+                return super().form_invalid(form)
+
+        if task.user != self.request.user:
             form.add_error(None, "You can't do that")  # add message to the user that are not supposed to do that
             messages.success(self.request, f'You are not allowed to do that', 'danger')
             return super().form_invalid(form)
 
         # name of passed object   #name of the user session
         form.instance.user = self.request.user
+        messages.success(self.request, f'Succes, your task has been updated', 'success')
         return super().form_valid(form)
 
     def get_success_url(self):
