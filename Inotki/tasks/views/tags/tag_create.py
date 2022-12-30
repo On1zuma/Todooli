@@ -11,7 +11,7 @@ class TagCreate(LoginRequiredMixin, CreateView):
 
     def get_success_url(self, **kwargs):
         # go back to previous page depending on if a pk is set up of not (/tag/create/ VS /tag/create/7/)
-        if 'pk' in kwargs:
+        if 'pk' in self.kwargs:
             return reverse_lazy('task_update', kwargs={'pk': self.kwargs['pk']})
         return reverse('task_create')
 
