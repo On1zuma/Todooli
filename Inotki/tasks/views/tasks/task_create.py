@@ -12,6 +12,11 @@ class TaskCreate(LoginRequiredMixin, CreateView):
     template_name = "tasks/task_form.html"
     form_class = DateInputForm
 
+    def get_form_kwargs(self, *args, **kwargs):
+        form_kwargs = super().get_form_kwargs(*args, **kwargs)
+        form_kwargs['request'] = self.request
+        return form_kwargs
+
     def get_success_url(self):
         return reverse('tasks')
 

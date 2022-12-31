@@ -1,5 +1,4 @@
 from django.contrib import messages
-from django.forms import modelformset_factory
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import UpdateView
@@ -14,6 +13,11 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
     model = Task
     template_name = "tasks/task_form.html"
     form_class = DateInputForm
+
+    def get_form_kwargs(self, *args, **kwargs):
+        form_kwargs = super().get_form_kwargs(*args, **kwargs)
+        form_kwargs['request'] = self.request
+        return form_kwargs
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

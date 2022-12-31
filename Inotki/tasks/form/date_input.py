@@ -1,10 +1,21 @@
 from django import forms
 from django.forms import ModelForm
 
+from tasks.models.tag import Tag
 from tasks.models.task import Task
 
 
 class DateInputForm(ModelForm):
+
+    # limit choices for tags input
+    def __init__(self, request, *args, **kwargs):
+        self.request = request
+        super().__init__(*args, **kwargs)
+        new_kwargs = kwargs.get('instance', None)
+        if 'instance' in kwargs and new_kwargs is not None:
+            self.fields['tags'].queryset = Tag.objects.filter(user=new_kwargs.user.id)
+        else:
+            self.fields['tags'].queryset = Tag.objects.filter(user=request.user.id)
 
     class Meta:
         model = Task
