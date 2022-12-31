@@ -11,6 +11,8 @@ from Inotki import settings
 
 
 def path_and_rename(path):
+
+    # Rename users pictures
     def wrapper(instance, filename):
 
         ext = filename.split('.')[-1]
@@ -26,9 +28,10 @@ def path_and_rename(path):
 
         return os.path.join(path, filename)
 
+    # Sometimes this wrapper can cause an error during migration; comment it out to complete the migration.
     return wrapper
 
-
+ +
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(null=True, blank=True)
@@ -41,7 +44,7 @@ class Profile(models.Model):
         return f'{self.user.username} Profile'
 
     def save(self, **kwargs):
-        # delete previous image
+        # Delete previous image
         try:
             this = Profile.objects.get(id=self.id)
             if this.image != self.image and this.image != f'{settings.MEDIA_ROOT}/profile_pics/default.jpg':
@@ -49,7 +52,7 @@ class Profile(models.Model):
         except:
             pass
 
-        # we crop the image
+        # We crop the image (image reformatting)
         super().save()
 
         img = Image.open(self.image.path)

@@ -34,3 +34,8 @@ class UserLoginView(FormView):
 
     def get_success_url(self):
         return reverse('tasks')
+
+    def get(self, *args, **kwargs):
+        if self.request.user.is_authenticated:
+            return redirect('tasks')
+        return super().get(*args, **kwargs)

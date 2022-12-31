@@ -14,18 +14,12 @@ class UpdateUserView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
 
         if self.request.method == 'POST':
-            last_image = Profile.objects.get(pk=self.request.user.profile.id)
-            image_request = self.request.user.profile.image
-
             u_form = UserUpdateForm(self.request.POST, self.request.FILES,
                                     instance=self.request.user)
             p_form = ProfileUpdateForm(self.request.POST, self.request.FILES,
                                        instance=self.request.user.profile)
 
             if u_form is not None and p_form is not None and u_form.is_valid() and p_form.is_valid():
-                if image_request != last_image.image:
-                    Profile.objects.get(pk=self.request.user.profile.id).image.delete()
-
                 u_form.save()
                 p_form.save()
 
