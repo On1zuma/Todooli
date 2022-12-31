@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView
 from django.urls import reverse
 from users.forms.forms import UserUpdateForm, ProfileUpdateForm
-from users.models.users import Profile
+from users.models.user import Profile
 from django.contrib import messages
 
 
