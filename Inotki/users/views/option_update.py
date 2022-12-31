@@ -13,11 +13,10 @@ class OptionUserView(LoginRequiredMixin, FormView):
 
         if self.request.method == 'POST':
             o_form = OptionUpdateForm(self.request.POST, self.request.FILES,
-                                    instance=self.request.user)
+                                    instance=self.request.user.option)
 
             if o_form is not None and o_form.is_valid():
                 o_form.save()
-
                 messages.success(self.request, f'Your parameters have been updated!')
                 return super().form_valid(form)
 
@@ -31,7 +30,7 @@ class OptionUserView(LoginRequiredMixin, FormView):
         return reverse('tasks')
 
     def get_context_data(self, **kwargs):
-        o_form = OptionUpdateForm(instance=self.request.user)
+        o_form = OptionUpdateForm(instance=self.request.user.option)
         context = {
             'o_form': o_form,
         }
