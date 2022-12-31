@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django import forms
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 
+from users.models.option import Option
 from users.models.user import Profile
 from django.contrib.auth.views import LoginView
 
@@ -47,3 +48,9 @@ class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = ['bio', 'image']
+
+
+class OptionUpdateForm(forms.ModelForm):
+    class Meta:
+        model = Option
+        fields = ['show_completed_task', 'instant_deletion', 'email_notification', 'dark_mode', 'private_profile']

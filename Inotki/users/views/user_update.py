@@ -23,7 +23,7 @@ class UpdateUserView(LoginRequiredMixin, FormView):
                 u_form.save()
                 p_form.save()
 
-                messages.success(self.request, f'Your account has been updated!')
+                messages.success(self.request, f'Your account have been updated!')
                 return super().form_valid(form)
 
             else:
@@ -35,6 +35,7 @@ class UpdateUserView(LoginRequiredMixin, FormView):
     def get_success_url(self):
         return reverse('profile')
 
+    # Get data for the form
     def get_context_data(self, **kwargs):
         u_form = UserUpdateForm(instance=self.request.user)
         p_form = ProfileUpdateForm(instance=self.request.user.profile)

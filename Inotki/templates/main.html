@@ -2,11 +2,11 @@
 
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta
-      name="viewport"
-      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
     />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
@@ -16,31 +16,34 @@
 
     <!-- names: iloni, Inolii, idoka, igora, glomera, Inolii-->
     <title>
-      {% filter default:0|add:' -' %}{% block title %}{% endblock title %}
-      {%endfilter %} Inolii
+        {% filter default:0|add:' -' %}{% block title %}{% endblock title %}
+        {%endfilter %} Inolii
     </title>
-  </head>
-  <body>
-    {% if request.user.is_authenticated %}
+</head>
+<body>
+{% if request.user.is_authenticated %}
     <div>
-      <h1>Inolii</h1>
-      <h4>{{ user.username }}</h4>
-      <a href="{% url 'tasks' %}">Tasks</a>
-      <a href="{% url 'tags' %}">Tags</a>
-      <a href="{% url 'profile' %}">Profile</a>
-      <a href="{% url 'logout' %}">Logout</a>
-      {% if admin %}
-      <a href="/admin">Admin Dashboard</a>
-      {% endif %}
+        <h1>Inolii</h1>
+        <h4>{{ user.username }}</h4>
+        <div>
+            <a href="{% url 'tasks' %}">Tasks</a>
+            <a href="{% url 'tags' %}">Tags</a>
+            <a href="{% url 'profile' %}">Profile</a>
+            <a href="{% url 'option_update' %}">User parameter</a>
+            <a href="{% url 'logout' %}">Logout</a>
+            {% if admin %}
+                <a href="/admin">Admin Dashboard</a>
+            {% endif %}
+        </div>
     </div>
-    {% else %}
+{% else %}
     <a href="{% url 'login' %}">Login</a>
     <a href="{% url 'register' %}">Register</a>
-    {% endif %}
-    <hr />
+{% endif %}
+<hr />
 
-    {% if messages%} {% for message in messages %}
+{% if messages%} {% for message in messages %}
     <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
-    {% endfor %} {% endif %} {% block body_content %} {% endblock %}
-  </body>
+{% endfor %} {% endif %} {% block body_content %} {% endblock %}
+</body>
 </html>
