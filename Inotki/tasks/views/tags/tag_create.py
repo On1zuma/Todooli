@@ -13,7 +13,9 @@ class TagCreate(LoginRequiredMixin, CreateView):
         # go back to previous page depending on if a pk is set up of not (/tag/create/ VS /tag/create/7/)
         if 'pk' in self.kwargs:
             return reverse_lazy('task_update', kwargs={'pk': self.kwargs['pk']})
-        return reverse('task_create')
+        elif 'key_id' in self.kwargs:
+            return reverse('task_create')
+        return reverse('tags')
 
     def form_valid(self, form):
         form.instance.user = self.request.user

@@ -25,6 +25,7 @@
     <div>
       <h2 class="">{{ user.username }}</h2>
       <a href="{% url 'tasks' %}">Tasks</a>
+          <a href="{% url 'tags' %}">Tags</a>
       <a href="{% url 'profile' %}">Profile</a>
       <a href="{% url 'logout' %}">Logout</a>
       {% if admin %}

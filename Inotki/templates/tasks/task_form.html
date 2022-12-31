@@ -42,7 +42,7 @@
                 {% if task.id %}
                     <a href="{% url 'tag_create_pk' task.id %}">+</a>
                 {% else %}
-                    <a href="{% url 'tag_create' %}">+</a>
+                    <a href="{% url 'tag_create_id' user.id %}">+</a>
                 {% endif %}
 
             </div>
