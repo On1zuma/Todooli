@@ -9,8 +9,6 @@
     <h3>Task form</h3>
     {% if admin %}<h4> {{ admin }}</h4>{% endif %}
 
-    <a href="{% url 'tasks' %}">go back </a>
-
     <form action="" method="post">
         {% csrf_token %}
         <div style="flex-direction: column">
