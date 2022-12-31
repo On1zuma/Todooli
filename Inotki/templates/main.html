@@ -14,18 +14,19 @@
     <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
 
-    <!-- names: iloni, Inotkii, idoka, igora, glomera, Inolii-->
+    <!-- names: iloni, Inolii, idoka, igora, glomera, Inolii-->
     <title>
       {% filter default:0|add:' -' %}{% block title %}{% endblock title %}
-      {%endfilter %} Inotkii
+      {%endfilter %} Inolii
     </title>
   </head>
   <body>
     {% if request.user.is_authenticated %}
     <div>
-      <h2 class="">{{ user.username }}</h2>
+      <h1>Inolii</h1>
+      <h4>{{ user.username }}</h4>
       <a href="{% url 'tasks' %}">Tasks</a>
-          <a href="{% url 'tags' %}">Tags</a>
+      <a href="{% url 'tags' %}">Tags</a>
       <a href="{% url 'profile' %}">Profile</a>
       <a href="{% url 'logout' %}">Logout</a>
       {% if admin %}
