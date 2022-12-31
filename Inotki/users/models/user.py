@@ -11,7 +11,6 @@ from Inotki import settings
 
 
 def path_and_rename(path):
-
     # Rename users pictures
     def wrapper(instance, filename):
 
@@ -31,7 +30,7 @@ def path_and_rename(path):
     # Sometimes this wrapper can cause an error during migration; comment it out to complete the migration.
     return wrapper
 
- +
+
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(null=True, blank=True)
