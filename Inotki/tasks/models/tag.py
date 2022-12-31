@@ -6,4 +6,4 @@ class Tag(models.Model):
     tag_name = models.CharField(max_length=200, null=True, blank=False, default='')
 
     def __str__(self):
-        return f'{self.tag_name}, {self.user}' or 'empty'
+        return f'{self.tag_name}' or 'empty'

@@ -7,4 +7,4 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 class UserProfileView(LoginRequiredMixin, TemplateView):
-    template_name = "base/profile.html"
+    template_name = "base/user_profile.html"

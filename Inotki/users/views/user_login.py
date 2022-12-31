@@ -11,7 +11,7 @@ from users.forms.forms import UserLoginForm
 
 
 class UserLoginView(FormView):
-    template_name = 'base/login.html'
+    template_name = 'base/user_login.html'
     form_class = UserLoginForm
 
     def form_valid(self, form):

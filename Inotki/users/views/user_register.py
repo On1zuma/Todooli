@@ -8,7 +8,7 @@ from users.forms.forms import UserRegisterForm
 
 
 class RegisterView(FormView):
-    template_name = 'base/register.html'
+    template_name = 'base/user_register.html'
     form_class = UserRegisterForm
     redirect_authenticated_user = True
 

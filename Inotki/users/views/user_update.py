@@ -8,7 +8,7 @@ from django.contrib import messages
 
 
 class UpdateUserView(LoginRequiredMixin, FormView):
-    template_name = 'base/update.html'
+    template_name = 'base/user_update.html'
     form_class = ProfileUpdateForm
 
     def form_valid(self, form):
