@@ -34,8 +34,7 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
 
         # We check if the user is trying to edit their own data
         if task.user != self.request.user:
-            # flash message: messages.add
-            return redirect('tasks')
+            return redirect('tasks')  # TODO: 404 page
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):

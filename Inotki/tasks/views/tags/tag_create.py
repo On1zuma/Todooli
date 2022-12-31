@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.views.generic import CreateView
 from tasks.models.tag import Tag
 from django.urls import reverse, reverse_lazy
@@ -19,4 +20,5 @@ class TagCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
+        messages.success(self.request, f'Succes, your tag has been created', 'success')
         return super().form_valid(form)

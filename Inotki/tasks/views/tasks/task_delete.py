@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import redirect
 from django.views.generic import DeleteView
 
@@ -18,18 +19,21 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
             return super().get(request, *args, **kwargs)
 
         if task.user != self.request.user:
-            return redirect('tasks')  # TODO: faire une page 404 avec un message ou des flash messages
+            return redirect('tasks')  # TODO: 404 page
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
         task = Task.objects.get(pk=self.object.id)
 
         if self.request.user.is_staff:
+            messages.success(self.request, f'Succes, your task has been deleted', 'success')
             return super().form_valid(form)
 
         if task.user != self.request.user:
+            messages.success(self.request, f'You are not allowed to do that', 'danger')
             return super().form_invalid(form)
 
+        messages.success(self.request, f'Succes, your task has been deleted', 'success')
         return super().form_valid(form)
 
     def get_success_url(self):

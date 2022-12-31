@@ -1,10 +1,8 @@
 from django.shortcuts import redirect
 from django.views.generic import DeleteView
-
 from tasks.models.tag import Tag
-from tasks.models.task import Task
+from django.contrib import messages
 from django.urls import reverse
-
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -19,18 +17,21 @@ class TagDelete(LoginRequiredMixin, DeleteView):
             return super().get(request, *args, **kwargs)
 
         if tag.user != self.request.user:
-            return redirect('tags')  # TODO: faire une page 404 avec un message ou des flash messages
+            return redirect('tags')  # TODO: 404 page
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
         tag = Tag.objects.get(pk=self.object.id)
 
         if self.request.user.is_staff:
+            messages.success(self.request, f'Succes, your tag has been deleted', 'success')
             return super().form_valid(form)
 
         if tag.user != self.request.user:
+            messages.success(self.request, f'You are not allowed to do that', 'danger')
             return super().form_invalid(form)
 
+        messages.success(self.request, f'Succes, your tag has been deleted', 'success')
         return super().form_valid(form)
 
     def get_success_url(self):

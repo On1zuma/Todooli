@@ -2,10 +2,7 @@ from django.contrib import messages
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import UpdateView
-
-from tasks.form.date_input import DateInputForm
 from tasks.models.tag import Tag
-from tasks.models.task import Task
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 
@@ -30,8 +27,7 @@ class TagUpdate(LoginRequiredMixin, UpdateView):
 
         # We check if the user is trying to edit their own data
         if tag.user != self.request.user:
-            # flash message: messages.add
-            return redirect('tags')
+            return redirect('tags')  # TODO: 404 page
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
