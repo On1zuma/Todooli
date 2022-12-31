@@ -21,8 +21,8 @@
         <ul>
             <li>
                 {{ tag.tag_name }} -
-                <a href="{% url 'task_update' tag.id %}">edit</a>
-                <a href="{% url 'task_delete' tag.id %}">delete</a>
+                <a href="{% url 'tag_update' tag.id %}">edit</a>
+                <a href="{% url 'tag_delete' tag.id %}">delete</a>
             </li>
         </ul>
     {% empty %}

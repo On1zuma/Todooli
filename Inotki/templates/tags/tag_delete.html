@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Task delete page
+{% endblock %}
+
+{% block body_content %}
+    <a href="{% url 'tasks' %}">go back </a>
+    <form method="POST">
+        {% csrf_token %}
+        {% if tag %}
+            <p>Are you sure to delete "{{ tag }}" ?</p>
+        {% else %}
+            <p>Are you sure about that ?</p>
+        {% endif %}
+
+        <input type="submit" value="Delete">
+    </form>
+{% endblock %}
