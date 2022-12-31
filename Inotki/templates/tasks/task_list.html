@@ -18,7 +18,7 @@
         <input type="text" name="search-area" value="{{ search_input }}">
         <input type="submit" value="Search">
     </form>
-    <a href="/?search-area=">x</a>
+    <a href="{% url 'tasks' %}">x</a>
 
     <br><br>
     <a href="{% url 'task_create' %}">Create a task</a>

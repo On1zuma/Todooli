@@ -9,8 +9,6 @@
     <h3>Task form</h3>
     {% if admin %}<h4> {{ admin }}</h4>{% endif %}
 
-    <a href="{% url 'tasks' %}">go back </a>
-
     <form action="" method="post">
         {% csrf_token %}
         <div style="flex-direction: column">
@@ -39,6 +37,12 @@
             <div style="margin-bottom: 10px">
                 <label for="completed">Tags : </label>
                 {{ form.tags }}
+                {% if task.id %}
+                    <a href="{% url 'tag_create_pk' task.id %}">+</a>
+                {% else %}
+                    <a href="{% url 'tag_create_id' user.id %}">+</a>
+                {% endif %}
+
             </div>
 
             <div style="margin-bottom: 10px">
@@ -46,8 +50,11 @@
                 {{ form.complete }}
             </div>
 
-            <input type='hidden' value='{{lecture.pk}}' name='pk'>
-            <button type="submit">Submit</button>
+            {% if task.id %}
+                <button type="submit">Update</button>
+            {% else %}
+                <button type="submit">Create</button>
+            {% endif %}
         </div>
     </form>
 

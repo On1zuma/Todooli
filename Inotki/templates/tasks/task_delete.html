@@ -9,7 +9,7 @@
     <form method="POST">
         {% csrf_token %}
         {% if task %}
-            <p>Are you sure to delete "{{ task }} ?"</p>
+            <p>Are you sure to delete "{{ task }}"?</p>
         {% else %}
             <p>Are you sure about that ?</p>
         {% endif %}

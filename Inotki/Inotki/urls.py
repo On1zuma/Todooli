@@ -1,7 +1,12 @@
 from django.contrib import admin
 from django.urls import path
 
+#tags
 from tasks.views.tags.tag_create import TagCreate
+from tasks.views.tags.tag_delete import TagDelete
+from tasks.views.tags.tag_list import TagList
+from tasks.views.tags.tag_update import TagUpdate
+
 #tasks
 from tasks.views.tasks.task_create import TaskCreate
 from tasks.views.tasks.task_delete import TaskDelete
@@ -54,6 +59,11 @@ urlpatterns = [
 
     #Tag
     path('tag/create/', TagCreate.as_view(), name='tag_create'),
+    path('tag/create/c/<int:key_id>/', TagCreate.as_view(), name='tag_create_id'),
+    path('tag/create/e/<int:pk>/', TagCreate.as_view(), name='tag_create_pk'),
+    path('tag/', TagList.as_view(), name='tags'),
+    path('tag/update/<int:pk>/', TagUpdate.as_view(), name='tag_update'),
+    path('tag/delete/<int:pk>/', TagDelete.as_view(), name='tag_delete'),
 
 ]
 
