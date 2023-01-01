@@ -42,6 +42,7 @@
         </ul>
     {% endfor %}
 
+    <!-- TASK -->
     {% if tasks_to_do_late %}
         <h3>Late</h3>
     {% endif %}
@@ -104,24 +105,27 @@
         <ul><li><h3>No items yet</h3></li></ul>
     {% endfor %}
 
-    {% if tasks_completed %}
+    {% if show_completed_task == True %}
+        <!-- COMPLETED TASK -->
         <hr>
         <h2>Completed task </h2>
-    {% endif %}
-    {% for task in tasks_completed %}
+        {% for task in tasks_completed %}
 
-        <ul>
-            <li>
-                {% if admin %}
-                    {{ task.user }} :
-                    {{ task.creation_date }} -
-                {% endif %}
-                {{ task.title }} -
-                <a href="{% url 'task_detail' task.id %}">see</a>
-                <a href="{% url 'task_update' task.id %}">edit</a>
-                <a href="{% url 'task_delete' task.id %}">delete</a>
-            </li>
-        </ul>
-    {% endfor %}
+            <ul>
+                <li>
+                    {% if admin %}
+                        {{ task.user }} :
+                        {{ task.creation_date }} -
+                    {% endif %}
+                    <strike>{{ task.title }}</strike> -
+                    <a href="{% url 'task_detail' task.id %}">see</a>
+                    <a href="{% url 'task_update' task.id %}">edit</a>
+                    <a href="{% url 'task_delete' task.id %}">delete</a>
+                </li>
+            </ul>
+        {% empty %}
+            <ul><li><h3>No items yet</h3></li></ul>
+        {% endfor %}
+    {% endif %}
 
 {% endblock %}

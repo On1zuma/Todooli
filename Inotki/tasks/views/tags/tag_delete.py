@@ -13,12 +13,18 @@ class TagDelete(LoginRequiredMixin, DeleteView):
 
     def get(self, request, *args, **kwargs):
         tag = Tag.objects.get(pk=kwargs['pk'])
+
         if self.request.user.is_staff:
             return super().get(request, *args, **kwargs)
-
-        if tag.user != self.request.user:
-            return redirect('tags')  # TODO: 404 page
-        return super().get(request, *args, **kwargs)
+        # If "Instant Delete" is checked, we will delete the form without requiring confirmation.
+        # Could be done more neatly.
+        elif self.request.user.option.instant_deletion == True and tag.user == self.request.user:
+            messages.success(self.request, f'Succes, your tag has been deleted', 'success')
+            return self.delete(request, *args, **kwargs)
+        else:
+            if tag.user != self.request.user:
+                return redirect('tags')  # TODO: 404 page
+            return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
         tag = Tag.objects.get(pk=self.object.id)
