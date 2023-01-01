@@ -53,4 +53,10 @@ class ProfileUpdateForm(forms.ModelForm):
 class OptionUpdateForm(forms.ModelForm):
     class Meta:
         model = Option
-        fields = ['show_completed_task', 'instant_deletion', 'email_notification', 'dark_mode', 'private_profile']
+        fields = ['show_completed_task',
+                  'instant_deletion',
+                  'email_notification',
+                  'dark_mode',
+                  'private_profile',
+                  'disable_tag'
+                  ]

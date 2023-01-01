@@ -9,6 +9,7 @@ class Option(models.Model):
     email_notification = models.BooleanField(default=True)
     dark_mode = models.BooleanField(default=False)
     private_profile = models.BooleanField(default=False)
+    disable_tag = models.BooleanField(default=False)
 
     def __str__(self):
         return f'{self.user.username} option'
