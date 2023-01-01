@@ -21,7 +21,7 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
         # If "Instant Delete" is checked, we will delete the form without requiring confirmation.
         # Could be done more neatly.
         elif self.request.user.option.instant_deletion == True and task.user == self.request.user:
-            messages.success(self.request, f'Succes, your task have been deleted', 'success')
+            messages.success(self.request, f'Succes, your task has been deleted', 'success')
             return self.delete(request, *args, **kwargs)
         else:
             if task.user != self.request.user:
@@ -32,14 +32,14 @@ class TaskDelete(LoginRequiredMixin, DeleteView):
         task = Task.objects.get(pk=self.object.id)
 
         if self.request.user.is_staff:
-            messages.success(self.request, f'Succes, your task have been deleted', 'success')
+            messages.success(self.request, f'Succes, your task has been deleted', 'success')
             return super().form_valid(form)
 
         if task.user != self.request.user:
             messages.success(self.request, f'You are not allowed to do that', 'danger')
             return super().form_invalid(form)
 
-        messages.success(self.request, f'Succes, your task have been deleted', 'success')
+        messages.success(self.request, f'Succes, your task has been deleted', 'success')
         return super().form_valid(form)
 
     def get_success_url(self):

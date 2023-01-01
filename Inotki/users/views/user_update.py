@@ -23,7 +23,7 @@ class UpdateUserView(LoginRequiredMixin, FormView):
                 u_form.save()
                 p_form.save()
 
-                messages.success(self.request, f'Your account have been updated!')
+                messages.success(self.request, f'Your account has been updated!')
                 return super().form_valid(form)
 
             else:

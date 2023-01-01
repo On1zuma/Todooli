@@ -17,7 +17,7 @@ class OptionUserView(LoginRequiredMixin, FormView):
 
             if o_form is not None and o_form.is_valid():
                 o_form.save()
-                messages.success(self.request, f'Your parameters have been updated!')
+                messages.success(self.request, f'Your parameters has been updated!')
                 return super().form_valid(form)
 
             else:
