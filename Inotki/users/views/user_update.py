@@ -3,7 +3,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import FormView
 from django.urls import reverse
 from users.forms.forms import UserUpdateForm, ProfileUpdateForm
-from users.models.users import Profile
+from users.models.user import Profile
 from django.contrib import messages
 
 
@@ -14,18 +14,12 @@ class UpdateUserView(LoginRequiredMixin, FormView):
     def form_valid(self, form):
 
         if self.request.method == 'POST':
-            last_image = Profile.objects.get(pk=self.request.user.profile.id)
-            image_request = self.request.user.profile.image
-
             u_form = UserUpdateForm(self.request.POST, self.request.FILES,
                                     instance=self.request.user)
             p_form = ProfileUpdateForm(self.request.POST, self.request.FILES,
                                        instance=self.request.user.profile)
 
             if u_form is not None and p_form is not None and u_form.is_valid() and p_form.is_valid():
-                if image_request != last_image.image:
-                    Profile.objects.get(pk=self.request.user.profile.id).image.delete()
-
                 u_form.save()
                 p_form.save()
 
@@ -41,6 +35,7 @@ class UpdateUserView(LoginRequiredMixin, FormView):
     def get_success_url(self):
         return reverse('profile')
 
+    # Get data for the form
     def get_context_data(self, **kwargs):
         u_form = UserUpdateForm(instance=self.request.user)
         p_form = ProfileUpdateForm(instance=self.request.user.profile)
