@@ -4,46 +4,82 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8" />
-    <meta
-            name="viewport"
-            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!--  <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />-->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/burger.css' %}" />
+    <script src="{% static 'js/app.js' %}" defer></script>
 
-    <script src="{% static 'jquery-3.6.1.min.js' %}"></script>
-    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+    <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); </style>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- names: iloni, Inolii, idoka, igora, glomera, Inolii-->
     <title>
         {% filter default:0|add:' -' %}{% block title %}{% endblock title %}
         {%endfilter %} Inolii
     </title>
 </head>
-<body>
-{% if request.user.is_authenticated %}
-    <div>
-        <h1>Inolii</h1>
-        <h4>{{ user.username }}</h4>
-        <div>
-            <a href="{% url 'tasks' %}">Tasks</a>
-            <a href="{% url 'tags' %}">Tags</a>
-            <a href="{% url 'profile' %}">Profile</a>
-            <a href="{% url 'option_update' %}">Option</a>
-            <a href="{% url 'logout' %}">Logout</a>
-            {% if user.is_staff %}
-                <a href="/admin">Admin Dashboard</a>
-            {% endif %}
-        </div>
-    </div>
-{% else %}
-    <a href="{% url 'login' %}">Login</a>
-    <a href="{% url 'register' %}">Register</a>
-{% endif %}
-<hr />
 
-{% if messages%} {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
-{% endfor %} {% endif %} {% block body_content %} {% endblock %}
+<body>
+<!-- Navbar -->
+<header>
+    <nav id="navbar">
+        <h1 class="d-none">Navbar</h1>
+        <div id="header_first_list">
+            <img src="/static/img/logo.png" id="logo" alt="user pic">
+        </div>
+
+        <div class="toggle">
+            <div class="openb"><i class="fa-solid fa-bars"></i></div>
+            <div class="closeb"><i class="fa-solid fa-xmark"></i></div>
+            <div>
+                <button onclick="location.href='{% url 'tasks' %}'" type="button" class="icon-button">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="icon-button__badge">2</span>
+                </button>
+            </div>
+        </div>
+
+        <ul class="menu">
+            {% if request.user.is_authenticated %}
+                <li><a href="{% url 'tasks' %}">Tasks</a></li>
+                <li><a href="{% url 'tags' %}">Tags</a></li>
+                <li><a href="{% url 'profile' %}">Profile</a></li>
+                <li><a href="{% url 'option_update' %}">Setting</a></li>
+                {% if user.is_staff %}
+                    <li><a href="/admin">Admin Dashboard</a></li>
+                {% endif %}
+                <li class="mobileFormatNotifLi"><button onclick="location.href='{% url 'tasks' %}'" type="button" class="icon-button">
+                    <i class="fa-solid fa-bell"></i>
+                    <span class="icon-button__badge">2</span>
+                </button></li>
+                <li><button class="button3D" onclick="location.href='{% url 'logout' %}'">Logout</button></li>
+
+            {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><button class="button3D" onclick="location.href='{% url 'register' %}'">Register</button></li>
+            {% endif %}
+        </ul>
+    </nav>
+</header>
+
+{% if messages%}
+    <!-- Alerts -->
+    <section id="alter" title="alerts">
+        <h1 class="d-none">Alerts</h1>
+        {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
+        {% endfor %}
+    </section>
+{% endif %}
+
+<!-- Ilonii -->
+<section  id="content" title="task-manager">
+    <h1 class="d-none">Task manager</h1>
+    {% block body_content %}{% endblock %}
+</section>
 </body>
 </html>
