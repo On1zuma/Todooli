@@ -7,19 +7,18 @@
         color: white;
         cursor: pointer;
         position: relative;	align-items: center;
-        z-index: 20;
+        z-index: 200;
     }
 
     .openb {
         display: block;
-        margin-right: 15px;
     }
     .closeb {
         display: none;
     }
 
     .open .closeb{
-        margin-right: 17px;
+        margin-left: 8px;
         display: block;
     }
     .open .openb{
@@ -40,7 +39,7 @@
         flex-direction: column;
         padding: 2rem;
         justify-content: space-around;
-        transform: translateY(-100%);
+        transform: translateY(-110%);
         transition: transform .7s;
     }
 
