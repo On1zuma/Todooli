@@ -1,0 +1,48 @@
+{% extends 'main.html' %}
+
+{% block title %}
+    Task list
+{% endblock %}
+
+{% block body_content %}
+
+
+    <!-- Current task -->
+    <div>
+
+        <h2>Notification</h2>
+
+        {% if tasks_to_do_late %}
+            <h3>TO DO, Late</h3>
+            <ul> <!-- LATE -->
+                {% for task in tasks_to_do_late %}
+                    <li>
+                        {{ task.title }} -
+                        <a href="{% url 'task_update' task.id %}">edit</a>
+                    </li>
+
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+
+        {% if tasks_to_do_today %}
+            <h3>TO DO, Today</h3>
+            <ul> <!-- TODAY -->
+                {% for task in tasks_to_do_today %}
+
+                    <li>
+                        {{ task.title }} -
+                        <a href="{% url 'task_update' task.id %}">edit</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        {% if tasks_to_do_today_count == 0 and tasks_to_do_late_count == 0 %}
+            <!-- EMPTY CONDITION -->
+            <ul><li><h3>Nothing to report</h3></li></ul>
+        {% endif %}
+    </div>
+
+{% endblock %}

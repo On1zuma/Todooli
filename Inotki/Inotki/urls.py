@@ -29,6 +29,9 @@ from users.views.user_update import UpdateUserView
 from django.conf import settings
 from django.conf.urls.static import static
 
+#Notification
+from tasks.views.notification.notification_list import NotificationList
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -70,6 +73,8 @@ urlpatterns = [
     path('tag/update/<int:pk>/', TagUpdate.as_view(), name='tag_update'),
     path('tag/delete/<int:pk>/', TagDelete.as_view(), name='tag_delete'),
 
+    # Notification
+    path('notification/', NotificationList.as_view(), name='notification'),
 ]
 
 if settings.DEBUG:
