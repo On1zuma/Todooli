@@ -1,16 +1,26 @@
+//nav box shadow
+window.addEventListener('scroll',(e)=>{
+  const nav = document.querySelector('.nav');
+  if(window.pageYOffset>0){
+    nav.classList.add("add-shadow");
+  }else{
+    nav.classList.remove("add-shadow");
+  }
+});
+
 //burger
 let toggle = document.querySelector('.toggle');
 let body = document.querySelector('body');
 
 toggle.addEventListener('click', function () {
-    body.classList.toggle('open');
+  body.classList.toggle('open');
 })
 
 //flash message
 const button = document.querySelector("button"),
-  toast = document.querySelector(".toast");
+    toast = document.querySelector(".toast");
 (closeIcon = document.querySelector(".close")),
-  (progress = document.querySelector(".progress"));
+    (progress = document.querySelector(".progress"));
 
 let timer1, timer2;
 
@@ -37,3 +47,4 @@ closeIcon.addEventListener("click", () => {
   clearTimeout(timer1);
   clearTimeout(timer2);
 });
+
