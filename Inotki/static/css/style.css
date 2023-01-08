@@ -248,13 +248,49 @@ header{
 	align-items: center;
 }
 
-.toast-content .check {
+.toast-content .check-info {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	height: 35px;
 	min-width: 35px;
 	background-color: #3584ff;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 50%;
+}
+
+.toast-content .check-success {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 35px;
+	min-width: 35px;
+	background-color: #24d563;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 50%;
+}
+
+.toast-content .check-error {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 35px;
+	min-width: 35px;
+	background-color: #f32727;
+	color: #fff;
+	font-size: 20px;
+	border-radius: 50%;
+}
+
+.toast-content .check-warning {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 35px;
+	min-width: 35px;
+	background-color: #f3c327;
 	color: #fff;
 	font-size: 20px;
 	border-radius: 50%;

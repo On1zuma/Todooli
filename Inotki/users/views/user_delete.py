@@ -28,14 +28,14 @@ class UserDelete(LoginRequiredMixin, DeleteView):
         userObject = User.objects.get(pk=self.object.id)
 
         if self.request.user.is_staff:
-            messages.success(self.request, f'Success, your account has been deleted', 'success')
+            messages.success(self.request, f'Your account has been deleted')
             return super().form_valid(form)
 
         if userObject.id != self.request.user.id:
-            messages.success(self.request, f'You are not allowed to do that', 'danger')
+            messages.error(self.request, f'You are not allowed to do that')
             return super().form_invalid(form)
 
-        messages.success(self.request, f'Success, your account has been deleted', 'success')
+        messages.success(self.request, f'Your account has been deleted')
         return super().form_valid(form)
 
     def get_success_url(self):

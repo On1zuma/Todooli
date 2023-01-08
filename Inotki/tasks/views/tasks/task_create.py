@@ -23,5 +23,5 @@ class TaskCreate(LoginRequiredMixin, CreateView):
 
     def form_valid(self, form):
         form.instance.user = self.request.user
-        messages.success(self.request, f'Success, your task has been created', 'success')
+        messages.success(self.request, f'Your task has been created')
         return super().form_valid(form)

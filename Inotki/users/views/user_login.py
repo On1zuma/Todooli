@@ -25,7 +25,7 @@ class UserLoginView(FormView):
             )
             if user is not None:
                 login(self.request, user)
-            messages.info(self.request, f'Welcome back {user.username} !', 'info')
+            messages.info(self.request, f'Welcome back {user.username} !')
 
             return redirect('tasks')
         else:

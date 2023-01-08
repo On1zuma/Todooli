@@ -21,7 +21,7 @@ class RegisterView(FormView):
         if form.is_valid():
             username = form.cleaned_data.get('username')
             user = form.save()
-            messages.success(self.request, f'Welcome {username} ')
+            messages.info(self.request, f'Welcome {username} ')
 
         if user is not None:
             login(self.request, user)

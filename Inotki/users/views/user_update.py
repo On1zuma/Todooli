@@ -27,9 +27,7 @@ class UpdateUserView(LoginRequiredMixin, FormView):
                 return super().form_valid(form)
 
             else:
-                messages.success(self.request, f'Sorry, an error occurred while submitting your form. Please check '
-                                               f'the information entered and try again. If the problem persists, '
-                                               f'please contact customer service for assistance.')
+                messages.error(self.request, f'Sorry, an error occurred while submitting your form')
         return super().form_invalid(form)
 
     def get_success_url(self):

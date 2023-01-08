@@ -25,7 +25,7 @@
 <body>
 <!-- Navbar -->
 <header>
-    <nav id="navbar">
+    <nav id="navbar" class="nav">
         <h1 class="d-none">Navbar</h1>
         <div>
             {% if request.user.is_authenticated %}
@@ -78,19 +78,22 @@
     <section id="alter" title="alerts">
         <div class="toast">
             <div class="toast-content">
-                <i class="fas fa-solid fa-check check"></i>
+                {% for message in messages %}
+                    <i class="fas fa-solid fa-check check-{{ message.tags }}"></i>
+                    <div class="message">
 
-                <div class="message">
-                    <span class="text text-1">
-                        Info
+                        <span class="text text-1">
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Info{% endif %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}Success{% endif %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error {% endif %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Warning {% endif %}
+                        </span>
+                        <span class="text text-2">
+                        <div class="" role="alert">{{ message }}</div>
                     </span>
 
-                    <span class="text text-2">
-                      {% for message in messages %}
-                          <div class="" role="alert">{{ message }}</div>
-                      {% endfor %}
-                     </span>
-                </div>
+                    </div>
+                {% endfor %}
             </div>
             <i class="fa-solid fa-xmark close"></i>
             <div class="progress"></div>
