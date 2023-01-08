@@ -28,8 +28,12 @@
 <header>
     <nav id="navbar">
         <h1 class="d-none">Navbar</h1>
-        <div id="header_first_list">
-            <img src="/static/img/logo.png" id="logo" alt="user pic">
+        <div>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'tasks' %}"><img src="/static/img/logo.png" id="logo" alt="logo"></a>
+            {% else %}
+            <a href="{% url 'home' %}"><img src="/static/img/logo.png" id="logo" alt="logo"></a>
+            {% endif %}
         </div>
 
         <div class="toggle">
@@ -46,9 +50,11 @@
         </div>
 
         <ul class="menu nav">
+            <img src="/static/img/logo.png" id="logoResponsive" alt="logo">
             {% if request.user.is_authenticated %}
-                <li><a href="{% url 'tasks' %}">Tasks</a></li>
-                <li><a href="{% url 'tags' %}">Tags</a></li>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'tasks' %}">Task</a></li>
+                <li><a href="{% url 'tags' %}">Tag</a></li>
                 <li><a href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'option_update' %}">Setting</a></li>
                 {% if user.is_staff %}
@@ -59,7 +65,6 @@
                     <span class="notificationIcon__badge">2</span>
                 </button></li>
                 <li><button class="button3D" onclick="location.href='{% url 'logout' %}'">Logout</button></li>
-
             {% else %}
                 <li><a href="{% url 'login' %}">Login</a></li>
                 <li><button class="button3D" onclick="location.href='{% url 'register' %}'">Register</button></li>

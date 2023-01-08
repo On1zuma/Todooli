@@ -38,8 +38,14 @@ header{
 }
 
 #logo{
-	width: 55px;
-	height: auto;
+	width: auto;
+	height: 73px;
+}
+
+#logoResponsive{
+	display: none;
+	width: auto;
+	height: 73px;
 }
 
 /* HEADER - LIST */

@@ -32,6 +32,9 @@ from django.conf.urls.static import static
 #Notification
 from tasks.views.notification.notification_list import NotificationList
 
+#Home
+from tasks.views.home.home import HomeView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -59,7 +62,7 @@ urlpatterns = [
          name='password_reset_complete'),
 
     # Task
-    path('', TaskList.as_view(), name='tasks'),
+    path('task/', TaskList.as_view(), name='tasks'),
     path('task/<int:pk>/', TaskDetail.as_view(), name='task_detail'),
     path('task/create/', TaskCreate.as_view(), name='task_create'),
     path('task/update/<int:pk>/', TaskUpdate.as_view(), name='task_update'),
@@ -75,6 +78,9 @@ urlpatterns = [
 
     # Notification
     path('notification/', NotificationList.as_view(), name='notification'),
+
+    #Home
+    path('', HomeView.as_view(), name='home'),
 ]
 
 if settings.DEBUG:

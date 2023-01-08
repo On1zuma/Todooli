@@ -22,6 +22,10 @@
         color: rgb(255, 255, 255);
     }
 
+    #logoResponsive{
+        display: block;
+    }
+
     .openb {
         display: block;
     }
