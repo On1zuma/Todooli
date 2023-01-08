@@ -63,9 +63,9 @@
                     <i class="fa-solid fa-bell fa-xl"></i>
                     <span class="notificationIcon__badge">2</span>
                 </button></li>
-                <li><button class="button3D" onclick="location.href='{% url 'logout' %}'">Logout</button></li>
+                <li><button class="button3D" onclick="location.href='{% url 'logout' %}'">Log out</button></li>
             {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'login' %}">Log in</a></li>
                 <li><button class="button3D" onclick="location.href='{% url 'register' %}'">Register</button></li>
             {% endif %}
         </ul>
