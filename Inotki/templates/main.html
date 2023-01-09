@@ -12,6 +12,11 @@
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/burger.css' %}" />
+    {% if messages%}
+        <link rel="stylesheet" href="{% static 'css/message.css' %}" />
+    {% endif %}
+
+
     <script src="{% static 'js/app.js' %}" defer></script>
     {% block css %}{% endblock css %}
 
@@ -25,7 +30,7 @@
 <body>
 <!-- Navbar -->
 <header>
-    <nav id="navbar" class="nav">
+    <nav id="navbar" class="nav stroke">
         <h1 class="d-none">Navbar</h1>
         <div>
             {% if request.user.is_authenticated %}
