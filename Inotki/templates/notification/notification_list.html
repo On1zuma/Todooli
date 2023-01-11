@@ -37,7 +37,7 @@
             <!-- TODAY -->
             {% for task in tasks_to_do_today %}
                 <div class="task">
-                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="blue-icon" href="{% url 'notification_task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
                     <a class="edit" href="{% url 'task_update' task.id %}">
                         <div class="with-date">
                             <p class="task-title">{{ task.title }}</p>
