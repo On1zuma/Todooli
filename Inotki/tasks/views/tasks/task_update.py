@@ -37,12 +37,14 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
             return redirect('tasks')  # TODO: 404 page
 
         # complete / not complete
-        if 'key_id' in self.kwargs:
+        if 'key_id' in self.kwargs or 'tc_id' in self.kwargs:
             if task.complete:
                 task.complete = False
             else:
                 task.complete = True
             task.save()
+            if 'tc_id' in self.kwargs:
+                return redirect('notification')
             return redirect('tasks')
 
         return super().get(request, *args, **kwargs)

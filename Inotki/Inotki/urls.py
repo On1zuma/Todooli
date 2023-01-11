@@ -87,6 +87,7 @@ urlpatterns = [
 
     # Notification
     path('notification/', NotificationList.as_view(), name='notification'),
+    path('notification/completed/<int:pk>/<int:tc_id>/', TaskUpdate.as_view(), name='notification_task_completed'),
 
     #Home
     path('', HomeView.as_view(), name='home'),
