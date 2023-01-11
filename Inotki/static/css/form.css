@@ -1,82 +1,89 @@
-
-#content{
-    margin-left: 5vw;
-    margin-right: 5vw;
+#content {
+  margin-left: 5vw;
+  margin-right: 5vw;
 }
 
-.blueButton{
-    margin-bottom: 20px;
+.blueButton {
+  margin-bottom: 20px;
 }
 
-label{
-    font-family: 'Poppins', sans-serif;
+label {
+  font-family: "Poppins", sans-serif;
 }
 
-p{
-    font-family: 'Poppins', sans-serif;
+p {
+  font-family: "Poppins", sans-serif;
 }
 
-button{
-    font-family: 'Poppins', sans-serif;
+button {
+  font-family: "Poppins", sans-serif;
 }
 
-h2{
-    font-family: "JetBrains Mono",monospace;
-    font-size: 40px;
+h2 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 40px;
 }
 
-.title{
-    margin-bottom: 30px;
+h3 {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 20px;
+}
+
+.title {
+  margin-bottom: 30px;
 }
 
 @keyframes slideInFromLeft {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 @keyframes fadein {
-    from { opacity: 0}
-    to   { opacity: 1}
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @media all and (min-width: 900px) {
-    .add-shadow{
-	    box-shadow: none;
-    }
+  .add-shadow {
+    box-shadow: none;
+  }
 
-    #content{
-        animation: 0.7s ease-out 0s 1 slideInFromLeft;
-        margin-left: 25vw;
-        margin-right: 25vw;
-        padding: 30px 30px;
-        background-color: white;
-        border-radius: 15px;
-        margin-bottom: 30px;
+  #content {
+    animation: 0.7s ease-out 0s 1 slideInFromLeft;
+    margin-left: 25vw;
+    margin-right: 25vw;
+    padding: 30px 30px;
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 30px;
+  }
 
-    }
-
-    body{
-        background-color: #3584ff;
-    }
+  body {
+    background-color: #3584ff;
+  }
 }
 
 @media all and (min-width: 1300px) {
-    #content {
-        z-index: 10;
-        position: relative;
-    }
+  #content {
+    z-index: 10;
+    position: relative;
+  }
 }
 
 @media all and (min-width: 1400px) {
-    #content{
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-    }
+  #content {
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
