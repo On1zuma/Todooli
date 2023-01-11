@@ -72,14 +72,14 @@ form.search-form::after {
   color: rgb(196, 196, 196);
   margin-bottom: .9rem;
   margin-top: .3rem;
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 .title-completed{
   color: rgb(155, 155, 155);
   margin-bottom: .9rem;
   margin-top: .3rem;
-  font-family: "JetBrains Mono", monospace;
+  font-family: 'Poppins', sans-serif;
 }
 
 h3{
@@ -144,12 +144,12 @@ h3{
 }
 
 .blue-icon{
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: rgba(73, 147, 255, 0.82);
 }
 
 .dark-icon{
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   color: rgba(114, 114, 114, 0.82);
 }
 
@@ -166,13 +166,9 @@ h3{
   color: rgba(255, 0, 0, 0.91);!important;
 }
 
-.alert-task{
-  border: 1px solid rgba(255, 0, 0, 0.91);
-}
-
 .alert-icon{
-  font-size: 1.3rem;
-  color: rgba(255, 0, 0, 0.91);
+  font-size: 1.1rem;
+  color: rgb(75, 150, 255);
 }
 
 .edit-completed{
@@ -221,9 +217,18 @@ h3{
 
   .current-task{
     padding: .5rem 1rem;
+
   }
 
   .completed-task{
     padding: .5rem 1rem;
+  }
+}
+
+@media all and (min-width: 1600px) {
+  #content {
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
   }
 }

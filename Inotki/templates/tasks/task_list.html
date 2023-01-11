@@ -49,7 +49,7 @@
             {% for task in tasks_to_do_late %}
                 <div class="task alert-task">
                     <a class="alert-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
-                    <a class="edit alert" href="{% url 'task_update' task.id %}">
+                    <a class="edit" href="{% url 'task_update' task.id %}">
                         <div class="with-date">
                             <p class="task-title">{{ task.title }}</p>
                             <small>{{ task.date_to_do }}</small>
