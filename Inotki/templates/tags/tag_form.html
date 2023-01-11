@@ -1,5 +1,10 @@
 {% extends 'main.html' %}
 {% load crispy_forms_tags %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+{% endblock %}
 
 {% block title %}
     Tag form
