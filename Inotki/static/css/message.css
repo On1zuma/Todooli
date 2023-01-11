@@ -129,3 +129,11 @@
 		right: 100%;
 	}
 }
+
+@media all and (max-width: 991px) {
+	.toast {
+		top: 25px;
+		right: 15px;
+		left: 15px;
+	}
+}

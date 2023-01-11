@@ -3,7 +3,7 @@
   margin-right: 5vw;
 }
 
-@media all and (min-width: 1300px) {
+@media all and (min-width: 991px) {
     #content {
         margin-left: 20vw;
         margin-right: 20vw;
