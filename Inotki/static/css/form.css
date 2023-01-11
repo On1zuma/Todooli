@@ -13,7 +13,29 @@ label {
 
 p {
   font-family: "Poppins", sans-serif;
+  font-size: .9rem;
 }
+
+.logo-pic {
+  width: 130px;
+  border-radius: 100px;
+  height: auto;
+  padding: 10px 10px;
+  background-color: rgba(53, 132, 255, 0.7);
+  margin: 10px auto;
+  display: block;
+}
+
+a {
+  cursor: pointer;
+  color: #3584ff;
+}
+
+a:hover {
+  cursor: pointer;
+  color: #1a468c;
+}
+
 
 button {
   font-family: "Poppins", sans-serif;
@@ -22,6 +44,7 @@ button {
 h2 {
   font-family: "JetBrains Mono", monospace;
   font-size: 40px;
+  color: #343434;
 }
 
 h3 {
@@ -30,7 +53,7 @@ h3 {
 }
 
 small {
-    font-family: "Poppins", sans-serif;
+  font-family: "Poppins", sans-serif;
 
 }
 
@@ -69,12 +92,18 @@ small {
     margin-right: 25vw;
     padding: 30px 30px;
     background-color: white;
-    border-radius: 15px;
+    border-radius: 10px;
     margin-bottom: 30px;
   }
 
   body {
     background-color: #3584ff;
+  }
+
+  h2 {
+    color: #313131;
+    margin: 5px 3px;
+    padding: 5px 5px;
   }
 }
 
