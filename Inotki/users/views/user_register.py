@@ -61,6 +61,7 @@ class RegisterView(FormView):
     def form_valid(self, form):
         # if form valid we register the user
         if form.is_valid():
+
             user = form.save(commit=False)
             user.is_active = False
             user.save()
@@ -69,6 +70,7 @@ class RegisterView(FormView):
         else:
             messages.error(self.request, f'An error occurred while submitting the form')
             return super().form_invalid(form)
+
 
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:

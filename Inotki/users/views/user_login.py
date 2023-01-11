@@ -25,11 +25,11 @@ class UserLoginView(FormView):
             )
             if user is not None:
                 login(self.request, user)
-                messages.success(self.request, f'Welcome back {user.username} !')
+            messages.info(self.request, f'Welcome back {user.username} !')
 
             return redirect('tasks')
         else:
-            messages.success(self.request, f'An error occurred while submitting the form')
+            messages.error(self.request, f'An error occurred while submitting the form')
             return super().form_invalid(form)
 
     def get_success_url(self):

@@ -21,6 +21,7 @@ from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordRes
 from users.views import user_register
 from users.views.option_update import OptionUserView
 from users.views.user_account_activation import UserAccountActivation
+
 from users.views.user_delete import UserDelete
 from users.views.user_detail import UserDetail
 from users.views.user_login import UserLoginView
@@ -35,6 +36,9 @@ from django.conf.urls.static import static
 #Notification
 from tasks.views.notification.notification_list import NotificationList
 
+#Home
+from tasks.views.home.home import HomeView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
 
@@ -46,6 +50,7 @@ urlpatterns = [
     path('user/profile/', UserProfileView.as_view(), name='profile'),
     path('user/<int:pk>/', UserDetail.as_view(), name='user'),
     path('user/option/', OptionUserView.as_view(), name='option_update'),
+    path('user/delete/<int:pk>/', UserDelete.as_view(), name='user_delete'),
 
     path('activate/<uidb64>/<token>', user_register.activate, name='activate'),
     path('user/accountActivation/', UserAccountActivation.as_view(), name='account_activation'),
@@ -65,7 +70,7 @@ urlpatterns = [
          name='password_reset_complete'),
 
     # Task
-    path('', TaskList.as_view(), name='tasks'),
+    path('task/', TaskList.as_view(), name='tasks'),
     path('task/<int:pk>/', TaskDetail.as_view(), name='task_detail'),
     path('task/create/', TaskCreate.as_view(), name='task_create'),
     path('task/update/<int:pk>/', TaskUpdate.as_view(), name='task_update'),
@@ -81,6 +86,9 @@ urlpatterns = [
 
     # Notification
     path('notification/', NotificationList.as_view(), name='notification'),
+
+    #Home
+    path('', HomeView.as_view(), name='home'),
 ]
 
 if settings.DEBUG:

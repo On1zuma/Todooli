@@ -6,16 +6,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <!--<script src="{% static 'bootstrap.bundle.min.js' %}"></script>
-    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" /> -->
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/burger.css' %}" />
-    <script src="{% static 'js/app.js' %}" defer></script>
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); </style>
+    <link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}"/>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/burger.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/button.css' %}" />
+    {% if messages%}
+        <link rel="stylesheet" href="{% static 'css/message.css' %}" />
+    {% endif %}
+
+
+    <script src="{% static 'js/app.js' %}" defer></script>
+    {% block css %}{% endblock css %}
+
     <!-- names: iloni, Inolii, idoka, igora, glomera, Inolii-->
     <title>
         {% filter default:0|add:' -' %}{% block title %}{% endblock title %}
@@ -26,18 +32,24 @@
 <body>
 <!-- Navbar -->
 <header>
-    <nav id="navbar">
+    <nav id="navbar" class="nav stroke">
         <h1 class="d-none">Navbar</h1>
-        <div id="header_first_list">
-            <img src="/static/img/logo.png" id="logo" alt="user pic">
+        <div>
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'tasks' %}"><img src="/static/img/logo.png" id="logo" alt="logo"></a>
+            {% else %}
+                <a href="{% url 'home' %}"><img src="/static/img/logo.png" id="logo" alt="logo"></a>
+            {% endif %}
         </div>
 
         <div class="toggle">
             {% if request.user.is_authenticated %}
                 <div>
                     <button onclick="location.href='{% url 'notification' %}'" type="button" class="notificationIcon">
-                        <i class="fa-solid fa-bell fa-lg"></i>
-                        <span class="notificationIcon__badge">2</span>
+                        <i class="fa-solid fa-bell fa-xl"></i>
+                        {% if notifCount > 0 %}
+                            <span class="notificationIcon__badge">{% if notifCount > 1 %}{{ notifCount }}{% endif %}</span>
+                        {% endif %}
                     </button>
                 </div>
             {% endif %}
@@ -46,22 +58,27 @@
         </div>
 
         <ul class="menu nav">
+            <img src="/static/img/logo.png" id="logoResponsive" alt="logo">
+            <li><a href="{% url 'home' %}">Home</a></li>
             {% if request.user.is_authenticated %}
-                <li><a href="{% url 'tasks' %}">Tasks</a></li>
-                <li><a href="{% url 'tags' %}">Tags</a></li>
+                <li><a href="{% url 'tasks' %}">Task</a></li>
+                <li><a href="{% url 'tags' %}">Tag</a></li>
                 <li><a href="{% url 'profile' %}">Profile</a></li>
                 <li><a href="{% url 'option_update' %}">Setting</a></li>
                 {% if user.is_staff %}
                     <li><a href="/admin">Admin Dashboard</a></li>
                 {% endif %}
-                <li class="mobileFormatNotifLi"><button onclick="location.href='{% url 'notification' %}'" type="button" class="notificationIcon">
-                    <i class="fa-solid fa-bell fa-lg"></i>
-                    <span class="notificationIcon__badge">2</span>
-                </button></li>
-                <li><button class="button3D" onclick="location.href='{% url 'logout' %}'">Logout</button></li>
-
+                <li class="mobileFormatNotifLi">
+                    <button onclick="location.href='{% url 'notification' %}'" type="button" class="notificationIcon">
+                        <i class="fa-solid fa-bell fa-xl"></i>
+                        {% if notifCount > 0 %}
+                            <span class="notificationIcon__badge">{% if notifCount > 1 %}{{ notifCount }}{% endif %}</span>
+                        {% endif %}
+                    </button>
+                </li>
+                <li><button class="button3D" onclick="location.href='{% url 'logout' %}'">Log out</button></li>
             {% else %}
-                <li><a href="{% url 'login' %}">Login</a></li>
+                <li><a href="{% url 'login' %}">Log in</a></li>
                 <li><button class="button3D" onclick="location.href='{% url 'register' %}'">Register</button></li>
             {% endif %}
         </ul>
@@ -69,12 +86,29 @@
 </header>
 
 {% if messages%}
-    <!-- Alerts -->
     <section id="alter" title="alerts">
-        <h1 class="d-none">Alerts</h1>
-        {% for message in messages %}
-            <div class="alert alert-{{ message.tags }}" role="alert">{{ message }}</div>
-        {% endfor %}
+        <div class="toast">
+            <div class="toast-content">
+                {% for message in messages %}
+                    <i class="fas fa-solid fa-check check-{{ message.tags }}"></i>
+                    <div class="message">
+
+                        <span class="text text-1">
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Info{% endif %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}Success{% endif %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error {% endif %}
+                            {% if message.level == DEFAULT_MESSAGE_LEVELS.WARNING %}Warning {% endif %}
+                        </span>
+                        <span class="text text-2">
+                        <div class="" role="alert">{{ message }}</div>
+                    </span>
+
+                    </div>
+                {% endfor %}
+            </div>
+            <i class="fa-solid fa-xmark close"></i>
+            <div class="progress"></div>
+        </div>
     </section>
 {% endif %}
 

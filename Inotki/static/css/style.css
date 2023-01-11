@@ -1,6 +1,7 @@
 
 html {
 	scroll-behavior: smooth;
+	overflow-x: hidden;
 }
 
 * {
@@ -25,12 +26,18 @@ header{
 	width: 100%;
 	padding: 10px 25px 10px 25px;
 	margin-bottom: 2rem;
-	background-color: #04121A;
-	background-image: radial-gradient(100% 100% at 100% 0, #4490ff 0, #2F70CC 100%);
+	/* background-color: #04121A; */
+	/* 	background-image: radial-gradient(100% 100% at 100% 0, #4490ff 0, #2F70CC 100%); */
+	background-color: #3584ff;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
+}
+
+/* navbar shadow */
+.add-shadow{
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
 }
 
 .toggle{
@@ -38,8 +45,14 @@ header{
 }
 
 #logo{
-	width: 55px;
-	height: auto;
+	width: auto;
+	height: 73px;
+}
+
+#logoResponsive{
+	display: none;
+	width: auto;
+	height: 73px;
 }
 
 /* HEADER - LIST */
@@ -54,17 +67,44 @@ header{
 	margin-left: 13px;
 }
 
+/* nav links */
 .menu li a{
 	color: #f3f3f3;
 	font-family: 'Poppins', sans-serif;
-	padding-left: 20px;
-	padding-right: 20px;
+	padding: 10px 15px;
+	margin: 5px 5px;
+	text-decoration : none;
 }
 
-/* ALERT  */
-#alter{
-	margin-left: 1.5rem;
-	margin-right: 1.5rem;
+.menu li a:after,
+.menu li a:before {
+	transition: all 0.1s;
+	-webkit-transition: 0.1s ease-in-out;
+	-moz-transition: 0.1s ease-in-out;
+	-ms-transition: 0.1s ease-in-out;
+	-o-transition: 0.1s ease-in-out;
+}
+
+nav.stroke ul li a,
+nav.fill ul li a {
+	position: relative;
+}
+.stroke ul li a:after,
+.stroke.fill ul li a:after {
+	position: absolute;
+	bottom: 2px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	width: 0%;
+	content: '.';
+	color: transparent;
+	background: #ffffff;
+	height: 1px;
+	border-radius: 10px;
+}
+.stroke ul li a:hover:after {
+	width: 35%;
 }
 
 /* CONTENT  */
@@ -73,54 +113,7 @@ header{
 	margin-right: 1.5rem;
 }
 
-
-/* button */
-.button3D {
-	align-items: center;
-	appearance: none;
-	background-color: #FCFCFD;
-	border-radius: 4px;
-	border-width: 0;
-	box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
-	box-sizing: border-box;
-	color: #36395A;
-	cursor: pointer;
-	display: inline-flex;
-	font-family: "JetBrains Mono",monospace;
-	height: 48px;
-	justify-content: center;
-	line-height: 1;
-	list-style: none;
-	overflow: hidden;
-	padding-left: 16px;
-	padding-right: 16px;
-	position: relative;
-	text-align: left;
-	text-decoration: none;
-	transition: box-shadow .15s,transform .15s;
-	user-select: none;
-	-webkit-user-select: none;
-	touch-action: manipulation;
-	white-space: nowrap;
-	will-change: box-shadow,transform;
-	font-size: 18px;
-}
-
-.button3D:focus {
-	box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-}
-
-.button3D:hover {
-	box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
-	transform: translateY(-2px);
-}
-
-.button3D:active {
-	box-shadow: #D6D6E7 0 3px 7px inset;
-	transform: translateY(2px);
-}
-
-/* button icon */
+/* button for notif */
 .notificationIcon {
 	position: relative;
 	display: flex;
@@ -133,6 +126,10 @@ header{
 	border: none;
 	cursor: pointer;
 	background: none;
+}
+
+.notificationIcon:hover{
+	animation: shake 3s;
 }
 
 .notificationIcon__badge {
@@ -149,5 +146,24 @@ header{
 	border-radius: 50%;
 }
 
-
-
+@keyframes shake {
+	0% { transform: rotate(0deg); }
+	8.0% { transform: rotate(0deg); }
+	12.0% { transform: rotate(42deg); }
+	16.0% { transform: rotate(-35deg); }
+	20.0% { transform: rotate(0deg); }
+	23.0% { transform: rotate(28deg); }
+	26.0% { transform: rotate(-20deg); }
+	29.0% { transform: rotate(0deg); }
+	31.0% { transform: rotate(16deg); }
+	33.0% { transform: rotate(-12deg); }
+	35.0% { transform: rotate(0deg); }
+	37.0% { transform: rotate(-6deg); }
+	39.0% { transform: rotate(0deg); }
+	40.0% { transform: rotate(6deg); }
+	44.0% { transform: rotate(-3deg); }
+	49.0% { transform: rotate(2deg);}
+	55.0% { transform: rotate(0deg); }
+	62.0% { transform: rotate(1deg); }
+	70.0% { transform: rotate(0deg); }
+}

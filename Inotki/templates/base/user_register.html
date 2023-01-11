@@ -1,19 +1,25 @@
 {% extends 'main.html' %}
+{% load static %}
 {% load crispy_forms_tags %}
 
+{% block css %}
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %}
+
 {% block title %}
-    Register
+    Sign up
 {% endblock %}
 
 {% block body_content %}
 
-    <h1>Register</h1>
+    <h2 class="font-weight-bold text-center title">Sign up</h2>
 
     <form method="POST" action="">
         {% csrf_token %}
         {{ form|crispy  }}
-        <input type="submit" value="Sign up">
+        <button class="blueButton" type="submit">Sign up</button>
     </form>
-    <p>Already have an account ? <a href="{% url 'login' %}">Sign in</a></p>
-
+    <p class="font-weight-light">Already have an account ? <a href="{% url 'login' %}">Sign in</a></p>
 {% endblock %}
