@@ -5,3 +5,5 @@ Inolii is an online task management tool designed to help individuals and small 
 ## PACKAGES
 
 pip install : crispy_form, pillow, django-recaptcha, django-dotenv
+
+pip install -r requirements.txt

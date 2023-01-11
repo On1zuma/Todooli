@@ -1,0 +1,6 @@
+django
+django_crispy_forms
+pillow
+django-recaptcha
+django-dotenv
+six

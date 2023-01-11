@@ -17,7 +17,11 @@ from tasks.views.tasks.task_update import TaskUpdate
 #users
 from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView
+
+from users.views import user_register
 from users.views.option_update import OptionUserView
+from users.views.user_account_activation import UserAccountActivation
+
 from users.views.user_delete import UserDelete
 from users.views.user_detail import UserDetail
 from users.views.user_login import UserLoginView
@@ -47,6 +51,9 @@ urlpatterns = [
     path('user/<int:pk>/', UserDetail.as_view(), name='user'),
     path('user/option/', OptionUserView.as_view(), name='option_update'),
     path('user/delete/<int:pk>/', UserDelete.as_view(), name='user_delete'),
+
+    path('activate/<uidb64>/<token>', user_register.activate, name='activate'),
+    path('user/accountActivation/', UserAccountActivation.as_view(), name='account_activation'),
 
     # Rest password
     path('reset-password/',
