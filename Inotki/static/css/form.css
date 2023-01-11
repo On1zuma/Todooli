@@ -29,6 +29,11 @@ h3 {
   font-size: 20px;
 }
 
+small {
+    font-family: "Poppins", sans-serif;
+
+}
+
 .title {
   margin-bottom: 30px;
 }

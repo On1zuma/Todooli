@@ -75,6 +75,7 @@ urlpatterns = [
     path('task/create/', TaskCreate.as_view(), name='task_create'),
     path('task/update/<int:pk>/', TaskUpdate.as_view(), name='task_update'),
     path('task/delete/<int:pk>/', TaskDelete.as_view(), name='task_delete'),
+    path('task/completed/<int:pk>/<int:key_id>/', TaskUpdate.as_view(), name='task_completed'),
 
     #Tag
     path('tag/create/', TagCreate.as_view(), name='tag_create'),

@@ -25,7 +25,7 @@ header{
 #navbar{
 	width: 100%;
 	padding: 10px 25px 10px 25px;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	/* background-color: #04121A; */
 	/* 	background-image: radial-gradient(100% 100% at 100% 0, #4490ff 0, #2F70CC 100%); */
 	background-color: #3584ff;
@@ -166,4 +166,11 @@ nav.fill ul li a {
 	55.0% { transform: rotate(0deg); }
 	62.0% { transform: rotate(1deg); }
 	70.0% { transform: rotate(0deg); }
+}
+
+@media all and (max-width: 1300px) {
+	#logo{
+		width: auto;
+		height: 58px;
+	}
 }

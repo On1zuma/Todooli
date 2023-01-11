@@ -1,4 +1,10 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+{% endblock %}
 
 {% block title %}
     Task list
@@ -6,34 +12,31 @@
 
 {% block body_content %}
     <!-- Search -->
-    <form method="GET" action="">
-        <input placeholder="Search" type="text" name="search-area" value="{{ search_input }}">
-        <input type="submit" value="Search">
-        {% if search_input %}
-            <a href="{% url 'tasks' %}">x</a>
+    <form method="GET" class="search-form">
+        <input placeholder="Search" class="search-field" type="text" name="search-area" value="{{ search_input }}">
+        {% if not search_input %}
+            <button class="btn search-btn" type="submit" value="Search"><i class="fa fa-search"></i></button>
+        {% else %}
+            <button class="btn search-btn" type="reset" onclick="location.href='{% url 'tasks' %}'"><i class="fa-solid fa-xmark"></i></button>
         {% endif %}
     </form>
 
     <!-- Nav -->
-    <nav>
-        <a href="{% url 'task_create' %}">Create a task</a>
-    </nav>
+    <button class="button-create" onclick="location.href='{% url 'task_create' %}'"><i class="fa-solid fa-file-circle-plus"></i></button>
+
 
     <!-- Current task -->
-    <div>
-
-        <h2>Current task </h2>
+    <div class="current-task">
+        <h2 class="title-current">Current task </h2>
         {% if admin %}
             <ul> <!-- Admin task -->
                 {% for task in tasks_not_completed %}
-
                     <li>
                         {{ task.user }} :
                         {{ task.creation_date }} -
                         {{ task.title }} -
-                        <a href="{% url 'task_detail' task.id %}">see</a>
                         <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}">delete</a>
+                        <a href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash-can"></i></a>
                     </li>
                 {% endfor %}
             </ul>
@@ -41,98 +44,98 @@
 
 
         {% if tasks_to_do_late %}
-            <h3>Late</h3>
-            <ul> <!-- LATE -->
-                {% for task in tasks_to_do_late %}
-                    <li>
-                        {{ task.title }} -
-                        <a href="{% url 'task_detail' task.id %}">see</a>
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}">delete</a>
-                    </li>
-
-                {% endfor %}
-            </ul>
+            <h3 class="alert">Late</h3>
+            <!-- LATE -->
+            {% for task in tasks_to_do_late %}
+                <div class="task alert-task">
+                    <a class="alert-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit alert" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                            <small>{{ task.date_to_do }}</small>
+                        </div>
+                    </a>
+                    <a class="alert-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+            {% endfor %}
         {% endif %}
 
 
         {% if tasks_to_do_today %}
             <h3>Today</h3>
-            <ul> <!-- TODAY -->
-                {% for task in tasks_to_do_today %}
-
-                    <li>
-                        {{ task.title }} -
-                        <a href="{% url 'task_detail' task.id %}">see</a>
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}">delete</a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <!-- TODAY -->
+            {% for task in tasks_to_do_today %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                            <small>{{ task.date_to_do }}</small>
+                        </div>
+                    </a>
+                    <a class="blue-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+            {% endfor %}
         {% endif %}
 
 
         {% if tasks_to_do_next_weeks %}
             <h3>Coming</h3>
-            <ul> <!-- NEXT WEEKS -->
-                {% for task in tasks_to_do_next_weeks %}
-
-                    <li>
-                        {{ task.title }} -
-                        <a href="{% url 'task_detail' task.id %}">see</a>
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}">delete</a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <!-- NEXT WEEKS -->
+            {% for task in tasks_to_do_next_weeks %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                            <small>{{ task.date_to_do }}</small>
+                        </div>
+                    </a>
+                    <a class="blue-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+            {% endfor %}
         {% endif %}
 
 
         {% if tasks_not_completed_no_date %}
             <h3>No date</h3>
-            <ul> <!-- NO DATE -->
-                {% for task in tasks_not_completed_no_date %}
-
-                    <li>
-                        {{ task.title }} -
-                        <a href="{% url 'task_detail' task.id %}">see</a>
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}">delete</a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <!-- NO DATE -->
+            {% for task in tasks_not_completed_no_date %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}"><p class="task-title">{{ task.title }}</p></a>
+                    <a class="blue-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
+            {% endfor %}
         {% endif %}
 
 
         {% for task in tasks_to_do %}
         {% empty %}
             <!-- EMPTY CONDITION -->
-            <ul><li><h3>No items yet</h3></li></ul>
+            <p class="no-items">No items</p>
         {% endfor %}
     </div>
 
     {% if show_completed_task == True %}
-        <hr>
         <!-- Completed task -->
-        <div>
-            <h2>Completed task </h2>
-            <ul> <!-- COMPLETED TASK -->
-                {% for task in tasks_completed %}
-                    <li>
-                        {% if admin %}
-                            {{ task.user }} :
-                            {{ task.creation_date }} -
-                        {% endif %}
-                        <strike>{{ task.title }}</strike> -
-                        <a href="{% url 'task_detail' task.id %}">see</a>
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}">delete</a>
-                    </li>
+        <div class="completed-task">
+            <h2 class="title-completed">Completed task </h2>
+            <!-- COMPLETED TASK -->
+            {% for task in tasks_completed %}
+                <div class="task">
+                    {% if admin %}
+                        {{ task.user }} :
+                        {{ task.creation_date }} -
+                    {% endif %}
+                    <a class="dark-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square-check"></i></a>
+                    <a class="edit-completed" href="{% url 'task_update' task.id %}"><p class="task-title">{{ task.title }}</p></a>
+                    <a class="dark-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash-can"></i></a>
+                </div>
 
-                {% empty %}
-                    <li><h3>No items yet</h3></li>
-                {% endfor %}
-            </ul>
+            {% empty %}
+                <p class="no-items">No items</p>
+            {% endfor %}
         </div>
     {% endif %}
 {% endblock %}
