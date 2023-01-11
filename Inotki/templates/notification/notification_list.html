@@ -1,4 +1,10 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+{% endblock %}
 
 {% block title %}
     Notification
@@ -6,42 +12,43 @@
 
 {% block body_content %}
 
-
     <!-- Current task -->
-    <div>
-
-        <h2>Notification</h2>
-
+    <div class="current-task">
+        <h2 class="title-current">Notification</h2>
         {% if tasks_to_do_late %}
             <h3>TO DO, Late</h3>
-            <ul> <!-- LATE -->
-                {% for task in tasks_to_do_late %}
-                    <li>
-                        {{ task.title }} -
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                    </li>
-
-                {% endfor %}
-            </ul>
+            <!-- LATE -->
+            {% for task in tasks_to_do_late %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
         {% endif %}
 
 
         {% if tasks_to_do_today %}
             <h3>TO DO, Today</h3>
-            <ul> <!-- TODAY -->
-                {% for task in tasks_to_do_today %}
-
-                    <li>
-                        {{ task.title }} -
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <!-- TODAY -->
+            {% for task in tasks_to_do_today %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
         {% endif %}
 
         {% if tasks_to_do_today_count == 0 and tasks_to_do_late_count == 0 %}
             <!-- EMPTY CONDITION -->
-            <ul><li><h3>Nothing to report</h3></li></ul>
+            <p class="no-items">Nothing to report</p>
         {% endif %}
     </div>
 

@@ -123,7 +123,7 @@
             <h2 class="title-completed">Completed task </h2>
             <!-- COMPLETED TASK -->
             {% for task in tasks_completed %}
-                <div class="task">
+                <div class="task-completed">
                     {% if admin %}
                         {{ task.user }} :
                         {{ task.creation_date }} -
