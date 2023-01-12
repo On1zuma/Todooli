@@ -44,7 +44,7 @@
 
 
         {% if tasks_to_do_late %}
-            <h3 class="alert">Late</h3>
+            <h3 class="alert"><i class="fa-sharp fa-solid fa-clock"></i> Late</h3>
             <!-- LATE -->
             {% for task in tasks_to_do_late %}
                 <div class="task alert-task">
@@ -62,7 +62,7 @@
 
 
         {% if tasks_to_do_today %}
-            <h3>Today</h3>
+            <h3><i class="fa-solid fa-calendar-week"></i> Today</h3>
             <!-- TODAY -->
             {% for task in tasks_to_do_today %}
                 <div class="task">
@@ -80,7 +80,7 @@
 
 
         {% if tasks_to_do_next_weeks %}
-            <h3>Coming</h3>
+            <h3><i class="fa-solid fa-paper-plane"></i> Coming</h3>
             <!-- NEXT WEEKS -->
             {% for task in tasks_to_do_next_weeks %}
                 <div class="task">
@@ -98,22 +98,21 @@
 
 
         {% if tasks_not_completed_no_date %}
-            <h3>No date</h3>
+            <h3><i class="fa-solid fa-mug-hot"></i> No date</h3>
             <!-- NO DATE -->
             {% for task in tasks_not_completed_no_date %}
                 <div class="task">
                     <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
-                    <a class="edit" href="{% url 'task_update' task.id %}"><p class="task-title">{{ task.title }}</p></a>
+                    <a class="edit-n" href="{% url 'task_update' task.id %}"><p class="task-title">{{ task.title }}</p></a>
                     <a class="blue-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
                 </div>
             {% endfor %}
         {% endif %}
 
-
         {% for task in tasks_to_do %}
         {% empty %}
             <!-- EMPTY CONDITION -->
-            <p class="no-items">No items</p>
+            <p class="no-items">No reminders</p>
         {% endfor %}
     </div>
 
@@ -134,7 +133,7 @@
                 </div>
 
             {% empty %}
-                <p class="no-items">No items</p>
+                <p class="no-items">Nothing to report</p>
             {% endfor %}
         </div>
     {% endif %}

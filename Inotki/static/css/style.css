@@ -1,3 +1,7 @@
+@font-face {
+  font-family: Poppins-bold;
+  src: url(../font/Poppins-Bold.ttf);
+}
 
 html {
 	scroll-behavior: smooth;
