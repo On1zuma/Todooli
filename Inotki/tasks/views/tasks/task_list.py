@@ -36,7 +36,7 @@ class TaskList(LoginRequiredMixin, ListView):
             tomorrow = today + timedelta(1)
             next_time = today + timedelta(100000)
             # past
-            yesterday = today + timedelta(-1)
+            yesterday = today - timedelta(-1)
             precedent_time = today + timedelta(-100000)
 
             context['tasks_to_do_late'] = context['tasks'] \
@@ -64,7 +64,8 @@ class TaskList(LoginRequiredMixin, ListView):
 
             context['tasks_to_do'] = context['tasks'] \
                 .filter(user=self.request.user) \
-                .filter(complete=False)
+                .filter(complete=False) \
+                .order_by('-creation_date')
 
             context['tasks_completed'] = context['tasks'] \
                 .filter(user=self.request.user) \
