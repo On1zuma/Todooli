@@ -12,6 +12,15 @@
 {% endblock %}
 
 {% block body_content %}
+    <!-- Search -->
+    <form method="GET" class="search-form">
+        <input placeholder="Search" class="search-field" type="text" name="search-area" value="{{ search_input }}">
+        {% if not search_input %}
+            <button class="btn search-btn" type="submit" value="Search"><i class="fa fa-search"></i></button>
+        {% else %}
+            <button class="btn search-btn" type="reset" onclick="location.href='{% url 'notification' %}'"><i class="fa-solid fa-xmark"></i></button>
+        {% endif %}
+    </form>
 
     <!-- Current task -->
     <div class="current-task">

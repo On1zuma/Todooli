@@ -1,6 +1,41 @@
 @font-face {
-  font-family: Poppins-bold;
-  src: url(../font/Poppins-Bold.ttf);
+	font-family: Poppins-bold;
+	src: url(../font/Poppins-Bold.ttf);
+}
+
+@font-face {
+	font-family: Poppins-Black;
+	src: url(../font/Poppins-Black.ttf);
+}
+
+@font-face {
+	font-family: Poppins-Regular;
+	src: url(../font/Poppins-Regular.ttf);
+}
+
+@font-face {
+	font-family: Poppins-Thin;
+	src: url(../font/Poppins-Thin.ttf);
+}
+
+@font-face {
+	font-family: Poppins-Light;
+	src: url(../font/Poppins-Light.ttf);
+}
+
+
+/* ScrollBar */
+::-webkit-scrollbar {
+	width: 10px;
+}
+/* Track */
+::-webkit-scrollbar-track {
+	background: #e0e0e0;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #b2b2b2;
+	border-radius: 3px;
 }
 
 html {

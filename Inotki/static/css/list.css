@@ -88,13 +88,13 @@ h3{
 .current-task{
   border-radius: 5px 5px 5px 5px;
   margin-bottom: 1.3rem;
-  font-family: "JetBrains Mono", monospace;
+  font: .9em "Poppins-Light";
 }
 
 .completed-task{
   border-radius: 5px 5px 5px 5px;
   margin-bottom: 1rem;
-  font-family: 'Poppins', sans-serif;
+  font: .9em "Poppins-Light";
 }
 
 .task{

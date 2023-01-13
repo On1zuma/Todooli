@@ -50,4 +50,23 @@ class NotificationList(LoginRequiredMixin, ListView):
             .filter(date_to_do__isnull=False) \
             .filter(date_to_do__year=today.year, date_to_do__month=today.month, date_to_do__day=today.day).count
 
+        search_input = self.request.GET.get('search-area') or ''
+
+        if search_input:
+            context['tasks_to_do_today'] = context['tasks'] \
+                .filter(user=self.request.user) \
+                .filter(complete=False) \
+                .filter(date_to_do__isnull=False) \
+                .filter(date_to_do__year=today.year, date_to_do__month=today.month, date_to_do__day=today.day) \
+                .filter(title__icontains=search_input)
+
+            context['tasks_to_do_late'] = context['tasks'] \
+                .filter(user=self.request.user) \
+                .filter(complete=False) \
+                .filter(date_to_do__isnull=False) \
+                .filter(date_to_do__range=(precedent_time, yesterday)) \
+                .filter(title__icontains=search_input)
+
+            context['search_input'] = search_input
+
         return context
