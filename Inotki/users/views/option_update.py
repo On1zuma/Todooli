@@ -27,7 +27,7 @@ class OptionUserView(LoginRequiredMixin, FormView):
         return super().form_invalid(form)
 
     def get_success_url(self):
-        return reverse('tasks')
+        return reverse('option_update')
 
     def get_context_data(self, **kwargs):
         o_form = OptionUpdateForm(instance=self.request.user.option)
