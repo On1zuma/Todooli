@@ -1,5 +1,5 @@
 h2 a {
-    font: 1em "Poppins-bold";
+    font: 1.9rem "Poppins-bold";
     color: #333;
     margin-bottom: .6rem;
     font-weight: 700;
@@ -11,10 +11,21 @@ h2 a {
 h2 a p{margin-left:7px;}
 
 h2 a:hover {
-    font: 1em "Poppins-bold";
+    font: 1.9rem "Poppins-bold";
     font-weight: 700;
     color: #3584ff;
     /*-webkit-text-stroke: 1px #3584ff;*/
+}
+
+h3{
+    font: 1.1rem "Poppins-bold";
+    color: #333;
+    margin-bottom: .6rem;
+    font-weight: 300;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 2rem;
 }
 
 form {
@@ -30,3 +41,19 @@ form label{
     font: 1rem "Poppins-Light";
 }
 
+.paragraph{
+    font-family: "Poppins-Light", monospace;
+    font-size: .8rem;
+    margin-bottom: 1rem;
+    letter-spacing: .07em;
+    width: 100%;
+    text-align: left; /* center aligning the text within the paragraph */
+}
+
+.paragraph a{
+    color: #4993ff ;
+}
+
+.paragraph a:hover{
+    color: rgba(73, 147, 255, 0.66);
+}
