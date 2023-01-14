@@ -50,3 +50,50 @@ if(toast){
   });
 }
 
+document.addEventListener("DOMContentLoaded", function(event) {
+    var scrollpos = sessionStorage.getItem('scrollpos');
+    if (scrollpos) window.scrollTo({
+        top: scrollpos,
+        behavior: 'instant'
+    });
+});
+
+window.onbeforeunload = function(e) {
+    sessionStorage.setItem('scrollpos', window.scrollY);
+};
+
+window.onpopstate = function(e) {
+    var scrollpos = sessionStorage.getItem('scrollpos');
+    if (scrollpos) window.scrollTo({
+        top: scrollpos,
+        behavior: 'instant'
+    });
+};
+
+
+
+/*
+document.addEventListener("DOMContentLoaded", function(event) {
+    var scrollpos = new URLSearchParams(window.location.search).get('scrollpos');
+    if (scrollpos) {
+        window.scrollTo({
+            top: scrollpos,
+            behavior: 'instant'
+        });
+    }
+
+    // Listen for form submissions
+    document.addEventListener('submit', function(event) {
+        var target = event.target;
+        if (target.tagName === 'FORM') {
+            // Save scroll position before navigating
+            saveScrollPosition();
+        }
+    });
+
+    function saveScrollPosition() {
+        var redirect_url = window.location.href + '&scrollpos=' + window.scrollY;
+        window.location.href = redirect_url;
+    }
+    console.log( 'here' + window.scrollY);
+});*/

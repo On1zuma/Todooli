@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import UpdateView
@@ -79,4 +80,8 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('tasks')
+        scrollpos = self.request.COOKIES.get('scrollpos')
+        redirect_url = reverse('tasks')
+        if scrollpos:
+            redirect_url += '?scrollpos=' + str(scrollpos)
+        return redirect_url

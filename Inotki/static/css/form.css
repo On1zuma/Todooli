@@ -42,8 +42,7 @@ button {
 }
 
 h2 {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 40px;
+  font: 2.2em "Poppins-Regular";
   color: #343434;
 }
 
