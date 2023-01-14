@@ -30,7 +30,7 @@ class NotificationList(LoginRequiredMixin, ListView):
             .filter(user=self.request.user) \
             .filter(complete=False) \
             .filter(date_to_do__isnull=False) \
-            .filter(date_to_do__range=(precedent_time, yesterday))
+            .filter(date_to_do__lt=today)
 
         context['tasks_to_do_today'] = context['tasks'] \
             .filter(user=self.request.user) \
@@ -42,7 +42,7 @@ class NotificationList(LoginRequiredMixin, ListView):
             .filter(user=self.request.user) \
             .filter(complete=False) \
             .filter(date_to_do__isnull=False) \
-            .filter(date_to_do__range=(precedent_time, yesterday)).count
+            .filter(date_to_do__lt=today).count
 
         context['tasks_to_do_today_count'] = context['tasks'] \
             .filter(user=self.request.user) \
@@ -64,7 +64,7 @@ class NotificationList(LoginRequiredMixin, ListView):
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
-                .filter(date_to_do__range=(precedent_time, yesterday)) \
+                .filter(date_to_do__lt=today) \
                 .filter(title__icontains=search_input)
 
             context['search_input'] = search_input

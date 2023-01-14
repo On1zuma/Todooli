@@ -22,8 +22,9 @@ def get_notif(request, **kwargs):
         yesterday = today + timedelta(-1)
         precedent_time = today + timedelta(-100000)
 
+        # Notification PAST TASK + TODAY TASK
         notifCount = notification_obj.filter(user=request.user, complete=False, date_to_do__isnull=False,
-                                             date_to_do__range=(precedent_time, yesterday)).count()
+                                             date_to_do__lt=today).count()
         notifCount += notification_obj.filter(user=request.user, complete=False, date_to_do__isnull=False,
                                               date_to_do__year=today.year, date_to_do__month=today.month,
                                               date_to_do__day=today.day).count()
