@@ -24,11 +24,6 @@
     </form>
 
     <!-- Tags -->
-    {% if tag_input %}
-        <button class="tag-button-reset" type="reset" onclick="location.href='{% url 'tasks' %}'">
-            <i class="fa-solid fa-xmark"></i><p> {{ tag_input }}</p>
-        </button>
-    {% endif %}
     <div class="tags">
         {% for tag in tag_list %}
 
@@ -40,6 +35,11 @@
             </form>
         {% endfor %}
     </div>
+    {% if tag_input %}
+        <button class="tag-button-reset" type="reset" onclick="location.href='{% url 'tasks' %}'">
+            <i class="fa-solid fa-xmark"></i><p> {{ tag_input }}</p>
+        </button>
+    {% endif %}
 
     <!-- Nav -->
     <button class="button-create" onclick="location.href='{% url 'task_create' %}'">

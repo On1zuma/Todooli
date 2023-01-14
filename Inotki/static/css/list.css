@@ -62,7 +62,8 @@ form.search-form::after {
   color: #ffffff;
   border: 1px solid rgba(255, 73, 73, 0);
   background-color: #ff4949;
-  margin-bottom: .5rem;
+  margin-bottom: 1rem;
+  margin-top: -.5rem;
   width:100%;
   border-radius: 5px 5px 5px 5px;
   font: 10px "Poppins-Regular";
