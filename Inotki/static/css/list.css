@@ -268,6 +268,7 @@ h3{
 }
 
 .task-title{
+  font: .84rem "Poppins-Light";
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -275,6 +276,13 @@ h3{
   overflow: hidden;
   text-overflow: ellipsis;
   max-width: 35vw;
+}
+
+small{
+  font-size: .76rem;
+      font-family: "JetBrains Mono", monospace;
+
+
 }
 
 .no-items{

@@ -1,9 +1,11 @@
 {% extends 'main.html' %}
+{% load crispy_forms_tags %}
 {% load static %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 {% endblock %}
 
 {% block title %}
@@ -11,59 +13,17 @@
 {% endblock %}
 
 {% block body_content %}
-
-    <h3>Task form</h3>
-    {% if admin %}<h4> {{ admin }}</h4>{% endif %}
-
-    <form action="" method="post">
+    <h2><a href="{% url 'tasks' %}"><i class="fa-sharp fa-solid fa-list-check"></i> <p>Task</p></a></h2>
+    <form method="POST" action="">
         {% csrf_token %}
-        <div style="flex-direction: column">
+        {% if admin %}<p> {{ admin }}</p>{% endif %}
 
-            {% if admin %}
-                <div style="margin-bottom: 10px">
-                    <label for="user">User name : </label>
-                    {{ form.user }}
-                </div>
-            {% endif %}
-
-            <div style="margin-bottom: 10px">
-                <label for="title">Title* : </label>
-                {{ form.title }}
-            </div>
-
-            <div>
-                <label for="description">Description : </label>
-                {{ form.description }}
-            </div>
-
-            <div style="margin-bottom: 10px">
-                <label for="date">Deadline :</label>
-                {{ form.date_to_do }} <!-- DATA PICKER DJANGO : https://simpleisbetterthancomplex.com/tutorial/2019/01/03/how-to-use-date-picker-with-django.html -->
-
-            </div>
-
-            <div style="margin-bottom: 10px">
-                <label for="completed">Tags : </label>
-                {{ form.tags }}
-                {% if task.id %}
-                    <a href="{% url 'tag_create_pk' task.id %}">+</a>
-                {% else %}
-                    <a href="{% url 'tag_create_id' user.id %}">+</a>
-                {% endif %}
-
-            </div>
-
-            <div style="margin-bottom: 10px">
-                <label for="completed">Completed : </label>
-                {{ form.complete }}
-            </div>
-
-            {% if task.id %}
-                <button type="submit">Update</button>
-            {% else %}
-                <button type="submit">Create</button>
-            {% endif %}
-        </div>
+        {{ form|crispy }}
+        {% if task.id %}
+            <button type="submit" class="blueButton">Update</button>
+        {% else %}
+            <button type="submit" class="blueButton">Create</button>
+        {% endif %}
     </form>
 
 {% endblock %}

@@ -1,122 +1,32 @@
-#content {
-  margin-left: 5vw;
-  margin-right: 5vw;
+h2 a {
+    font: 1em "Poppins-bold";
+    color: #333;
+    margin-bottom: .6rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 
-.blueButton {
-  margin-bottom: 20px;
+h2 a p{margin-left:7px;}
+
+h2 a:hover {
+    font: 1em "Poppins-bold";
+    font-weight: 700;
+    color: #3584ff;
+    /*-webkit-text-stroke: 1px #3584ff;*/
 }
 
-label {
-  font-family: "Poppins", sans-serif;
+form {
+    font: .8rem "Poppins-Light";
 }
 
-p {
-  font-family: "Poppins", sans-serif;
-  font-size: .9rem;
-}
-
-.logo-pic {
-  width: 130px;
-  border-radius: 100px;
-  height: auto;
-  padding: 10px 10px;
-  background-color: rgba(53, 132, 255, 0.7);
-  margin: 10px auto;
-  display: block;
-}
-
-a {
-  cursor: pointer;
-  color: #3584ff;
-}
-
-a:hover {
-  cursor: pointer;
-  color: #1a468c;
-}
-
-
-button {
-  font-family: "Poppins", sans-serif;
-}
-
-h2 {
-  font: 2.2em "Poppins-Regular";
-  color: #343434;
-}
-
-h3 {
-  font-family: "JetBrains Mono", monospace;
-  font-size: 20px;
-}
-
-small {
-  font-family: "Poppins", sans-serif;
+form small{
+    font-size: .7rem;
+    font-family: "JetBrains Mono", monospace;
 
 }
-
-.title {
-  margin-bottom: 30px;
+form label{
+    font: 1rem "Poppins-Light";
 }
 
-@keyframes slideInFromLeft {
-  0% {
-    transform: translateY(-100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-@keyframes fadein {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@media all and (min-width: 900px) {
-  .add-shadow {
-    box-shadow: none;
-  }
-
-  #content {
-    animation: 0.7s ease-out 0s 1 slideInFromLeft;
-    margin-left: 25vw;
-    margin-right: 25vw;
-    padding: 30px 30px;
-    background-color: white;
-    border-radius: 10px;
-    margin-bottom: 30px;
-  }
-
-  body {
-    background-color: #3584ff;
-  }
-
-  h2 {
-    color: #313131;
-    margin: 5px 3px;
-    padding: 5px 5px;
-  }
-}
-
-@media all and (min-width: 1300px) {
-  #content {
-    z-index: 10;
-    position: relative;
-  }
-}
-
-@media all and (min-width: 1400px) {
-  #content {
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}

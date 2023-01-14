@@ -20,7 +20,7 @@ class DateInputForm(ModelForm):
     class Meta:
         model = Task
         # exclude = ('user',)
-        fields = ['user', 'title', 'description', 'date_to_do', 'complete', 'tags']
+        fields = ['title', 'description', 'date_to_do', 'complete', 'tags']  # user has been removed : 'user',
         widgets = {
             'date_to_do': forms.DateTimeInput(format='%Y-%m-%dT%H:%M',
                                               attrs={'type': 'datetime-local', 'class': 'timepicker'}),
