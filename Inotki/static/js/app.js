@@ -70,7 +70,13 @@ window.onpopstate = function(e) {
     });
 };
 
+// random tag color
+var buttons = document.querySelectorAll('.tag-button');
+var colors = ['#498ae8', '#ce99bf','#2F2FA2', '#ff698b' ,'#184bbd'];
 
+for(var i = 0; i < buttons.length; i++) {
+    buttons[i].style.backgroundColor = colors[i % colors.length];
+}
 
 /*
 document.addEventListener("DOMContentLoaded", function(event) {

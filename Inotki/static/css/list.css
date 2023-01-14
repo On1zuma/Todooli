@@ -41,6 +41,92 @@ form.search-form::after {
   display: table;
 }
 
+/* Tags */
+.tags{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: .5rem;
+  justify-content: start;
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+
+.tags li{
+  margin-right: .5rem;
+  margin-bottom: .5rem;
+}
+
+.tag-button-reset{
+  padding: 10px;
+  color: #ffffff;
+  border: 1px solid rgba(255, 73, 73, 0);
+  background-color: #ff4949;
+  margin-bottom: .5rem;
+  width:100%;
+  border-radius: 5px 5px 5px 5px;
+  font: 10px "Poppins-Regular";
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: center;
+  z-index: -10;
+}
+
+.tag-button-reset:not(:hover) {
+  background-color: #ff4949;
+  color: #ffffff;
+  animation: flash 2s infinite;
+  animation-play-state: running;
+}
+
+
+.tag-button-reset p{
+  margin-left: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 25vw;
+}
+
+.tag-button-reset:hover {
+  border: 1px solid #ff4949;
+  background: #ffeaea;
+  color: #ff4949;
+  animation-play-state: paused;
+}
+
+@keyframes flash {
+  0%   {
+    background-color: #ff4949;
+  }
+  40%   {
+    background-color: rgba(255, 73, 73, 0.38);
+  }
+  100% {
+    background-color: #ff4949;
+  }
+}
+
+.tag-button{
+  padding: 10px;
+  border: 0px solid #4993ff;
+  width:100%;
+  border-radius: 5px 5px 5px 5px;
+  color: white;
+  font: 10px "Poppins-Regular";
+  cursor: pointer;
+}
+
+.tag-name{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90px
+}
+
+/*BUTTON NEW */
 .button-create{
   padding: 10px;
   font-size: 17px;
@@ -54,12 +140,9 @@ form.search-form::after {
   cursor: pointer;
 }
 
-/*BUTTON NEW */
 .button-create:hover {
   background: #ffffff;
   color: #4993ff;
-  margin-bottom: 1rem;
-
 }
 
 /* LIST */
@@ -190,6 +273,7 @@ h3{
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  max-width: 35vw;
 }
 
 .no-items{
@@ -201,6 +285,10 @@ h3{
 @media all and (min-width: 1300px) {
   .task-title{
     width: 40rem;
+    max-width: 30rem;
+  }
+  .tag-button-reset p{
+    max-width: 25rem;
   }
 
   form.search-form input[type=text] {

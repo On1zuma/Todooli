@@ -17,13 +17,34 @@
         {% if not search_input %}
             <button class="btn search-btn" type="submit" value="Search"><i class="fa fa-search"></i></button>
         {% else %}
-            <button class="btn search-btn" type="reset" onclick="location.href='{% url 'tasks' %}'"><i class="fa-solid fa-xmark"></i></button>
+            <button class="btn search-btn" type="reset" onclick="location.href='{% url 'tasks' %}'">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
         {% endif %}
     </form>
 
-    <!-- Nav -->
-    <button class="button-create" onclick="location.href='{% url 'task_create' %}'"><i class="fa-solid fa-file-circle-plus"></i></button>
+    <!-- Tags -->
+    {% if tag_input %}
+        <button class="tag-button-reset" type="reset" onclick="location.href='{% url 'tasks' %}'">
+            <i class="fa-solid fa-xmark"></i><p> {{ tag_input }}</p>
+        </button>
+    {% endif %}
+    <div class="tags">
+        {% for tag in tag_list %}
 
+            <form method="GET">
+                <li>
+                    <input placeholder="{{ tag.tag_name }}" class="search-field" type="text" name="tag-area" value="{{ tag.tag_name }}" style="display: none">
+                    <button class="tag-button" type="submit" value="Search"><p class="tag-name">{{ tag.tag_name }}</p></button>
+                </li>
+            </form>
+        {% endfor %}
+    </div>
+
+    <!-- Nav -->
+    <button class="button-create" onclick="location.href='{% url 'task_create' %}'">
+        <i class="fa-solid fa-file-circle-plus"></i>
+    </button>
 
     <!-- Current task -->
     <div class="current-task">
@@ -95,7 +116,6 @@
                 </div>
             {% endfor %}
         {% endif %}
-
 
         {% if tasks_not_completed_no_date %}
             <h3><i class="fa-solid fa-mug-hot"></i> No date</h3>
