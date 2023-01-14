@@ -30,8 +30,12 @@ h3{
 
 form {
     font: .8rem "Poppins-Light";
+}
+
+ /* when i open my menu, my form go to the background */
+ .open form{
     position: relative;
-    z-index: -10;
+    z-index: -999;
 }
 
 form small{
