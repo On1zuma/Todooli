@@ -44,24 +44,28 @@ class TaskList(LoginRequiredMixin, ListView):
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
-                .filter(date_to_do__lt=today)
+                .filter(date_to_do__lt=today) \
+                .order_by('date_to_do')
 
             context['tasks_to_do_today'] = context['tasks'] \
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
-                .filter(date_to_do__year=today.year, date_to_do__month=today.month, date_to_do__day=today.day)
+                .filter(date_to_do__year=today.year, date_to_do__month=today.month, date_to_do__day=today.day) \
+                .order_by('date_to_do')
 
             context['tasks_to_do_next_weeks'] = context['tasks'] \
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
-                .filter(date_to_do__gte=tomorrow)
+                .filter(date_to_do__gte=tomorrow) \
+                .order_by('date_to_do')
 
             context['tasks_not_completed_no_date'] = context['tasks'] \
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
-                .filter(date_to_do__isnull=True)
+                .filter(date_to_do__isnull=True) \
+                .order_by('-creation_date')
 
             context['tasks_to_do'] = context['tasks'] \
                 .filter(user=self.request.user) \
@@ -100,32 +104,37 @@ class TaskList(LoginRequiredMixin, ListView):
                     .filter(complete=False) \
                     .filter(date_to_do__isnull=False) \
                     .filter(date_to_do__lt=today) \
-                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags))
+                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags)) \
+                    .order_by('date_to_do')
 
                 context['tasks_to_do_today'] = context['tasks'] \
                     .filter(user=self.request.user) \
                     .filter(complete=False) \
                     .filter(date_to_do__isnull=False) \
                     .filter(date_to_do__year=today.year, date_to_do__month=today.month, date_to_do__day=today.day) \
-                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags))
+                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags)) \
+                    .order_by('date_to_do')
 
                 context['tasks_to_do_next_weeks'] = context['tasks'] \
                     .filter(user=self.request.user) \
                     .filter(complete=False) \
                     .filter(date_to_do__isnull=False) \
                     .filter(date_to_do__gte=tomorrow) \
-                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags))
+                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags)) \
+                    .order_by('date_to_do')
 
                 context['tasks_not_completed_no_date'] = context['tasks'] \
                     .filter(user=self.request.user) \
                     .filter(complete=False) \
                     .filter(date_to_do__isnull=True) \
-                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags))
+                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags)) \
+                    .order_by('-creation_date')
 
                 context['tasks_to_do'] = context['tasks'] \
                     .filter(user=self.request.user) \
                     .filter(complete=False) \
-                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags))
+                    .filter(Q(title__icontains=search_input) | Q(tags__in=tags)) \
+                    .order_by('-creation_date')
 
         if tag_input:
             # check if the given tag correspond
@@ -141,32 +150,37 @@ class TaskList(LoginRequiredMixin, ListView):
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
                 .filter(date_to_do__lt=today) \
-                .filter(tags__in=tag_objects)
+                .filter(tags__in=tag_objects) \
+                .order_by('date_to_do')
 
             context['tasks_to_do_today'] = context['tasks'] \
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
                 .filter(date_to_do__year=today.year, date_to_do__month=today.month, date_to_do__day=today.day) \
-                .filter(tags__in=tag_objects)
+                .filter(tags__in=tag_objects) \
+                .order_by('date_to_do')
 
             context['tasks_to_do_next_weeks'] = context['tasks'] \
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
                 .filter(date_to_do__gte=tomorrow) \
-                .filter(tags__in=tag_objects)
+                .filter(tags__in=tag_objects) \
+                .order_by('date_to_do')
 
             context['tasks_not_completed_no_date'] = context['tasks'] \
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=True) \
-                .filter(tags__in=tag_objects)
+                .filter(tags__in=tag_objects) \
+                .order_by('-creation_date')
 
             context['tasks_to_do'] = context['tasks'] \
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
-                .filter(tags__in=tag_objects)
+                .filter(tags__in=tag_objects) \
+                .order_by('-creation_date')
 
         context['tag_input'] = tag_input
         context['search_input'] = search_input

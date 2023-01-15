@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block body_content %}
+    <h2><a href="{% url 'tasks' %}"><i class="fa-sharp fa-solid fa-list-check"></i> <p>Task</p></a></h2>
     <h3>Second Thoughts - Retracting Task Deletion Request</h3>
     <p class="paragraph">After giving it further consideration, would you like to withdraw your request for task deletion and retain the task<br>
         <a href="{% url 'tasks' %}">go back </a>
