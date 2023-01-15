@@ -1,4 +1,5 @@
 #content {
+  margin-top: 1rem;
   margin-left: 5vw;
   margin-right: 5vw;
 }
@@ -7,13 +8,29 @@
   margin-bottom: 20px;
 }
 
+li{
+  font-family: "Poppins-Light", monospace;
+}
+
+button{
+  width: 100%;
+}
+
+.alert{
+    font-family: "Poppins-Light", monospace;
+}
+
 label {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins-Light", monospace;
+  font-size: .9rem;
+  letter-spacing: .05em;
 }
 
 p {
-  font-family: "Poppins", sans-serif;
-  font-size: .9rem;
+  font-family: "Poppins-Light", monospace;
+  font-size: .8rem;
+  letter-spacing: .05em;
+  margin-bottom: 1rem;
 }
 
 .logo-pic {
@@ -42,13 +59,14 @@ button {
 }
 
 h2 {
-  font: 2.2em "Poppins-Regular";
-  color: #343434;
+  font: 1.9rem "Poppins-bold";
+  color: #333;
 }
 
 h3 {
-  font-family: "JetBrains Mono", monospace;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
+  margin-top: -.6rem;
 }
 
 small {
@@ -63,11 +81,9 @@ small {
 @keyframes slideInFromLeft {
   0% {
     transform: translateY(-100%);
-    opacity: 0;
   }
   100% {
     transform: translateY(0);
-    opacity: 1;
   }
 }
 
@@ -81,18 +97,23 @@ small {
 }
 
 @media all and (min-width: 900px) {
+  p{
+      margin-bottom: 0;
+  }
+
   .add-shadow {
     box-shadow: none;
   }
 
   #content {
-    animation: 0.7s ease-out 0s 1 slideInFromLeft;
+    animation: 0.2s ease-out 0s 1 fadein;
     margin-left: 25vw;
     margin-right: 25vw;
-    padding: 30px 30px;
+    padding: 50px 50px;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 6px;
     margin-bottom: 30px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
   }
 
   body {

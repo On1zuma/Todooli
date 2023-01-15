@@ -12,9 +12,7 @@
 {% endblock %}
 
 {% block body_content %}
-
     <h2 class="font-weight-bold text-center title">Log in</h2>
-
     <form method="POST" action="">
         {% csrf_token %}
         {{ form|crispy }}
@@ -22,5 +20,4 @@
     </form>
     <p class="font-weight-light">Don't have an account ? <a href="{% url 'register' %}">Sign up</a></p>
     <p class="font-weight-light"><a href="{% url 'password_reset' %}">Forgot your password ?</a></p>
-
 {% endblock %}

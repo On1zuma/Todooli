@@ -27,12 +27,15 @@
 }
 
 .account-img{
-
     border-radius: 70px;
     width: 140px;
     margin-top: -4rem;
     background-color: #3584ff;
     padding: .4rem;
+}
+
+.media-text h3{
+    margin-top: 1.2rem;
 }
 
 .media-text{

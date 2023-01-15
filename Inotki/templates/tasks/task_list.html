@@ -37,7 +37,9 @@
     </div>
     {% if tag_input %}
         <button class="tag-button-reset" type="reset" onclick="location.href='{% url 'tasks' %}'">
-            <i class="fa-solid fa-xmark"></i><p> {{ tag_input }}</p>
+            <div class="tag-reset">
+                <i class="fa-solid fa-xmark"></i><p> Remove filtering with the <span class="maj">{{ tag_input }}</span> tag</p>
+            </div>
         </button>
     {% endif %}
 
