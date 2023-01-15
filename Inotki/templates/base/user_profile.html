@@ -3,6 +3,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/user_profile.css' %}" />
 {% endblock %}
 
 {% block title %}
@@ -10,19 +11,46 @@
 {% endblock %}
 
 {% block body_content %}
+    <canvas class="background"></canvas>
+    <div class="media-back">
+        <div class="media-content">
+            {% if user.profile.image %}
+                <img class="account-img" src="{{ user.profile.image.url|default_if_none:'/media/profile_pics/default.jpg' }}">
+            {% else %}
+                <img class="account-img" src="/media/profile_pics/default.jpg">
+            {% endif %}
+            <div class="media-text">
+                <h2 class="account-name">{{ user.username }}</h2>
+                <p class="account-email"><i class="fa-solid fa-envelope"></i> {{ user.email }}</p>
+                {% if user.profile.bio %}
+                    <h3>Bio</h3>
+                    <p class="account-bio"><i class="fa-solid fa-scroll"></i> {{ user.profile.bio }}</p>
+                {% endif %}
+                <h3>Inolii member since</h3>
+                <p class="account-bio"><i class="fa-solid fa-calendar-days"></i> {{ user.date_joined  }}</p>
+                <a class="edit" href="{% url 'profile_update' %}">Edit</a>
+            </div>
 
-    <div class="media">
-        {% if user.profile.image %}
-            <img class="rounded-circle account-img" src="{{ user.profile.image.url|default_if_none:'/media/profile_pics/default.jpg' }}">
-        {% else %}
-                <img class="rounded-circle account-img" src="/media/profile_pics/default.jpg">
-        {% endif %}
-        <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-secondary">{{ user.email }}</p>
-            <p class="text-secondary">{{ user.profile.bio }}</p>
-            <a href="{% url 'profile_update' %}">Edit</a>
-
+            <div class="media-text">
+                <h3>Task Management Metrics - Number of Tasks Created, Completed, and Tagged</h3>
+                <p class="account-bio">
+                    The number of tasks created with Inolii refers to the amount of tasks or
+                    projects that have been created and managed using the Inolii platform.
+                </p>
+                <p class="number">{{ taskCount }}</p>
+                <h3>Task Completion Rate - Number of Tasks Successfully Completed</h3>
+                <p class="account-bio">
+                    The number of tasks completed with Inolii refers to the amount of tasks or projects that have been
+                    successfully finished using the Inolii platform.
+                </p>
+                <p class="number">{{ taskCountCompleted }}</p>
+                <h3>Task Categorization - Number of Tags Created for Organizing Tasks</h3>
+                <p class="account-bio">
+                    The number of tags created for tasks refers to the amount of
+                    categorizations that have been created to organize and classify tasks in the system.
+                </p>
+                <p class="number">{{ tagCount }}</p>
+            </div>
         </div>
     </div>
 

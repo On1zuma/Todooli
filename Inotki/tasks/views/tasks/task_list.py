@@ -56,7 +56,7 @@ class TaskList(LoginRequiredMixin, ListView):
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
-                .filter(date_to_do__gt=today)
+                .filter(date_to_do__gte=tomorrow)
 
             context['tasks_not_completed_no_date'] = context['tasks'] \
                 .filter(user=self.request.user) \
@@ -113,7 +113,7 @@ class TaskList(LoginRequiredMixin, ListView):
                     .filter(user=self.request.user) \
                     .filter(complete=False) \
                     .filter(date_to_do__isnull=False) \
-                    .filter(date_to_do__gt=today) \
+                    .filter(date_to_do__gte=tomorrow) \
                     .filter(Q(title__icontains=search_input) | Q(tags__in=tags))
 
                 context['tasks_not_completed_no_date'] = context['tasks'] \
@@ -154,7 +154,7 @@ class TaskList(LoginRequiredMixin, ListView):
                 .filter(user=self.request.user) \
                 .filter(complete=False) \
                 .filter(date_to_do__isnull=False) \
-                .filter(date_to_do__gt=today) \
+                .filter(date_to_do__gte=tomorrow) \
                 .filter(tags__in=tag_objects)
 
             context['tasks_not_completed_no_date'] = context['tasks'] \

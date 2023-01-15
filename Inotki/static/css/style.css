@@ -110,7 +110,8 @@ header{
 /* nav links */
 .menu li a{
 	color: #f3f3f3;
-	font-family: 'Poppins', sans-serif;
+    font-family: "Poppins-Light", monospace;
+    font-size: 1rem;
 	padding: 10px 15px;
 	margin: 5px 5px;
 	text-decoration : none;

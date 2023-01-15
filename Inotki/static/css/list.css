@@ -268,7 +268,8 @@ h3{
 }
 
 .task-title{
-  font: .84rem "Poppins-Light";
+  font-family: "Poppins-Light", monospace;
+  font-size: .9rem;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
