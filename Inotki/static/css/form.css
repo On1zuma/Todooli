@@ -30,6 +30,18 @@ h3{
 
 form {
     font: .8rem "Poppins-Light";
+    display: flex;
+    flex-direction: column;
+}
+
+.tag-creation{
+    margin-top: -0.8rem;
+    margin-bottom: 1rem;
+    color: #4993ff;
+}
+
+.tag-creation:hover{
+    color: rgba(73, 147, 255, 0.75);
 }
 
  /* when i open my menu, my form go to the background */
@@ -63,3 +75,11 @@ form label{
 .paragraph a:hover{
     color: rgba(73, 147, 255, 0.66);
 }
+
+.blueButton{
+    width: 100%;
+}
+
+/*#div_id_image{*/
+/*    display: none;*/
+/*}*/

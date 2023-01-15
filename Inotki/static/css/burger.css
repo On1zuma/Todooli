@@ -57,7 +57,7 @@
         padding: 2rem;
         justify-content: space-around;
         transform: translateY(-110%);
-        transition: transform .7s;
+        transition: transform .3s;
         z-index: 999;
     }
 

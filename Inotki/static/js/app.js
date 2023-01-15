@@ -77,29 +77,3 @@ var colors = ['#498ae8', '#ce99bf','#2F2FA2', '#ff698b' ,'#184bbd'];
 for(var i = 0; i < buttons.length; i++) {
     buttons[i].style.backgroundColor = colors[i % colors.length];
 }
-
-/*
-document.addEventListener("DOMContentLoaded", function(event) {
-    var scrollpos = new URLSearchParams(window.location.search).get('scrollpos');
-    if (scrollpos) {
-        window.scrollTo({
-            top: scrollpos,
-            behavior: 'instant'
-        });
-    }
-
-    // Listen for form submissions
-    document.addEventListener('submit', function(event) {
-        var target = event.target;
-        if (target.tagName === 'FORM') {
-            // Save scroll position before navigating
-            saveScrollPosition();
-        }
-    });
-
-    function saveScrollPosition() {
-        var redirect_url = window.location.href + '&scrollpos=' + window.scrollY;
-        window.location.href = redirect_url;
-    }
-    console.log( 'here' + window.scrollY);
-});*/

@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
     <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
     <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/dragdrop.css' %}" />
 {% endblock %}
 
 {% block title %}
@@ -15,12 +16,13 @@
 {% block body_content %}
     <h2><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> <p>{{ request.user.username }}</p></a></h2>
 
-    <form method="POST" action="" enctype="multipart/form-data">
+    <form class="form-container" method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class=form-group">
             {{ u_form|crispy  }}
             {{ p_form|crispy  }}
         </fieldset>
+
         <div class=form-group">
             <button class="blueButton" type="submit">Update</button>
         </div>

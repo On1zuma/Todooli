@@ -19,9 +19,12 @@
         {% if admin %}<p> {{ admin }}</p>{% endif %}
 
         {{ form|crispy }}
+
         {% if task.id %}
+            <a class="tag-creation" href="{% url 'tag_create_pk' task.id %}">Create a new tag</a>
             <button type="submit" class="blueButton">Update</button>
         {% else %}
+            <a class="tag-creation" href="{% url 'tag_create_id' user.id %}">Create a new tag</a>
             <button type="submit" class="blueButton">Create</button>
         {% endif %}
     </form>

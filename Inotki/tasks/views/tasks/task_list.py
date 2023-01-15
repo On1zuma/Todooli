@@ -82,7 +82,6 @@ class TaskList(LoginRequiredMixin, ListView):
         # filter:
         search_input = self.request.GET.get('search-area') or ''
         tag_input = self.request.GET.get('tag-area') or ''
-        tag_objects = Tag.objects.filter(tag_name__icontains=tag_input)
 
         tags = Tag.objects.filter(tag_name__icontains=search_input)
 
@@ -129,6 +128,9 @@ class TaskList(LoginRequiredMixin, ListView):
                     .filter(Q(title__icontains=search_input) | Q(tags__in=tags))
 
         if tag_input:
+            # check if the given tag correspond
+            tag_objects = Tag.objects.filter(tag_name__icontains=tag_input)
+
             context['tasks_completed'] = context['tasks'] \
                 .filter(tags__in=tag_objects) \
                 .filter(user=self.request.user).filter(complete=True) \
