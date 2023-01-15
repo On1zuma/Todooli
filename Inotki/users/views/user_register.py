@@ -71,7 +71,6 @@ class RegisterView(FormView):
             messages.error(self.request, f'An error occurred while submitting the form')
             return super().form_invalid(form)
 
-
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:
             return redirect('tasks')

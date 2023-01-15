@@ -3,6 +3,7 @@
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 {% endblock %}
 
 {% block title %}
@@ -10,15 +11,20 @@
 {% endblock %}
 
 {% block body_content %}
-    <a href="{% url 'tasks' %}">go back </a>
+    <h3>Second Thoughts - Retracting Task Deletion Request</h3>
+    <p class="paragraph">After giving it further consideration, would you like to withdraw your request for task deletion and retain the task<br>
+        <a href="{% url 'tasks' %}">go back </a>
+    </p>
     <form method="POST">
         {% csrf_token %}
         {% if task %}
-            <p>Are you sure to delete "{{ task }}"?</p>
+            <p class="paragraph">Are you sure to delete "{{ task }}"?</p>
         {% else %}
-            <p>Are you sure about that ?</p>
+            <p class="paragraph">Are you sure about that ?</p>
         {% endif %}
 
-        <input type="submit" value="Delete">
+        <button class="blueButton" type="submit">
+            Delete
+        </button>
     </form>
 {% endblock %}
