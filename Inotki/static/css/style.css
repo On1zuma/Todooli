@@ -84,6 +84,10 @@ header{
 	display: none;
 }
 
+.toggle-with-notif{
+	display: none;
+}
+
 #logo{
 	width: auto;
 	height: 63px;

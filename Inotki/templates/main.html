@@ -41,7 +41,7 @@
             {% endif %}
         </div>
 
-        <div class="toggle">
+        <div class="toggle-with-notif">
             {% if request.user.is_authenticated %}
                 <div>
                     <button onclick="location.href='{% url 'notification' %}'" type="button" class="notificationIcon">
@@ -52,8 +52,11 @@
                     </button>
                 </div>
             {% endif %}
-            <div class="openb"><i class="fa-solid fa-bars"></i></div>
-            <div class="closeb"><i class="fa-solid fa-xmark"></i></div>
+            <div class="toggle">
+
+                <div class="openb"><i class="fa-solid fa-bars"></i></div>
+                <div class="closeb"><i class="fa-solid fa-xmark"></i></div>
+            </div>
         </div>
 
         <ul class="menu nav">

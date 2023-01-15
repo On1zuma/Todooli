@@ -11,6 +11,14 @@
         z-index: 9999;
     }
 
+    .toggle-with-notif{
+        z-index: 9999;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
     .notificationIcon{
         margin-right: 10px;
     }
@@ -54,7 +62,7 @@
         height: 100vh;
         background-image: radial-gradient(100% 100% at 100% 0, #3584ff 0, #2F70CC 100%);
         flex-direction: column;
-        padding: 2rem;
+        align-items: center;
         justify-content: space-around;
         transform: translateY(-110%);
         transition: transform .3s;
