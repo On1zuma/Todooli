@@ -3,11 +3,26 @@
     background-color: #3584ff;
     position: absolute;
     z-index: -10;
-    padding-bottom:6000px ;
-    padding-left: 1000px;
-    transform: rotate(75deg);
-    margin-top: -3120px;
+    width: 100vw;
+    height: 200vw;
+    transform: rotate(77deg);
+    margin-top: -110%;
+    margin-left: -70vw;
 }
+
+@media all and (max-width: 991px) {
+    .background{
+        height: 240vw;
+        margin-top: -115vw;
+    }
+}
+
+@media all and (min-width: 1700px) {
+    .background{
+        margin-top: -125%;
+    }
+}
+
 
 .media-back {
     margin-top: 3rem;
@@ -23,7 +38,6 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-
 }
 
 .account-img{

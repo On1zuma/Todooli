@@ -26,12 +26,16 @@
 
 /* ScrollBar */
 ::-webkit-scrollbar {
-	width: 2px;
+	width: 5px;
+	height: 5px;
+	border-radius: 30px;
 }
-/* Track */
+
+/* Background ScrollBar */
 ::-webkit-scrollbar-track {
-	background: #e0e0e0;
+	background: rgba(218, 47, 47, 0);
 }
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
 	width: 1px;
@@ -40,7 +44,7 @@
 }
 
 html {
-	scroll-behavior: auto;
+	scroll-behavior: smooth;
 	overflow-x: hidden;
 }
 
@@ -114,8 +118,8 @@ header{
 /* nav links */
 .menu li a{
 	color: #f3f3f3;
-    font-family: "Poppins-Light", monospace;
-    font-size: 1rem;
+	font-family: "Poppins-Light", monospace;
+	font-size: 1rem;
 	padding: 10px 15px;
 	margin: 5px 5px;
 	text-decoration : none;
