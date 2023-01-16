@@ -11,6 +11,7 @@
 {% endblock %}
 
 {% block body_content %}
+
     <!-- Search -->
     <form method="GET" class="search-form">
         <input placeholder="Search" class="search-field" type="text" name="search-area" value="{{ search_input }}">
@@ -47,6 +48,12 @@
     <button class="button-create" onclick="location.href='{% url 'task_create' %}'">
         <i class="fa-solid fa-file-circle-plus"></i>
     </button>
+
+    <div class="create-button-mobile">
+        <button  onclick="location.href='{% url 'task_create' %}'">
+            <i class="fa-regular fa-plus"></i>
+        </button>
+    </div>
 
     <!-- Current task -->
     <div class="current-task">

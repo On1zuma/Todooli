@@ -1,6 +1,7 @@
 #content {
-  margin-left: 5vw;
-  margin-right: 5vw;
+    margin-left: 5vw;
+    margin-right: 5vw;
+    margin-bottom: 1rem;
 }
 
 @media all and (min-width: 991px) {
@@ -11,9 +12,9 @@
 }
 
 @media all and (min-width: 1600px) {
-  #content {
-    max-width: 1000px;
-    margin-left: auto;
-    margin-right: auto;
-  }
+    #content {
+        max-width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
