@@ -50,6 +50,7 @@ if(toast){
   });
 }
 
+//go back to the same position on reload
 document.addEventListener("DOMContentLoaded", function(event) {
     var scrollpos = sessionStorage.getItem('scrollpos');
     if (scrollpos) window.scrollTo({

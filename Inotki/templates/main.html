@@ -94,7 +94,6 @@
                 {% for message in messages %}
                     <i class="fas fa-solid fa-check check-{{ message.tags }}"></i>
                     <div class="message">
-
                         <span class="text text-1">
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Info{% endif %}
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}Success{% endif %}
