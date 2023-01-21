@@ -23,6 +23,10 @@
 	src: url(../font/Poppins-Light.ttf);
 }
 
+/* dark mode*/
+body{
+	background-color: #f6f6f6;
+}
 
 /* ScrollBar */
 ::-webkit-scrollbar {

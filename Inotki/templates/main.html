@@ -13,10 +13,13 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/burger.css' %}" />
     <link rel="stylesheet" href="{% static 'css/button.css' %}" />
+    {% if user.option.dark_mode == True %}
+        <link rel="stylesheet" href="{% static 'css/dark.css' %}" />
+    {% endif %}
+
     {% if messages%}
         <link rel="stylesheet" href="{% static 'css/message.css' %}" />
     {% endif %}
-
 
     <script src="{% static 'js/app.js' %}" defer></script>
     {% block css %}{% endblock css %}

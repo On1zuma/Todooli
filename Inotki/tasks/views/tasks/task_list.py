@@ -17,7 +17,6 @@ class TaskList(LoginRequiredMixin, ListView):
         global yesterday, long_time_ago, today, tomorrow, next_time
 
         context = super().get_context_data(**kwargs)
-        context['show_completed_task'] = self.request.user.option.show_completed_task
 
         if self.request.user.is_staff:
             context['admin'] = 'Admin dashboard'

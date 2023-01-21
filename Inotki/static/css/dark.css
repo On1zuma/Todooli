@@ -1,0 +1,35 @@
+/* dark mode*/
+body{
+	background-color: #2F3136;
+}
+
+#content *{
+	color: white;
+}
+
+#content a{
+	color: #4b96ff;
+}
+
+#content a:hover{
+	color: #7dadf8;
+}
+
+#content h1{
+	color: white;
+}
+
+#content h2 {
+	color: #c9c9c9;
+}
+
+#content .current-task .alert{
+	color: #af2020;
+}
+#content .current-task .alert i{
+	color: #af2020;
+}
+
+div .media-text{
+	background-color: #2f3136;
+}
