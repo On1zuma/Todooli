@@ -8,6 +8,10 @@ from tasks.models.task import Task
 
 
 def get_notif(request, **kwargs):
+
+    tasks = Task.objects
+    tags = Tag.objects
+
     if request.user.is_authenticated:
         global yesterday, precedent_time, today, tomorrow, next_time
 
@@ -35,10 +39,27 @@ def get_notif(request, **kwargs):
         taskCountCompleted = notification_obj.filter(user=request.user, complete=True).count()
         tagCount = tag_obj.filter(user=request.user).count()
 
+        globalTaskCount = tasks.count()
+        globalTaskCountCompleted = tasks.filter(complete=True).count()
+        globalTagCount = tags.count()
+
         return {
             'notifCount': notifCount,
             'taskCount': taskCount,
             'taskCountCompleted': taskCountCompleted,
             'tagCount': tagCount,
+
+            'globalTaskCount': globalTaskCount,
+            'globalTaskCountCompleted': globalTaskCountCompleted,
+            'globalTagCount': globalTagCount,
         }
-    return {}
+    else:
+        globalTaskCount = tasks.count()
+        globalTaskCountCompleted = tasks.filter(complete=True).count()
+        globalTagCount = tags.count()
+
+        return {
+            'globalTaskCount': globalTaskCount,
+            'globalTaskCountCompleted': globalTaskCountCompleted,
+            'globalTagCount': globalTagCount,
+        }

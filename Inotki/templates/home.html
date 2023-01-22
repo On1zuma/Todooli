@@ -1,10 +1,61 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
 
 {% block title %}
     Home
 {% endblock %}
 
 {% block body_content %}
+    <div class="margin">
+        <canvas class="background "></canvas>
+    </div>
 
+    {#    <div class="myCircle"></div>#}
+    {#    <img class="image" src="/static/img/herob.png" alt="">#}
+    <div class="margin ">
+        <h2>Task Tango, <strong>Dancing your way to productivity</strong></h2>
+    </div>
+
+    <div class="margin box">
+        <div class="img-column">
+            <img class="image mb-1" src="/static/img/img2.png" alt="">
+            <img class="image" src="/static/img/img1.png" alt="">
+        </div>
+        <p>
+            <i class="fa-sharp fa-solid fa-quote-left"></i>
+            Ilonii is a way to focus on what is important and achieve your goals in an efficient and organized manner.
+        </p>
+    </div>
+
+    <div class="margin">
+        <img class="imageb" src="/static/img/style.png" alt="">
+    </div>
+
+    <div class="margin">
+        <ul class="list">
+            <li><p>{{ globalTaskCount }}+</p><small>Tasks </small></li>
+            <li><p>{{ globalTaskCountCompleted }}</p><small>Tasks <i class="fa-solid fa-check"></i></small></li>
+            <li><p>{{ globalTagCount }}</p><small>Tags</small></li>
+        </ul>
+    </div>
+
+    <div class="margin text-content">
+        <h2>Revolutionize Your Task Management</h2>
+        <p>Revolutionary task manager with user-friendly platform for easy task creation, tracking and organization.
+            Try it now for improved productivity and goal achievement
+        </p>
+    </div>
+
+    {% if user.is_authenticated == False %}
+        <div class="margin call-to-action">
+            <p>Don’t have an account yet ?</p>
+            <button class="" onclick="location.href='{% url 'register' %}'">Register</button>
+            <a href="{% url 'login' %}">log in</a>
+        </div>
+    {% endif %}
 
 {% endblock %}
