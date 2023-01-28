@@ -1,20 +1,20 @@
 from django.contrib import admin
 from django.urls import path
 
-#tags
+# tags
 from tasks.views.tags.tag_create import TagCreate
 from tasks.views.tags.tag_delete import TagDelete
 from tasks.views.tags.tag_list import TagList
 from tasks.views.tags.tag_update import TagUpdate
 
-#tasks
+# tasks
 from tasks.views.tasks.task_create import TaskCreate
 from tasks.views.tasks.task_delete import TaskDelete
 from tasks.views.tasks.task_detail import TaskDetail
 from tasks.views.tasks.task_list import TaskList
 from tasks.views.tasks.task_update import TaskUpdate
 
-#users
+# users
 from django.contrib.auth.views import LogoutView, PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView
 
@@ -29,14 +29,19 @@ from users.views.user_profile import UserProfileView
 from users.views.user_register import RegisterView
 from users.views.user_update import UpdateUserView
 
-#url settings (images...)
+# url settings (images...)
 from django.conf import settings
 from django.conf.urls.static import static
 
-#Notification
+# Notification
 from tasks.views.notification.notification_list import NotificationList
 
-#Home
+# Article
+from tasks.views.articles.article_productivity import Productivity
+from tasks.views.articles.article_task import GoodTask
+from tasks.views.articles.article_useit import UseIt
+
+# Home
 from tasks.views.home.home import HomeView
 
 urlpatterns = [
@@ -77,7 +82,7 @@ urlpatterns = [
     path('task/delete/<int:pk>/', TaskDelete.as_view(), name='task_delete'),
     path('task/completed/<int:pk>/<int:key_id>/', TaskUpdate.as_view(), name='task_completed'),
 
-    #Tag
+    # Tag
     path('tag/create/', TagCreate.as_view(), name='tag_create'),
     path('tag/create/c/<int:key_id>/', TagCreate.as_view(), name='tag_create_id'),
     path('tag/create/e/<int:pk>/', TagCreate.as_view(), name='tag_create_pk'),
@@ -89,10 +94,15 @@ urlpatterns = [
     path('notification/', NotificationList.as_view(), name='notification'),
     path('notification/completed/<int:pk>/<int:tc_id>/', TaskUpdate.as_view(), name='notification_task_completed'),
 
-    #Home
+    # Home
     path('', HomeView.as_view(), name='home'),
+
+    # Article
+    path('article/task/', GoodTask.as_view(), name='article-task'),
+    path('article/productivity/', Productivity.as_view(), name='article-productivity'),
+    path('article/use-it/', UseIt.as_view(), name='article-use-it'),
+
 ]
 
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-

@@ -1,0 +1,86 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="title-home"></div>
+
+    <div class="margin mb-3">
+        <div class="title-article"><a href="{% url 'home' %}"><p>Use it !</p></a></div>
+
+        <div class="summary">
+            <ul>
+                <li><a href="#title1">◗ The Benefits of Using a Task Manager: Increased Productivity and Organization</a> </li>
+                <li><a href="#title2">◗ Collaboration and Task Sharing: How a Task Manager Can Improve Teamwork</a></li>
+                <li><a href="#title3">◗ Integration and Customization: How a Task Manager Can Fit Your Workflow and Needs</a></li>
+            </ul>
+        </div>
+
+        <h3 class="title" id="title1">The Benefits of Using a Task Manager: Increased Productivity and Organization</h3>
+        <p class="paragraph">
+            Creating effective tasks is the key to staying organized and productive. To set up a good task,
+            it's important to make sure that it is clear and actionable. A clear task should have a specific and
+            measurable outcome, and should be written in a way that is easy to understand. An actionable
+            task is one that can be completed with the resources and information available.
+            To make sure your tasks are clear and actionable, make sure to define the objective,
+            the outcome and the deadline for the task.
+        </p>
+
+        <h3 class="title" id="title2">Collaboration and Task Sharing: How a Task Manager Can Improve Teamwork</h3>
+        <p class="paragraph">
+            With so many tasks to complete, it's important to prioritize them in order to focus on the most
+            important tasks first. One way to prioritize tasks is to use the Eisenhower Matrix, which categorizes
+            tasks based on their urgency and importance. Tasks that are both urgent and important should be tackled
+            first, followed by important but not urgent tasks, then urgent but not important tasks, and finally,
+            tasks that are neither urgent nor important. Another way to prioritize tasks is to use the ABC method,
+            where A tasks are the most important, B tasks are important but less so than A tasks, and C tasks are
+            less important.
+        </p>
+
+        <h3 class="title" id="title3">Integration and Customization: How a Task Manager Can Fit Your Workflow and Needs</h3>
+        <p class="paragraph">
+            Once you have set up your tasks and prioritized them, it's important to stay on track and monitor
+            your progress. One way to do this is by breaking tasks down into smaller, manageable steps and setting
+            deadlines for each step. Additionally, it's important to stay accountable for your progress by regularly
+            reviewing your tasks and checking off completed items. A Task manager such as Inolii can be helpful for
+            monitoring progress and staying accountable, as it allows users to track their progress in real-time and
+            set reminders for tasks.
+        </p>
+    </div>
+
+    <div class="article-zone">
+        <div class="article margin mb-3">
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Good Task ?</h3>
+                    <p>How to set up a good Task ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-task' %}'">Read more</button>
+                </div>
+            </div>
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Productivity ?</h3>
+                    <p>3 ways to improve your productivity ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-productivity' %}'">Read more</button>
+                </div>
+            </div>
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Use it !</h3>
+                    <p>How to use Inolii ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-use-it' %}'">Read more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
