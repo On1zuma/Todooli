@@ -244,6 +244,8 @@
 
 .article-box h3 {
     position: absolute;
+    z-index: -1;
+
     top: 1rem;
     font-family: "Poppins-Light", monospace;
     font-size: 1.2rem;
@@ -251,6 +253,7 @@
 
 .article-box p {
     position: absolute;
+    z-index: -1;
     top: 4rem;
     font-family: "Poppins-Light", monospace;
     font-size: 1rem;
@@ -258,6 +261,7 @@
 
 .article-box button {
     position: absolute;
+    z-index: 1;
     bottom: 1rem;
     font-family: "Poppins-Light", monospace;
     font-size: 1rem;
@@ -267,6 +271,10 @@
     border: none;
     color: white;
     cursor: pointer;
+}
+
+.open .article-box button{
+    z-index: -1;
 }
 
 .paragraph{
