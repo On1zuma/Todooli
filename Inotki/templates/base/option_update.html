@@ -14,7 +14,7 @@
 
 {% block body_content %}
     <h2><a href=""><i class="fa-sharp fa-solid fa-gear"></i> <p>Settings</p></a></h2>
-    <h3>Inolii - Your Personal Task Management Assistant</h3>
+    <h3 class="title">Inolii - Your Personal Task Management Assistant</h3>
     <p class="paragraph">
         Inolii offers various settings to aid you in managing your tasks such as showing completed tasks,
         instant deletion, email notifications, dark mode and private profile.
@@ -22,14 +22,14 @@
         stay informed and have a secure and private way of managing tasks.
     </p>
 
-    <h3>Delete Your Account - A Permanent Action</h3>
+    <h3 class="title">Delete Your Account - A Permanent Action</h3>
     <p class="paragraph">
         To delete your account, please click on this link -
         <a href="{% url 'user_delete' request.user.id %}">delete your account</a>,
         you will be redirected to another page where you will be prompted to confirm your account deletion.
     </p>
 
-    <h3>Manage Your Account Settings</h3>
+    <h3 class="title">Manage Your Account Settings</h3>
     <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class=form-group">

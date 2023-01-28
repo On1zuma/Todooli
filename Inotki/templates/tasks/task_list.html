@@ -59,17 +59,24 @@
     <div class="current-task">
         <h2 class="title-current">Current task </h2>
         {% if admin %}
-            <ul> <!-- Admin task -->
+            <div> <!-- Admin task -->
                 {% for task in tasks_not_completed %}
-                    <li>
-                        {{ task.user }} :
-                        {{ task.creation_date }} -
-                        {{ task.title }} -
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                        <a href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
-                    </li>
+                    {% if admin %}
+                        {{ task.user }} -
+                        {{ task.creation_date }}
+                    {% endif %}
+                    <div class="task alert-task">
+                        <a class="alert-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                        <a class="edit" href="{% url 'task_update' task.id %}">
+                            <div class="with-date">
+                                <p class="task-title">{{ task.user }} - {{ task.title }}</p>
+                                <small>{{ task.date_to_do }}</small>
+                            </div>
+                        </a>
+                        <a class="alert-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+                    </div>
                 {% endfor %}
-            </ul>
+            </div>
         {% endif %}
 
 
@@ -151,13 +158,16 @@
             <h2 class="title-completed">Completed task </h2>
             <!-- COMPLETED TASK -->
             {% for task in tasks_completed %}
+                {% if admin %}
+                    {{ task.user }} -
+                    {{ task.creation_date }}
+                {% endif %}
                 <div class="task-completed">
-                    {% if admin %}
-                        {{ task.user }} :
-                        {{ task.creation_date }} -
-                    {% endif %}
                     <a class="dark-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square-check"></i></a>
-                    <a class="edit-completed" href="{% url 'task_update' task.id %}"><p class="task-title">{{ task.title }}</p></a>
+
+                    <a class="edit-completed" href="{% url 'task_update' task.id %}"><p class="task-title">
+                        {{ task.title }}
+                    </p></a>
                     <a class="dark-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
                 </div>
 
