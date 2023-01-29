@@ -37,9 +37,7 @@ from django.conf.urls.static import static
 from tasks.views.notification.notification_list import NotificationList
 
 # Article
-from tasks.views.articles.article_productivity import Productivity
-from tasks.views.articles.article_task import GoodTask
-from tasks.views.articles.article_useit import UseIt
+from tasks.views.articles.info import Productivity, GoodTask, UseIt, TermsService, ContactUs, PrivacyPolicy, Gdpr
 
 # Home
 from tasks.views.home.home import HomeView
@@ -101,6 +99,12 @@ urlpatterns = [
     path('article/task/', GoodTask.as_view(), name='article-task'),
     path('article/productivity/', Productivity.as_view(), name='article-productivity'),
     path('article/use-it/', UseIt.as_view(), name='article-use-it'),
+
+    # Legal information
+    path('contact-us/', ContactUs.as_view(), name='contact-us'),
+    path('terms-of-service/', TermsService.as_view(), name='terms-of-service'),
+    path('privacy-policy/', PrivacyPolicy.as_view(), name='privacy-policy'),
+    path('gdpr/', Gdpr.as_view(), name='gdpr'),
 
 ]
 

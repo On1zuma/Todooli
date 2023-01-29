@@ -1,8 +1,9 @@
-{% extends 'main.html' %}
+{% extends 'main_footer.html' %}
 {% load static %}
 
 {% block css %}
     <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
     <script src="{% static 'js/home.js' %}" defer></script>
 {% endblock %}
 
@@ -76,5 +77,4 @@
             </div>
         </div>
     </div>
-
 {% endblock %}

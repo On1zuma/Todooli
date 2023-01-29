@@ -1,0 +1,85 @@
+{% extends 'main_footer.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="title-home"></div>
+
+    <div class="margin mb-3">
+        <div class="title-article"><a href="{% url 'home' %}"><p>Terms of Service</p></a></div>
+
+        <div class="summary">
+            <ul>
+                <li><a href="">◗ Introduction</a> </li>
+                <li><a href="#title1">◗ Prohibited Conduct</a></li>
+                <li><a href="#title2">◗ Content Ownership</a></li>
+                <li><a href="#title3">◗ Modification and Termination</a></li>
+                <li><a href="#title4">◗ Warranties and Disclaimers</a></li>
+                <li><a href="#title5">◗ Indemnification</a></li>
+                <li><a href="#title6">◗ Governing Law</a></li>
+                <li><a href="#title7">◗ Contact Us</a></li>
+            </ul>
+        </div>
+
+        <h3 class="title" id="title1">Introduction</h3>
+        <p class="paragraph">
+            These Terms of Service govern your use of Inolii,
+            an online task management tool, and any services provided by Inolii.
+            By using our app, you agree to be bound by these terms.
+        </p>
+
+        <h3 class="title" id="title2">Prohibited Conduct</h3>
+        <p class="paragraph">
+            Inolii prohibits users from engaging in any illegal, fraudulent, or harmful conduct while using our
+            services. Users also agree not to reproduce, duplicate, copy, sell, resell, or exploit any portion
+            of Inolii without our express written permission.
+        </p>
+
+        <h3 class="title" id="title3">Content Ownership</h3>
+        <p class="paragraph">
+            Users retain ownership of any content they upload or create using Inolii,
+            but by using our services, users grant Inolii a license to use, host, and display such content.
+        </p>
+
+        <h3 class="title" id="title4">Modification and Termination</h3>
+        <p class="paragraph">
+            Inolii reserves the right to modify or discontinue our services at any time.
+            We will not be liable to users or any third party for any such modification or discontinuation.
+        </p>
+
+        <h3 class="title" id="title5">Warranties and Disclaimers</h3>
+        <p class="paragraph">
+            Inolii reserves the right to modify or discontinue our services at any time.
+            We will not be liable to users or any third party for any such modification or discontinuation.
+        </p>
+
+        <h3 class="title" id="title6">Indemnification</h3>
+        <p class="paragraph">
+            Inolii reserves the right to modify or discontinue our services at any time.
+            We will not be liable to users or any third party for any such modification or discontinuation.
+        </p>
+
+        <h3 class="title" id="title7">Governing Law</h3>
+        <p class="paragraph">
+            Inolii reserves the right to modify or discontinue our services at any time.
+            We will not be liable to users or any third party for any such modification or discontinuation.
+        </p>
+
+        <h3 class="title" id="title8">Contact Us</h3>
+        <p class="paragraph">
+            If you have any questions or concerns about our Privacy Policy or the personal data we collect,
+            please contact us using the provided contact information.
+            <a href="{% url 'contact-us' %}">Contact us</a>.
+        </p>
+    </div>
+
+{% endblock %}

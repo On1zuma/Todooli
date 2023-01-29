@@ -223,6 +223,8 @@
 }
 
 .article-zone{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
     background-color: rgba(229, 229, 229, 0.23);
 }
 
@@ -266,7 +268,7 @@
     font-family: "Poppins-Light", monospace;
     font-size: 1rem;
     padding: .6rem;
-    background-color: #333;
+    background-color: #8a979f;
     border-radius: 15px;
     border: none;
     color: white;
