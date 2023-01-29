@@ -26,7 +26,7 @@
                     <h3>Bio</h3>
                     <p class="account-bio"><i class="fa-solid fa-scroll"></i> {{ user.profile.bio }}</p>
                 {% endif %}
-                <h3>Inolii member since</h3>
+                <h3>Igonii member since</h3>
                 <p class="account-bio"><i class="fa-solid fa-calendar-days"></i> {{ user.date_joined  }}</p>
                 <a class="edit" href="{% url 'profile_update' %}">Edit</a>
             </div>
@@ -34,14 +34,14 @@
             <div class="media-text">
                 <h3>Task Management Metrics - Number of Tasks Created, Completed, and Tagged</h3>
                 <p class="account-bio">
-                    The number of tasks created with Inolii refers to the amount of tasks or
-                    projects that have been created and managed using the Inolii platform.
+                    The number of tasks created with Igonii refers to the amount of tasks or
+                    projects that have been created and managed using the Igonii platform.
                 </p>
                 <p class="number">{{ taskCount }}</p>
                 <h3>Task Completion Rate - Number of Tasks Successfully Completed</h3>
                 <p class="account-bio">
-                    The number of tasks completed with Inolii refers to the amount of tasks or projects that have been
-                    successfully finished using the Inolii platform.
+                    The number of tasks completed with Igonii refers to the amount of tasks or projects that have been
+                    successfully finished using the Igonii platform.
                 </p>
                 <p class="number">{{ taskCountCompleted }}</p>
                 <h3>Task Categorization - Number of Tags Created for Organizing Tasks</h3>

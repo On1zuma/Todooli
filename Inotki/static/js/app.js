@@ -50,27 +50,6 @@ if(toast){
     });
 }
 
-//go back to the same position on reload
-document.addEventListener("DOMContentLoaded", function(event) {
-    var scrollpos = sessionStorage.getItem('scrollpos');
-    if (scrollpos) window.scrollTo({
-        top: scrollpos,
-        behavior: 'instant'
-    });
-});
-
-window.onbeforeunload = function(e) {
-    sessionStorage.setItem('scrollpos', window.scrollY);
-};
-
-window.onpopstate = function(e) {
-    var scrollpos = sessionStorage.getItem('scrollpos');
-    if (scrollpos) window.scrollTo({
-        top: scrollpos,
-        behavior: 'instant'
-    });
-};
-
 // random tag color
 var buttons = document.querySelectorAll('.tag-button');
 var colors = ['#498ae8', '#ce99bf','#2F2FA2', '#ff698b' ,'#184bbd'];
