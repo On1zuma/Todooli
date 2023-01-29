@@ -1,19 +1,31 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %}
 
 {% block title %}
-    Task delete page
+    Tag delete page
 {% endblock %}
 
 {% block body_content %}
-    <a href="{% url 'tasks' %}">go back </a>
+    <h2><a href="{% url 'tags' %}"><i class="fa-solid fa-tag"></i><p>Tag</p></a></h2>
+    <h3>Second Thoughts - Retracting Tag Deletion Request</h3>
+    <p class="paragraph">After giving it further consideration, would you like to withdraw your request for tag deletion and retain the tag<br>
+        <a href="{% url 'tags' %}">go back </a>
+    </p>
     <form method="POST">
         {% csrf_token %}
         {% if tag %}
-            <p>Are you sure to delete "{{ tag }}" ?</p>
+            <p class="paragraph">Are you sure to delete "{{ tag }}"?</p>
         {% else %}
-            <p>Are you sure about that ?</p>
+            <p class="paragraph">Are you sure about that ?</p>
         {% endif %}
 
-        <input type="submit" value="Delete">
+        <button class="blueButton" type="submit">
+            Delete
+        </button>
     </form>
 {% endblock %}

@@ -1,0 +1,106 @@
+
+.background{
+    background-color: #3584ff;
+    position: absolute;
+    z-index: -10;
+    width: 100vw;
+    height: 200vw;
+    transform: rotate(77deg);
+    margin-top: -110%;
+    margin-left: -70vw;
+}
+
+@media all and (max-width: 991px) {
+    .background{
+        height: 240vw;
+        margin-top: -115vw;
+    }
+}
+
+@media all and (min-width: 1700px) {
+    .background{
+        margin-top: -125%;
+    }
+}
+
+
+.media-back {
+    margin-top: 3rem;
+    background: #3377e0;
+    /*background-image: radial-gradient(100% 100% at 100% 0, #2F70CC 0, #4490ff 100%);    border-radius: 20px;*/
+    border-radius: 20px;
+    padding-bottom: 1rem;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+}
+.media-content{
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.account-img{
+    border-radius: 70px;
+    width: 140px;
+    margin-top: -4rem;
+    background-color: #3584ff;
+    padding: .4rem;
+}
+
+.media-text h3{
+    margin-top: 1.2rem;
+}
+
+.media-text{
+    background-color: #ffffff;
+    padding: 2rem;
+    margin: 2rem;
+    border-radius: 30px;
+    color: #333;
+    width: 90%;
+}
+
+.account-name{
+    font: 2rem "Poppins-Bold";
+    margin-bottom: .1rem;
+
+}
+
+.account-email{
+    font: 1rem "Poppins-Light";
+}
+
+.account-bio{
+    font-family: "Poppins-Light", monospace;
+    font-size: .85rem;
+    margin-bottom: 1rem;
+    letter-spacing: .07em;
+    width: 100%;
+    text-align: left; /* center aligning the text within the paragraph */
+
+}
+
+h3{
+    font: 1rem "Poppins-Bold";
+    margin-top: .4rem;
+    margin-bottom: .1rem;
+    font-weight: 300;
+}
+
+.edit {
+    color: #4993ff ;
+    font-family: "Poppins-Light", monospace;
+    font-size: .9rem;
+}
+
+.edit:hover{
+    color: rgba(73, 147, 255, 0.66);
+}
+
+.number{
+    font: 1rem "Poppins-Regular";
+    font-weight: 700;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+}

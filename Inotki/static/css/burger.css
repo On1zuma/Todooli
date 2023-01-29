@@ -6,8 +6,17 @@
         font-size: 2rem;
         color: white;
         cursor: pointer;
-        position: relative;	align-items: center;
-        z-index: 200;
+        position: relative;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .toggle-with-notif{
+        z-index: 9999;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
     }
 
     .notificationIcon{
@@ -46,17 +55,18 @@
     }
 
     .menu{
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100vh;
         background-image: radial-gradient(100% 100% at 100% 0, #3584ff 0, #2F70CC 100%);
         flex-direction: column;
-        padding: 2rem;
+        align-items: center;
         justify-content: space-around;
         transform: translateY(-110%);
-        transition: transform .7s;
+        transition: transform .3s;
+        z-index: 999;
     }
 
     .menu li{
@@ -68,6 +78,5 @@
 
     .open .menu{
         transform: translateX(0%);
-
     }
 }

@@ -1,82 +1,146 @@
+h2 a {
+    font: 1.9rem "Poppins-bold";
+    color: #333;
+    margin-bottom: .6rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
 
-#content{
-    margin-left: 5vw;
-    margin-right: 5vw;
+h2 a p{margin-left:7px;}
+
+h2 a:hover {
+    font: 1.9rem "Poppins-bold";
+    font-weight: 700;
+    color: #3584ff;
+    /*-webkit-text-stroke: 1px #3584ff;*/
+}
+
+.title-article{
+    font: 1.9rem "Poppins-bold";
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.title-article a p{
+    color: #333;
+}
+
+.title-article a p:hover {
+    font: 1.9rem "Poppins-bold";
+    font-weight: 700;
+    color: #3584ff;
+    /*-webkit-text-stroke: 1px #3584ff;*/
+}
+
+.title {
+    font: 1.3rem "Poppins-Regular";
+    color: #333;
+    margin-bottom: .6rem;
+    font-weight: 300;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.margin img {
+    width: 75%;
+    height: auto;
+    display: block;
+    margin: 1rem auto 3rem;
+}
+
+summary{
+    margin-top: -2rem;
+    color: #4490ff;
+    font: 1rem "Poppins-Light";
+    margin-bottom: .7rem;
+    cursor: pointer;
+}
+summary:hover{
+    color: rgba(68, 144, 255, 0.73);
+}
+
+.steps{
+    background-color: #ececec;
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+.margin small {
+    font: 1rem "Poppins-Light";
+    margin-right: 100%;
+    white-space: nowrap;
+    color: #808080;
+}
+
+@media all and (max-width: 991px) {
+    .margin small {
+        white-space: normal;
+    }
+    .margin img {
+        width: 95%;
+    }
+}
+
+form {
+    font: .8rem "Poppins-Light";
+    display: flex;
+    flex-direction: column;
+}
+
+.tag-creation{
+    margin-top: -0.8rem;
+    margin-bottom: 1rem;
+    color: #4993ff;
+}
+
+.tag-creation:hover{
+    color: rgba(73, 147, 255, 0.75);
+}
+
+/* when i open my menu, my form go to the background */
+.open form{
+    position: relative;
+    z-index: -999;
+}
+
+form small{
+    font-size: .7rem;
+    font-family: "JetBrains Mono", monospace;
+
+}
+form label{
+    font: 1rem "Poppins-Light";
+}
+
+.paragraph{
+    font-family: "Poppins-Light", monospace;
+    font-size: .8rem;
+    letter-spacing: .07em;
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: left; /* center aligning the text within the paragraph */
+}
+
+.paragraph a{
+    color: #4993ff ;
+}
+
+.paragraph a:hover{
+    color: rgba(73, 147, 255, 0.66);
 }
 
 .blueButton{
-    margin-bottom: 20px;
+    width: 100%;
 }
 
-label{
-    font-family: 'Poppins', sans-serif;
-}
-
-p{
-    font-family: 'Poppins', sans-serif;
-}
-
-button{
-    font-family: 'Poppins', sans-serif;
-}
-
-h2{
-    font-family: "JetBrains Mono",monospace;
-    font-size: 40px;
-}
-
-.title{
-    margin-bottom: 30px;
-}
-
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-@keyframes fadein {
-    from { opacity: 0}
-    to   { opacity: 1}
-}
-
-@media all and (min-width: 900px) {
-    .add-shadow{
-	    box-shadow: none;
-    }
-
-    #content{
-        animation: 0.7s ease-out 0s 1 slideInFromLeft;
-        margin-left: 25vw;
-        margin-right: 25vw;
-        padding: 30px 30px;
-        background-color: white;
-        border-radius: 15px;
-        margin-bottom: 30px;
-
-    }
-
-    body{
-        background-color: #3584ff;
-    }
-}
-
-@media all and (min-width: 1300px) {
-    #content {
-        z-index: 10;
-        position: relative;
-    }
-}
-
-@media all and (min-width: 1400px) {
-    #content{
-        max-width: 700px;
-        margin-left: auto;
-        margin-right: auto;
-    }
-}
+/*#div_id_image{*/
+/*    display: none;*/
+/*}*/

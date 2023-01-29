@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.urls import reverse
 from django.views.generic import UpdateView
@@ -35,6 +36,18 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
         # We check if the user is trying to edit their own data
         if task.user != self.request.user:
             return redirect('tasks')  # TODO: 404 page
+
+        # complete / not complete
+        if 'key_id' in self.kwargs or 'tc_id' in self.kwargs:
+            if task.complete:
+                task.complete = False
+            else:
+                task.complete = True
+            task.save()
+            if 'tc_id' in self.kwargs:
+                return redirect('notification')
+            return redirect('tasks')
+
         return super().get(request, *args, **kwargs)
 
     def form_valid(self, form):
@@ -67,4 +80,8 @@ class TaskUpdate(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        return reverse('tasks')
+        scrollpos = self.request.COOKIES.get('scrollpos')
+        redirect_url = reverse('tasks')
+        if scrollpos:
+            redirect_url += '?scrollpos=' + str(scrollpos)
+        return redirect_url

@@ -1,4 +1,10 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/user_profile.css' %}" />
+{% endblock %}
 
 {% block title %}
     User {{ user_profile.username }}
@@ -6,18 +12,25 @@
 
 {% block body_content %}
 
-    <div class="media">
-        {% if user_profile.profile.image %}
-            <img class="rounded-circle account-img" src="{{ user_profile.profile.image.url|default_if_none:'/media/profile_pics/default.jpg' }}">
-        {% else %}
-                <img class="rounded-circle account-img" src="/media/profile_pics/default.jpg">
-        {% endif %}
-        <div class="media-body">
-            <h2 class="account-heading">{{ user_profile.username }}</h2>
-            <p class="text-secondary">{{ user_profile.email }}</p>
-            <p class="text-secondary">{{ user_profile.profile.bio }}</p>
-            <a href="{% url 'profile_update' %}">Edit</a>
-
+    <canvas class="background"></canvas>
+    <div class="media-back">
+        <div class="media-content">
+            {% if user.profile.image %}
+                <img class="account-img" src="{{ user_profile.profile.image.url|default_if_none:'/media/profile_pics/default.jpg' }}">
+            {% else %}
+                <img class="account-img" src="/media/profile_pics/default.jpg">
+            {% endif %}
+            <div class="media-text">
+                <h2 class="account-name">{{ user_profile.username }}</h2>
+                <p class="account-email"><i class="fa-solid fa-envelope"></i> {{ user_profile.email }}</p>
+                <h3>Bio</h3>
+                {% if user_profile.profile.bio %}
+                <p class="account-bio"><i class="fa-solid fa-scroll"></i> {{ user_profile.profile.bio }}</p>
+                {% endif %}
+                <h3>Igonii member since</h3>
+                <p class="account-bio"><i class="fa-solid fa-calendar-days"></i> {{ user_profile.date_joined  }}</p>
+                <a class="edit" href="{% url 'profile_update' %}">Edit</a>
+            </div>
         </div>
     </div>
 

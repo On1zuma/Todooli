@@ -10,23 +10,59 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
     <style> @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); </style>
     <link rel="shortcut icon" type="image/png" href="{% static 'img/logo.png' %}"/>
-
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link rel="stylesheet" href="{% static 'css/burger.css' %}" />
     <link rel="stylesheet" href="{% static 'css/button.css' %}" />
+    {% if user.option.dark_mode == True %}
+        <link rel="stylesheet" href="{% static 'css/dark.css' %}" />
+    {% endif %}
+
     {% if messages%}
         <link rel="stylesheet" href="{% static 'css/message.css' %}" />
     {% endif %}
 
-
     <script src="{% static 'js/app.js' %}" defer></script>
+    <script src="{% static 'js/pagepos.js' %}" defer></script>
     {% block css %}{% endblock css %}
 
-    <!-- names: iloni, Inolii, idoka, igora, glomera, Inolii-->
     <title>
         {% filter default:0|add:' -' %}{% block title %}{% endblock title %}
-        {%endfilter %} Inolii
+        {%endfilter %} Igonii
     </title>
+    <!--
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@///////////////////@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@*///@@@@@@@@@@@@@@@@@@@@@///@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@#//@@//%%%%%%%%%%%@@@@(//%////////#@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@/////////////(@@@@///@@@@@@@@////@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@#////@@@@@@@@@@@@///@@@@@#@@@@///@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@//////////@@@@///@@@@///@@@///@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@///%@@@@@@@@///@@@@///@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%///@@@@@@@///@@@@///@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@///@@@@@@@@@@@///@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@///@@@@@@@@@@///@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@//////////////////////&@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@//@@@@@///@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@////@@///@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@///////@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        -->
 </head>
 
 <body>
@@ -42,7 +78,7 @@
             {% endif %}
         </div>
 
-        <div class="toggle">
+        <div class="toggle-with-notif">
             {% if request.user.is_authenticated %}
                 <div>
                     <button onclick="location.href='{% url 'notification' %}'" type="button" class="notificationIcon">
@@ -53,8 +89,11 @@
                     </button>
                 </div>
             {% endif %}
-            <div class="openb"><i class="fa-solid fa-bars"></i></div>
-            <div class="closeb"><i class="fa-solid fa-xmark"></i></div>
+            <div class="toggle">
+
+                <div class="openb"><i class="fa-solid fa-bars"></i></div>
+                <div class="closeb"><i class="fa-solid fa-xmark"></i></div>
+            </div>
         </div>
 
         <ul class="menu nav">
@@ -64,7 +103,7 @@
                 <li><a href="{% url 'tasks' %}">Task</a></li>
                 <li><a href="{% url 'tags' %}">Tag</a></li>
                 <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'option_update' %}">Setting</a></li>
+                <li><a href="{% url 'option_update' %}">Settings</a></li>
                 {% if user.is_staff %}
                     <li><a href="/admin">Admin Dashboard</a></li>
                 {% endif %}
@@ -92,7 +131,6 @@
                 {% for message in messages %}
                     <i class="fas fa-solid fa-check check-{{ message.tags }}"></i>
                     <div class="message">
-
                         <span class="text text-1">
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.INFO %}Info{% endif %}
                             {% if message.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}Success{% endif %}
@@ -112,10 +150,11 @@
     </section>
 {% endif %}
 
-<!-- Ilonii -->
-<section  id="content" title="task-manager">
+<!-- Igonii -->
+<section  id="content" title="Igonii : Task and Deadline Tracker">
     <h1 class="d-none">Task manager</h1>
     {% block body_content %}{% endblock %}
 </section>
+
 </body>
 </html>

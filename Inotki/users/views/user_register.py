@@ -35,7 +35,7 @@ def activate(request, uidb64, token):
 
 
 def activateEmail(request, user, to_email):
-    mail_subject = "Inolii - Activate your user account."
+    mail_subject = "Igonii - Activate your user account."
     message = render_to_string("template_activate_account.html", {
         'user': user.username,
         'domain': get_current_site(request).domain,
@@ -70,7 +70,6 @@ class RegisterView(FormView):
         else:
             messages.error(self.request, f'An error occurred while submitting the form')
             return super().form_invalid(form)
-
 
     def get(self, *args, **kwargs):
         if self.request.user.is_authenticated:

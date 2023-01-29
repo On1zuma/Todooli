@@ -3,8 +3,9 @@
 {% load crispy_forms_tags %}
 
 {% block css %}
-    <script src="{% static 'bootstrap.bundle.min.js' %}"></script>
     <link rel="stylesheet" href="{% static 'bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
 {% endblock %}
 
 {% block title %}
@@ -12,17 +13,31 @@
 {% endblock %}
 
 {% block body_content %}
+    <h2><a href=""><i class="fa-sharp fa-solid fa-gear"></i> <p>Settings</p></a></h2>
+    <h3 class="title">Igonii - Your Personal Task Management Assistant</h3>
+    <p class="paragraph">
+        Igonii offers various settings to aid you in managing your tasks such as showing completed tasks,
+        instant deletion, email notifications, dark mode and private profile.
+        These settings allow you to keep track of progress, easily manage tasks,
+        stay informed and have a secure and private way of managing tasks.
+    </p>
 
+    <h3 class="title">Delete Your Account - A Permanent Action</h3>
+    <p class="paragraph">
+        To delete your account, please click on this link -
+        <a href="{% url 'user_delete' request.user.id %}">delete your account</a>,
+        you will be redirected to another page where you will be prompted to confirm your account deletion.
+    </p>
+
+    <h3 class="title">Manage Your Account Settings</h3>
     <form method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}
         <fieldset class=form-group">
             {{ o_form|crispy  }}
         </fieldset>
         <div class=form-group">
-            <button class="btn" type="submit">Update</button>
+            <button class="blueButton" type="submit">Update</button>
         </div>
     </form>
-
-    <a href="{% url 'user_delete' request.user.id %}">delete your account</a>
 
 {% endblock %}

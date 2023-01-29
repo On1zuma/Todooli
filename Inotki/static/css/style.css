@@ -1,3 +1,51 @@
+@font-face {
+	font-family: Poppins-bold;
+	src: url(../font/Poppins-Bold.ttf);
+}
+
+@font-face {
+	font-family: Poppins-Black;
+	src: url(../font/Poppins-Black.ttf);
+}
+
+@font-face {
+	font-family: Poppins-Regular;
+	src: url(../font/Poppins-Regular.ttf);
+}
+
+@font-face {
+	font-family: Poppins-Thin;
+	src: url(../font/Poppins-Thin.ttf);
+}
+
+@font-face {
+	font-family: Poppins-Light;
+	src: url(../font/Poppins-Light.ttf);
+}
+
+/* dark mode*/
+body{
+	background-color: #f6f6f6;
+}
+
+/* ScrollBar */
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+	border-radius: 30px;
+}
+
+/* Background ScrollBar */
+::-webkit-scrollbar-track {
+	background: rgba(218, 47, 47, 0);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	width: 1px;
+	background: #b2b2b2;
+	border-radius: 5px;
+}
 
 html {
 	scroll-behavior: smooth;
@@ -20,12 +68,13 @@ header{
 	width: 100%;
 	position: sticky;
 	top: 0;
+	z-index: 999;
 }
 
 #navbar{
 	width: 100%;
 	padding: 10px 25px 10px 25px;
-	margin-bottom: 2rem;
+	margin-bottom: 1rem;
 	/* background-color: #04121A; */
 	/* 	background-image: radial-gradient(100% 100% at 100% 0, #4490ff 0, #2F70CC 100%); */
 	background-color: #3584ff;
@@ -44,9 +93,13 @@ header{
 	display: none;
 }
 
+.toggle-with-notif{
+	display: none;
+}
+
 #logo{
 	width: auto;
-	height: 73px;
+	height: 63px;
 }
 
 #logoResponsive{
@@ -70,7 +123,8 @@ header{
 /* nav links */
 .menu li a{
 	color: #f3f3f3;
-	font-family: 'Poppins', sans-serif;
+	font-family: "Poppins-Light", monospace;
+	font-size: 1rem;
 	padding: 10px 15px;
 	margin: 5px 5px;
 	text-decoration : none;
@@ -166,4 +220,11 @@ nav.fill ul li a {
 	55.0% { transform: rotate(0deg); }
 	62.0% { transform: rotate(1deg); }
 	70.0% { transform: rotate(0deg); }
+}
+
+@media all and (max-width: 1300px) {
+	#logo{
+		width: auto;
+		height: 58px;
+	}
 }

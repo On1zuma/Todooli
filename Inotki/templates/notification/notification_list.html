@@ -1,47 +1,65 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+{% endblock %}
 
 {% block title %}
     Notification
 {% endblock %}
 
 {% block body_content %}
-
+    <!-- Search -->
+    <form method="GET" class="search-form">
+        <input placeholder="Search" class="search-field" type="text" name="search-area" value="{{ search_input }}">
+        {% if not search_input %}
+            <button class="btn search-btn" type="submit" value="Search"><i class="fa fa-search"></i></button>
+        {% else %}
+            <button class="btn search-btn" type="reset" onclick="location.href='{% url 'notification' %}'"><i class="fa-solid fa-xmark"></i></button>
+        {% endif %}
+    </form>
 
     <!-- Current task -->
-    <div>
-
-        <h2>Notification</h2>
-
+    <div class="current-task">
+        <h2 class="title-current">Notification</h2>
         {% if tasks_to_do_late %}
-            <h3>TO DO, Late</h3>
-            <ul> <!-- LATE -->
-                {% for task in tasks_to_do_late %}
-                    <li>
-                        {{ task.title }} -
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                    </li>
-
-                {% endfor %}
-            </ul>
+            <h3><i class="fa-solid fa-truck-fast"></i></h3>
+            <!-- LATE -->
+            {% for task in tasks_to_do_late %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'notification_task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                            <small>{{ task.date_to_do }}</small>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
         {% endif %}
 
 
         {% if tasks_to_do_today %}
-            <h3>TO DO, Today</h3>
-            <ul> <!-- TODAY -->
-                {% for task in tasks_to_do_today %}
-
-                    <li>
-                        {{ task.title }} -
-                        <a href="{% url 'task_update' task.id %}">edit</a>
-                    </li>
-                {% endfor %}
-            </ul>
+            <h3><i class="fa-solid fa-truck"></i></h3>
+            <!-- TODAY -->
+            {% for task in tasks_to_do_today %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'notification_task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                            <small>{{ task.date_to_do }}</small>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
         {% endif %}
 
         {% if tasks_to_do_today_count == 0 and tasks_to_do_late_count == 0 %}
             <!-- EMPTY CONDITION -->
-            <ul><li><h3>Nothing to report</h3></li></ul>
+            <p class="no-items">Nothing to report</p>
         {% endif %}
     </div>
 

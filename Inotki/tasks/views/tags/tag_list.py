@@ -14,13 +14,16 @@ class TagList(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        context['tags'] = context['tags'].filter(user=self.request.user)
+        context['tags'] = context['tags'].filter(user=self.request.user).order_by('tag_name')
         context['count'] = context['tags'].filter(user=self.request.user).count
 
         search_input = self.request.GET.get('search-area') or ''
 
         if search_input:
-            context['tags'] = context['tags'].filter(user=self.request.user).filter(tag_name__icontains=search_input)
+            context['tags'] = context['tags']\
+                .filter(user=self.request.user)\
+                .filter(tag_name__icontains=search_input)\
+                .order_by('tag_name')
 
         context['search_input'] = search_input
 

@@ -1,0 +1,70 @@
+{% extends 'main_footer.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block title %}
+    Legal information
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="title-home"></div>
+
+    <div class="margin mb-3">
+        <div class="title-article"><a href="{% url 'home' %}"><p>Contact Us</p></a></div>
+
+        <div class="summary">
+            <ul>
+                <li><a href="">◗ Introduction</a> </li>
+                <li><a href="#title1">◗ Contact Information</a></li>
+                <li><a href="#title2">◗ Business Hours</a></li>
+                <li><a href="#title3">◗ Email Example</a></li>
+                <li><a href="#title4">◗ Response Time</a></li>
+
+            </ul>
+        </div>
+
+        <h3 class="title" id="title1">Introduction</h3>
+        <p class="paragraph">
+            Igonii welcomes any questions, comments, or concerns about our online task management tool and services.
+            To contact us, please use the information provided below.
+        </p>
+
+        <h3 class="title" id="title2">Contact Information</h3>
+        <p class="paragraph">
+            Email: info@Igonii.com
+        </p>
+
+        <h3 class="title" id="title3">Business Hours</h3>
+        <p class="paragraph">
+            Igonii welcomes any questions, comments, or concerns about our online task management tool and services.
+            To contact us, please use the information provided below.
+        </p>
+
+        <h3 class="title" id="title3">Business Hours</h3>
+        <p class="paragraph">
+            Our customer support team is available Monday to Friday, from 9am to 5pm (UTC +1) .
+        </p>
+
+        <h3 class="title" id="title4">Email Example</h3>
+        <p class="paragraph">
+            Subject: Question about Igonii's features <br><br>
+            Dear Igonii Team,<br>
+            I am writing to inquire about the features of your task management tool. <br>
+            Can you please provide me with more information on how I can collaborate with my team members on Igonii?<br>
+            Thank you for your time. <br>
+            Best regards, <br>
+            [Your Name]<br>
+        </p>
+
+        <h3 class="title" id="title5">Response Time</h3>
+        <p class="paragraph">
+            We will make every effort to respond to your inquiry within 24 hours during business hours.
+        </p>
+    </div>
+
+{% endblock %}

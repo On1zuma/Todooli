@@ -1,26 +1,33 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %}
 
 {% block title %}
     Task delete page
 {% endblock %}
 
 {% block body_content %}
-    <a href="{% url 'option_update' %}">go back </a>
+    <h2><a href="{% url 'option_update' %}"><i class="fa-sharp fa-solid fa-gear"></i> <p>Settings</p></a></h2>
+
+    <h3 class="title">Second Thoughts - Retracting Account Deletion Request</h3>
+    <p class="paragraph">After giving it further thought, would you like to retract your request for account deletion and keep your account active? <br>
+        <a href="{% url 'option_update' %}">go back </a>
+    </p>
+    <h3 class="title">Knowing Beforehand - Importance of Backing Up Data before Account Deletion</h3>
+    <p  class="paragraph">
+        Before your account is deleted, none of the data associated with it will be recoverable or retrievable.
+        This includes personal information, documents, and any other data that was stored within the account.
+        Please make sure to back up any important data before proceeding with the deletion of your account.
+    </p>
     <form method="POST">
         {% csrf_token %}
-        {% if user %}
-            <p>Are you sure to delete you account, "{{ user }}"?</p>
-        {% else %}
-            <p>Are you sure to delete you account ?</p>
-        {% endif %}
-        <p>
-            After your account is deleted, none of the data associated with it will be recoverable or retrievable.
-            This includes personal information, documents, and any other data that was stored within the account.
-            Please make sure to back up any important data before proceeding with the deletion of your account.
-        </p>
         <button class="blueButton"
                 type="submit"
-                onclick="return confirm('Are you sure you want to delete your account? ?');">
+                onclick="return confirm('Are you sure you want to delete your account, {{ user }} ?');">
             Delete
         </button>
     </form>

@@ -58,5 +58,4 @@ class OptionUpdateForm(forms.ModelForm):
                   'email_notification',
                   'dark_mode',
                   'private_profile',
-                  'disable_tag'
                   ]

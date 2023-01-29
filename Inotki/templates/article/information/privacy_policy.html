@@ -1,0 +1,87 @@
+{% extends 'main_footer.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block title %}
+    Legal information
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="title-home"></div>
+
+    <div class="margin mb-3">
+        <div class="title-article"><a href="{% url 'home' %}"><p>Privacy Policy</p></a></div>
+
+        <div class="summary">
+            <ul>
+                <li><a href="">◗ Introduction</a> </li>
+                <li><a href="#title1">◗ Types of Data Collected</a></li>
+                <li><a href="#title2">◗ Use of Data</a></li>
+                <li><a href="#title3">◗ Sharing of Data</a></li>
+                <li><a href="#title4">◗ Data Security</a></li>
+                <li><a href="#title5">◗ Data Access and Correction</a></li>
+                <li><a href="#title6">◗ Changes to this Privacy Policy</a></li>
+                <li><a href="#title7">◗ Contact Us</a></li>
+            </ul>
+        </div>
+
+        <h3 class="title" id="title1">Introduction</h3>
+        <p class="paragraph">
+            This Privacy Policy outlines how Igonii collects, uses, and protects the personal data of our users.
+            By using our task management app, you consent to the collection and use of
+            your personal data as described in this policy.
+        </p>
+
+        <h3 class="title" id="title2">Types of Data Collected</h3>
+        <p class="paragraph">
+            Igonii collects personal data such as names, email addresses, and task information.
+            We may also collect device information and IP addresses for the purposes
+            of providing and improving our services.
+        </p>
+
+        <h3 class="title" id="title3">Use of Data</h3>
+        <p class="paragraph">
+            Igonii uses the personal data we collect to provide our services, such as creating and managing tasks,
+            and to improve the user experience. We may also use data for marketing and analytics purposes.
+        </p>
+
+        <h3 class="title" id="title4">Sharing of Data</h3>
+        <p class="paragraph">
+            Igonii may share personal data with third parties in order to provide our services,
+            comply with legal obligations, or in the event of a merger or acquisition. However,
+            we take steps to ensure that any third parties are bound by appropriate privacy and security obligations.
+        </p>
+
+        <h3 class="title" id="title5">Data Security</h3>
+        <p class="paragraph">
+            Igonii implements appropriate security measures to protect the personal data of our users
+            from unauthorized access or breaches. We regularly review and update these measures
+            to ensure that they remain effective.
+        </p>
+
+        <h3 class="title" id="title6">Data Access and Correction</h3>
+        <p class="paragraph">
+            Igonii provides users with the ability to access, correct, and delete their personal data.
+            Additionally, we allow users to request a copy of their personal data in a machine-readable format.
+        </p>
+
+        <h3 class="title" id="title7">Changes to this Privacy Policy</h3>
+        <p class="paragraph">
+            Igonii reserves the right to update this Privacy Policy at any time.
+            We will notify users of any changes by updating the "last updated" date at the bottom of this policy.
+        </p>
+
+        <h3 class="title" id="title8">Contact Us</h3>
+        <p class="paragraph">
+            If you have any questions or concerns about our Privacy Policy or the personal data we collect,
+            please contact us using the provided contact information.
+            <a href="{% url 'contact-us' %}">Contact us</a>.
+        </p>
+    </div>
+
+{% endblock %}

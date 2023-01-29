@@ -1,32 +1,51 @@
 {% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+{% endblock %}
 
 {% block title %}
     Tag list
 {% endblock %}
 
 {% block body_content %}
-    <h1>Tags</h1>
-
-    <form method="GET" action="">
-        <input type="text" name="search-area" value="{{ search_input }}">
-        <input type="submit" value="Search">
+    <!-- Search -->
+    <form method="GET" class="search-form">
+        <input placeholder="Search" class="search-field" type="text" name="search-area" value="{{ search_input }}">
+        {% if not search_input %}
+            <button class="btn search-btn" type="submit" value="Search"><i class="fa fa-search"></i></button>
+        {% else %}
+            <button class="btn search-btn" type="reset" onclick="location.href='{% url 'tags' %}'"><i class="fa-solid fa-xmark"></i></button>
+        {% endif %}
     </form>
-    <a href="{% url 'tags' %}">x</a>
 
-    <br><br>
-    <a href="{% url 'tag_create' %}">Create a tag</a>
+    <!-- Nav -->
+    <button class="button-create" onclick="location.href='{% url 'tag_create' %}'">
+        <i class="fa-solid fa-square-plus"></i>
+    </button>
 
-    <br>
-    {% for tag in tags %}
-        <ul>
-            <li>
-                {{ tag.tag_name }} -
-                <a href="{% url 'tag_update' tag.id %}">edit</a>
-                <a href="{% url 'tag_delete' tag.id %}">delete</a>
-            </li>
-        </ul>
-    {% empty %}
-        <ul><li><h3>No items yet</h3></li></ul>
-    {% endfor %}
+    <div class="create-button-mobile">
+        <button  onclick="location.href='{% url 'tag_create' %}'">
+            <i class="fa-regular fa-plus"></i>
+        </button>
+    </div>
 
+    <div class="current-task">
+        <h2 class="title-current">Tags </h2>
+
+        {% for tag in tags %}
+            <div class="task">
+                <a class="edit" href="{% url 'tag_update' tag.id %}">
+                    <div class="with-date">
+                        <p class="task-title">{{ tag.tag_name }}</p>
+                    </div>
+                </a>
+                <a class="blue-icon" href="{% url 'tag_delete' tag.id %}"><i class="fa-solid fa-trash"></i></a>
+            </div>
+        {% empty %}
+            <p class="no-items">No tags yet</p>
+        {% endfor %}
+    </div>
 {% endblock %}

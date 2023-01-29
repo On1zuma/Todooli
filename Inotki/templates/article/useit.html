@@ -1,0 +1,223 @@
+{% extends 'main_footer.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/form.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block title %}
+    Article
+{% endblock %}
+
+{% block body_content %}
+
+    <div class="title-home"></div>
+
+    <div class="margin mb-3">
+        <div class="title-article"><a href="{% url 'home' %}"><p>Use it !</p></a></div>
+
+        <div class="summary">
+            <ul>
+                <li><a href="">◗ The Benefits of Using a Task Manager: Increased Productivity and Organization</a> </li>
+                <li><a href="#title1">◗ Collaboration and Task Sharing: How a Task Manager Can Improve Teamwork</a></li>
+                <li><a href="#title2">◗ Integration and Customization: How a Task Manager Can Fit Your Workflow and Needs</a></li>
+                <li><a href="#title3">◗ Step-by-Step Guide to Managing Tasks with Igonii</a></li>
+                <li><a href="#title4">◗ Efficiently Organizing with Igonii: Creating and Updating Tags</a></li>
+                <li><a href="#title5">◗ Personalizing Your Igonii Profile: A Guide to Updating</a></li>
+                <li><a href="#title6">◗ Diving into the Settings Section: A Guide to Igonii Configuration</a></li>
+                <li><a href="#title7">◗ Staying Informed with Igonii: Understanding the Notification Section</a></li>
+                <li><a href="#title8">◗ Efficiently Filter Your Tasks Using Tags in Igonii</a></li>
+            </ul>
+        </div>
+
+        <h3 class="title" id="title1">The Benefits of Using a Task Manager: Increased Productivity and Organization</h3>
+        <p class="paragraph">
+            Creating effective tasks is the key to staying organized and productive. To set up a good task,
+            it's important to make sure that it is clear and actionable. A clear task should have a specific and
+            measurable outcome, and should be written in a way that is easy to understand. An actionable
+            task is one that can be completed with the resources and information available.
+            To make sure your tasks are clear and actionable, make sure to define the objective,
+            the outcome and the deadline for the task.
+        </p>
+
+        <h3 class="title" id="title2">Collaboration and Task Sharing: How a Task Manager Can Improve Teamwork</h3>
+        <p class="paragraph">
+            With so many tasks to complete, it's important to prioritize them in order to focus on the most
+            important tasks first. One way to prioritize tasks is to use the Eisenhower Matrix, which categorizes
+            tasks based on their urgency and importance. Tasks that are both urgent and important should be tackled
+            first, followed by important but not urgent tasks, then urgent but not important tasks, and finally,
+            tasks that are neither urgent nor important. Another way to prioritize tasks is to use the ABC method,
+            where A tasks are the most important, B tasks are important but less so than A tasks, and C tasks are
+            less important.
+        </p>
+
+        <h3 class="title" id="title3">Integration and Customization: How a Task Manager Can Fit Your Workflow and Needs</h3>
+        <p class="paragraph">
+            Once you have set up your tasks and prioritized them, it's important to stay on track and monitor
+            your progress. One way to do this is by breaking tasks down into smaller, manageable steps and setting
+            deadlines for each step. Additionally, it's important to stay accountable for your progress by regularly
+            reviewing your tasks and checking off completed items. A Task manager such as Igonii can be helpful for
+            monitoring progress and staying accountable, as it allows users to track their progress in real-time and
+            set reminders for tasks.
+        </p>
+
+        <h3 class="title" id="title4">Step-by-Step Guide to Managing Tasks with Igonii</h3>
+        <p class="paragraph">
+            This section provides a comprehensive guide on how to effectively manage tasks using Igonii. From creating
+            new tasks to updating existing ones, this guide covers all the necessary steps to help
+            you stay organized and on top of your to-do list.
+        </p>
+        <details>
+            <summary>> Steps</summary>
+            <div class="steps">
+                <small>Step 1: Navigate to the Task Section</small>
+                <img src="/static/img/steps/task_nav.png" alt="navigate to the tasks">
+
+                <small>Step 2: Press to the creation button</small>
+                <img src="/static/img/steps/task_creation.png" alt="button to create task">
+
+                <small>Step 3: Add Task Information (note that only the is Title Required)</small>
+                <img src="/static/img/steps/task_creation_form.png" alt="tasks form">
+
+                <small>Note: You can also use that button to quickly create tasks in mobile format</small>
+                <img src="/static/img/steps/task_creation_mobile.png" alt="button to create task">
+            </div>
+        </details>
+
+        <h3 class="title" id="title5">Efficiently Organizing with Igonii: Creating and Updating Tags</h3>
+        <p class="paragraph">
+            This section provides a comprehensive guide on how to effectively create and manage tags using Igonii,
+            making it easier for you to categorize and organize your tasks. With simple steps and clear instructions,
+            this guide will show you how to maximize the use of tags to stay organized and on top of your tasks.
+        </p>
+        <details>
+            <summary>> Steps</summary>
+            <div class="steps">
+                <small>Step 1: Navigate to the Tag Section</small>
+                <img src="/static/img/steps/tag_nav.png" alt="navigate to the tags">
+
+                <small>Step 2: Press to the creation button</small>
+                <img src="/static/img/steps/tag_creation.png" alt="button to create tag">
+
+                <small>Step 3: Add Tag Information</small>
+                <img src="/static/img/steps/tag_creation_form.png" alt="tag form">
+
+                <small>Note: You can also as tasks use that button to quickly create tasks in mobile format</small>
+                <img src="/static/img/steps/task_creation_mobile.png" alt="button to create tag">
+            </div>
+        </details>
+
+        <h3 class="title" id="title7">Personalizing Your Igonii Profile: A Guide to Updating</h3>
+        <p class="paragraph">
+            This section offers a step-by-step guide to updating your Igonii profile to better reflect your personal
+            preferences and style. Whether you want to change your profile picture, add a bio, or update your personal
+            information, this guide will help you customize your profile to make the most of your Igonii experience.
+            Get ready to personalize and elevate your profile with ease!
+        </p>
+        <details>
+            <summary>> Steps</summary>
+            <div class="steps">
+                <small>Step 1: Navigate to the Profile Section</small>
+                <img src="/static/img/steps/profile_nav.png" alt="navigate to your profile">
+
+                <small>Step 2: Press to the edit button</small>
+                <img src="/static/img/steps/profile_edit.png" alt="edit button">
+
+                <small>Step 3: Enter Your Information (Note: Only Fields Marked with (*) are Required)</small>
+                <img src="/static/img/steps/profile_creation_form.png" alt="Profile form">
+            </div>
+        </details>
+
+        <h3 class="title" id="title8">Diving into the Settings Section: A Guide to Igonii Configuration</h3>
+        <p class="paragraph">
+            This section provides a comprehensive guide to the various settings available in Igonii, allowing you
+            to configure the platform to meet your needs. From the option to display completed tasks to instant
+            deletion, email notifications, dark mode, and private profile, this guide will help you make the most of the
+            Igonii platform by showing you how to adjust each setting to your preferences. Get ready to dive into
+            the world of Igonii configuration!
+        </p>
+        <details>
+            <summary>> Steps</summary>
+            <div class="steps">
+                <small>Step 1: Navigate to the Settings Section</small>
+                <img src="/static/img/steps/settings_nav.png" alt="navigate to the settings">
+
+                <small>Step 2: Update your settings (Note: You can also delete your profile.)</small>
+                <img src="/static/img/steps/settings_creation_form.png" alt="update the settings">
+
+                <p class="paragraph">
+                    - Show completed tasks: Configure the platform to display or hide completed tasks. <br>
+                    - Instant deletion: Enable or disable the instant deletion feature to quickly delete tasks.<br>
+                    - Email notifications: Receive email notifications for important updates and task reminders.<br>
+                    - Dark mode: Switch to dark mode for a more comfortable viewing experience, especially in low light conditions.<br>
+                    - Private profile: Keep your profile information private by enabling the private profile setting.<br>
+                </p>
+            </div>
+        </details>
+
+        <h3 class="title" id="title9">Staying Informed with Igonii: Understanding the Notification Section</h3>
+        <p class="paragraph">
+            This section provides a comprehensive guide to the notification section in Igonii,
+            helping you stay informed and on top of your tasks. With clear instructions and a detailed explanation of
+            the various notification options, this guide will show you how to configure the platform to meet
+            your needs and ensure you never miss a beat. Get ready to stay informed with Igonii!
+        </p>
+        <details>
+            <summary>> Steps</summary>
+            <div class="steps">
+                <small>Step 1: Navigate to the Notification Section</small>
+                <img src="/static/img/steps/notification_nav.png" alt="navigate to the notification section">
+
+                <small>Step 2: Check your notification (Note that faster is the truck, later you are)</small>
+                <img src="/static/img/steps/notification_creation_form.png" alt="notification">
+            </div>
+        </details>
+
+        <h3 class="title" id="title10">Efficiently Filter Your Tasks Using Tags in Igonii</h3>
+        <p class="paragraph">
+            This section provides a step-by-step guide to filtering your tasks in Igonii using tags.
+            With clear instructions and examples, this guide will show you how to use tags to efficiently categorize
+            and manage your tasks, making it easier to stay organized and on top of your to-do list.
+            Get ready to discover the power of tag-based filtering in Igonii!
+        </p>
+        <details>
+            <summary>> Steps</summary>
+            <div class="steps">
+                <small>Step 1: Select you filter</small>
+                <img src="/static/img/steps/filter.png" alt="select filter">
+
+                <small>Step 2: Remove the filter by using the remove button</small>
+                <img src="/static/img/steps/filter_remove.png" alt="remove filter">
+            </div>
+        </details>
+
+    </div>
+
+    <div class="article-zone">
+        <div class="article margin mb-3">
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Good Task ?</h3>
+                    <p>How to set up a good Task ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-task' %}'">Read more</button>
+                </div>
+            </div>
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Productivity ?</h3>
+                    <p>3 ways to improve your productivity ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-productivity' %}'">Read more</button>
+                </div>
+            </div>
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Use it !</h3>
+                    <p>How to use Igonii ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-use-it' %}'">Read more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
