@@ -49,6 +49,46 @@ h2 a:hover {
     margin-top: 1rem;
 }
 
+.margin img {
+    width: 75%;
+    height: auto;
+    display: block;
+    margin: 1rem auto 3rem;
+}
+
+summary{
+    margin-top: -2rem;
+    color: #4490ff;
+    font: 1rem "Poppins-Light";
+    margin-bottom: .7rem;
+    cursor: pointer;
+}
+summary:hover{
+    color: rgba(68, 144, 255, 0.73);
+}
+
+.steps{
+    background-color: #ececec;
+    padding: 1rem;
+    border-radius: 15px;
+}
+
+.margin small {
+    font: 1rem "Poppins-Light";
+    margin-right: 100%;
+    white-space: nowrap;
+    color: #808080;
+}
+
+@media all and (max-width: 991px) {
+    .margin small {
+        white-space: normal;
+    }
+    .margin img {
+        width: 95%;
+    }
+}
+
 form {
     font: .8rem "Poppins-Light";
     display: flex;
