@@ -1,6 +1,6 @@
 
 //home effect
-const text1 = "Igonii <i class='fa-solid fa-feather-pointed'></i>, Revolutionize Your Management,";
+const text1 = "Todooli <i class='fa-solid fa-feather-pointed'></i>, Revolutionize Your Management,";
 const text2 = "Achieve your goals! <i class='fa-solid fa-dove'></i>";
 
 // Get the <p> and <strong> elements
