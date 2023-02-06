@@ -33,7 +33,7 @@ The following packages are included:
 - django-dotenv
 - six
 
-To install these packages, simply use the following command:
+To install these packages, simply run the following command in the correct directory:
 
     pip install -r requirements.txt
 
@@ -74,4 +74,4 @@ For a comprehensive guide on using Todooli, please follow these links:
 
 Todooli's user interface and design were carefully crafted to provide a seamless and intuitive experience for users. Our team used Figma, a popular design platform, to create wireframes and models that were used to inform the design and styling of the website. This allowed us to create a visually appealing and user-friendly interface, making task management simple and enjoyable for our users.
 
-**Figma link (Experimental Area for Different Styles) : https://www.figma.com/file/b8RfYMbwV21XCVWQGAJTM6/Ilonii?node-id=0%3A1&t=cl5h4CJSBJ7ocoXh-1**
+**Figma link (Experimental Area for Different Styles) :[ Figma mockup ](https://www.figma.com/file/b8RfYMbwV21XCVWQGAJTM6/Ilonii?node-id=0%3A1&t=cl5h4CJSBJ7ocoXh-1)**
