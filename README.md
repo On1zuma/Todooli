@@ -80,7 +80,7 @@ The Todooli project was created with the goal of providing individuals and small
 
 However, we also had a strong emphasis on creating a secure and safe platform for users. Our app ensures that each user only has access to their own data and data shared with them, making it a reliable tool for managing tasks and collaborating with team members.
 
-## Usefull link
+## Usefull links
 
 For a comprehensive guide on using Todooli, please follow these link:
 https://on1zuma.pythonanywhere.com/article/use-it/
