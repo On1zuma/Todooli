@@ -82,7 +82,8 @@ However, we also had a strong emphasis on creating a secure and safe platform fo
 
 ## Usefull link
 
-For a comprehensive guide on using Todooli, please follow these links:
+For a comprehensive guide on using Todooli, please follow these link:
+https://on1zuma.pythonanywhere.com/article/use-it/
 
 - Home Page: https://on1zuma.pythonanywhere.com
 - My Profile: https://on1zuma.pythonanywhere.com/user/profile/
