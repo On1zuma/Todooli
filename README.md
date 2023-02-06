@@ -1,5 +1,22 @@
 # Todooli
 
+## Summary
+
+1.  Database Schema Mapping
+2.  About Todooli - The Online Task Management Tool
+3.  Features
+4.  Dependency Packages Installation Guide & Database Configuration Guide
+
+- Packages
+- Database Configuration
+
+5.  Purpose and Initial Goal
+6.  Achieving a Secure and User-Friendly Task Management Experience with Todooli
+7.  Usefull link
+8.  Design and User Experience
+9.  Example User Account
+10. GitHub
+
 ## Database Schema Mapping
 
 ![uml](https://user-images.githubusercontent.com/96482486/215269050-591ee74d-9ca2-4e19-9299-e17e0bed89e0.png)
@@ -36,6 +53,8 @@ The following packages are included:
 To install these packages, simply run the following command in the correct directory:
 
     pip install -r requirements.txt
+
+To know, Todooli is using a custom Bootstrap
 
 ### Database Configuration
 
@@ -75,3 +94,12 @@ For a comprehensive guide on using Todooli, please follow these links:
 Todooli's user interface and design were carefully crafted to provide a seamless and intuitive experience for users. Our team used Figma, a popular design platform, to create wireframes and models that were used to inform the design and styling of the website. This allowed us to create a visually appealing and user-friendly interface, making task management simple and enjoyable for our users.
 
 **Figma link (Experimental Area for Different Styles) :[ Figma mockup ](https://www.figma.com/file/b8RfYMbwV21XCVWQGAJTM6/Ilonii?node-id=0%3A1&t=cl5h4CJSBJ7ocoXh-1)**
+
+### Example User Account
+
+- Username : Moli
+- Password : http://127.0.0.1:8000/user/register/
+
+## GitHub
+
+**GitHub link :[ GitHub ](https://github.com/On1zuma/Todooli)**
