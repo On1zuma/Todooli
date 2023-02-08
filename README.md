@@ -82,6 +82,8 @@ However, we also had a strong emphasis on creating a secure and safe platform fo
 
 One of the challenges with using profile images in the Todooli app is ensuring the images are properly formatted and sized. To solve this issue, Todooli has implemented image validation checks to ensure that only images of the correct format are uploaded. If a user updates their profile image, the previous image will be deleted to ensure efficient use of storage space. Todooli also resizes the images to ensure that they are optimized for display on the app. These steps help to ensure a smooth and seamless experience for users when uploading and updating their profile images.
 
+Another challenge faced by Todooli is ensuring the app is responsive and adapts to different screen sizes and devices. This is important to provide a consistent and optimal user experience for all users, regardless of the device they are using. To solve this issue, Todooli has implemented a responsive design approach, which uses flexible layouts, images, and CSS media queries to ensure the app is compatible with different screen sizes and devices. This helps to provide an enjoyable and seamless experience for users when accessing and using the Todooli app, regardless of their device or screen size.
+
 ## Usefull links
 
 For a comprehensive guide on using Todooli, please follow these link:
