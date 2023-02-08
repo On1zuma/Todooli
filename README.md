@@ -80,6 +80,8 @@ The Todooli project was created with the goal of providing individuals and small
 
 However, we also had a strong emphasis on creating a secure and safe platform for users. Our app ensures that each user only has access to their own data and data shared with them, making it a reliable tool for managing tasks and collaborating with team members.
 
+One of the challenges with using profile images in the Todooli app is ensuring the images are properly formatted and sized. To solve this issue, Todooli has implemented image validation checks to ensure that only images of the correct format are uploaded. If a user updates their profile image, the previous image will be deleted to ensure efficient use of storage space. Todooli also resizes the images to ensure that they are optimized for display on the app. These steps help to ensure a smooth and seamless experience for users when uploading and updating their profile images.
+
 ## Usefull links
 
 For a comprehensive guide on using Todooli, please follow these link:
