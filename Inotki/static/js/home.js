@@ -1,5 +1,5 @@
 
-//home effect
+//home effect, text typing
 const text1 = "Todooli <i class='fa-solid fa-feather-pointed'></i>, Revolutionize Your Management,";
 const text2 = "Achieve your goals! <i class='fa-solid fa-dove'></i>";
 

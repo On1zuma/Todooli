@@ -14,7 +14,7 @@
 {% endblock %}
 
 {% block body_content %}
-    <h2><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i> <p>{{ request.user.username }}</p></a></h2>
+    <h2><a href="{% url 'profile' %}"><i class="fa-solid fa-arrow-left"></i> <p>{{ request.user.username }}</p></a></h2>
 
     <form class="form-container" method="POST" action="" enctype="multipart/form-data">
         {% csrf_token %}

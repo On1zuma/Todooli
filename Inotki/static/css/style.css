@@ -161,6 +161,10 @@ nav.fill ul li a {
 	width: 35%;
 }
 
+.menu li a.active:after {
+	width: 35%;
+}
+
 /* CONTENT  */
 #content{
 	margin-left: 1.5rem;

@@ -98,14 +98,13 @@
 
         <ul class="menu nav">
             <img src="/static/img/logo.png" id="logoResponsive" alt="logo">
-            <li><a href="{% url 'home' %}">Home</a></li>
             {% if request.user.is_authenticated %}
-                <li><a href="{% url 'tasks' %}">Task</a></li>
-                <li><a href="{% url 'tags' %}">Tag</a></li>
-                <li><a href="{% url 'profile' %}">Profile</a></li>
-                <li><a href="{% url 'option_update' %}">Settings</a></li>
+                <li><a href="{% url 'tasks' %}" class="nav-link">Task</a></li>
+                <li><a href="{% url 'tags' %}" class="nav-link">Tag</a></li>
+                <li><a href="{% url 'profile' %}" class="nav-link">Profile</a></li>
+                <li><a href="{% url 'option_update' %}" class="nav-link">Settings</a></li>
                 {% if user.is_staff %}
-                    <li><a href="/admin">Admin Dashboard</a></li>
+                    <li><a href="/admin" class="nav-link">Admin Dashboard</a></li>
                 {% endif %}
                 <li class="mobileFormatNotifLi">
                     <button onclick="location.href='{% url 'notification' %}'" type="button" class="notificationIcon">
@@ -117,7 +116,8 @@
                 </li>
                 <li><button class="button3D" onclick="location.href='{% url 'logout' %}'">Log out</button></li>
             {% else %}
-                <li><a href="{% url 'login' %}">Log in</a></li>
+                <li><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+                <li><a href="{% url 'login' %}" class="nav-link">Log in</a></li>
                 <li><button class="button3D" onclick="location.href='{% url 'register' %}'">Register</button></li>
             {% endif %}
         </ul>
