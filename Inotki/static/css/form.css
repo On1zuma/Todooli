@@ -126,7 +126,7 @@ form label{
     letter-spacing: .07em;
     margin-bottom: 1rem;
     width: 100%;
-    text-align: left; /* center aligning the text within the paragraph */
+    text-align: left;
 }
 
 .paragraph a{
@@ -144,3 +144,13 @@ form label{
 /*#div_id_image{*/
 /*    display: none;*/
 /*}*/
+textarea {
+    font: .9rem "Poppins-Light";
+}
+input {
+    font: .9rem "Poppins-Light";
+}
+
+option{
+    font: .9rem "Poppins-Light";
+}

@@ -50,10 +50,41 @@ if(toast){
     });
 }
 
-// random tag color
+// Random tag color
 var buttons = document.querySelectorAll('.tag-button');
 var colors = ['#498ae8', '#ce99bf','#2F2FA2', '#ff698b' ,'#184bbd'];
 
 for(var i = 0; i < buttons.length; i++) {
     buttons[i].style.backgroundColor = colors[i % colors.length];
 }
+
+// Nav link
+// Get the current URL path
+var currentPath = window.location.pathname;
+// Get all the navbar links
+var navLinks = document.querySelectorAll('.nav-link');
+
+// Loop through each navbar link
+navLinks.forEach(function(navLink) {
+    // Get the href attribute of the link
+    var linkHref = navLink.getAttribute('href');
+    // If the href attribute matches the current URL path
+    if (linkHref === currentPath) {
+        // Add the 'active' class to the link
+        navLink.classList.add('active');
+
+        // Disable the link and remove cursor
+        navLink.style.pointerEvents = 'none';
+        navLink.style.cursor = 'none';
+    }
+});
+
+var createButtonMobile = document.querySelector('.create-button-mobile');
+
+window.addEventListener('scroll', function() {
+    if (window.scrollY > 200) {
+        createButtonMobile.classList.remove('hidden');
+    } else {
+        createButtonMobile.classList.add('hidden');
+    }
+});

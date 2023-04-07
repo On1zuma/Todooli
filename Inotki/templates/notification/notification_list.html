@@ -25,7 +25,7 @@
     <div class="current-task">
         <h2 class="title-current">Notification</h2>
         {% if tasks_to_do_late %}
-            <h3><i class="fa-solid fa-truck-fast"></i></h3>
+            <h3 class="alert"><i class="fa-solid fa-truck-fast "></i> Behind Schedule? No Problem - Let's Get to Work!</h3>
             <!-- LATE -->
             {% for task in tasks_to_do_late %}
                 <div class="task">
@@ -42,7 +42,7 @@
 
 
         {% if tasks_to_do_today %}
-            <h3><i class="fa-solid fa-truck"></i></h3>
+            <h3><i class="fa-solid fa-truck"></i> It's time to slay today's to-dos!</h3>
             <!-- TODAY -->
             {% for task in tasks_to_do_today %}
                 <div class="task">
