@@ -25,21 +25,26 @@
 /* hero */
 .title-home{
     cursor: default;
-    background-image: url('/static/img/herom.jpeg');
-    padding-top: 7%;
-    padding-bottom: 7%;
+    background: linear-gradient(#3584ff, #77b8d3);
+    padding-top: 5%;
+    padding-bottom: 5%;
     margin-top: -1rem;
     background-size: cover;
     margin-bottom: 3rem;
+    border-radius: 0 0 5rem 5rem;
 }
+
+body{
+    background-color: rgba(128, 128, 128, 0.16);
+}
+
 
 .title-top {
     padding: 7px;
-    background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #4490ff 100%);
     color: white;
     font-family: "Poppins-Light", monospace;
-    font-size: 1.7rem;
-    font-weight: 300;
+    font-size: 1.8rem;
+    font-weight: 900;
     letter-spacing: .07em;
     margin: 7rem 0;
     text-align: center;
