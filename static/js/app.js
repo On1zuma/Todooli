@@ -82,9 +82,9 @@ navLinks.forEach(function(navLink) {
 var createButtonMobile = document.querySelector('.create-button-mobile');
 
 window.addEventListener('scroll', function() {
-    if (window.scrollY > 200) {
+    if (window.scrollY > 200 && createButtonMobile) {
         createButtonMobile.classList.remove('hidden');
-    } else {
+    } else if(createButtonMobile){
         createButtonMobile.classList.add('hidden');
     }
 });

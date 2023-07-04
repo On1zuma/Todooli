@@ -1,0 +1,179 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/list.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/content_formatting.css' %}" />
+{% endblock %}
+
+{% block title %}
+    Task list
+{% endblock %}
+
+{% block body_content %}
+
+    <!-- Search -->
+    <form method="GET" class="search-form">
+        <input placeholder="Search" class="search-field" type="text" name="search-area" value="{{ search_input }}">
+        {% if not search_input %}
+            <button class="btn search-btn" type="submit" value="Search"><i class="fa fa-search"></i></button>
+        {% else %}
+            <button class="btn search-btn" type="reset" onclick="location.href='{% url 'tasks' %}'">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        {% endif %}
+    </form>
+
+    <!-- Tags -->
+    <div class="tags">
+        {% for tag in tag_list %}
+
+            <form method="GET">
+                <li>
+                    <input placeholder="{{ tag.tag_name }}" class="search-field" type="text" name="tag-area" value="{{ tag.tag_name }}" style="display: none">
+                    <button class="tag-button" type="submit" value="Search"><p class="tag-name">{{ tag.tag_name }}</p></button>
+                </li>
+            </form>
+        {% endfor %}
+    </div>
+    {% if tag_input %}
+        <button class="tag-button-reset" type="reset" onclick="location.href='{% url 'tasks' %}'">
+            <div class="tag-reset">
+                <i class="fa-solid fa-xmark"></i><p> Remove filtering with the <span class="maj">{{ tag_input }}</span> tag</p>
+            </div>
+        </button>
+    {% endif %}
+
+    <!-- Nav -->
+    <button class="button-create" onclick="location.href='{% url 'task_create' %}'">
+        <i class="fa-solid fa-file-circle-plus"></i>
+    </button>
+
+    <div class="create-button-mobile hidden">
+        <button  onclick="location.href='{% url 'task_create' %}'">
+            <i class="fa-regular fa-plus"></i>
+        </button>
+    </div>
+
+    <!-- Current task -->
+    <div class="current-task">
+        <h2 class="title-current">Current task </h2>
+        {% if admin %}
+            <div> <!-- Admin task -->
+                {% for task in tasks_not_completed %}
+                    {% if admin %}
+                        {{ task.user }} -
+                        {{ task.creation_date }}
+                    {% endif %}
+                    <div class="task alert-task">
+                        <a class="alert-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                        <a class="edit" href="{% url 'task_update' task.id %}">
+                            <div class="with-date">
+                                <p class="task-title">{{ task.user }} - {{ task.title }}</p>
+                                <small>{{ task.date_to_do }}</small>
+                            </div>
+                        </a>
+                        <a class="alert-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+
+
+        {% if tasks_to_do_late %}
+            <h3 class="alert"><i class="fa-sharp fa-solid fa-clock"></i> Late</h3>
+            <!-- LATE -->
+            {% for task in tasks_to_do_late %}
+                <div class="task alert-task">
+                    <a class="alert-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                            <small>{{ task.date_to_do }}</small>
+                        </div>
+                    </a>
+                    <a class="alert-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+        {% if tasks_to_do_today %}
+            <h3><i class="fa-solid fa-calendar-week"></i> Today</h3>
+            <!-- TODAY -->
+            {% for task in tasks_to_do_today %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                            <small>{{ task.date_to_do }}</small>
+                        </div>
+                    </a>
+                    <a class="blue-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+
+        {% if tasks_to_do_next_weeks %}
+            <h3><i class="fa-solid fa-paper-plane"></i> Coming</h3>
+            <!-- NEXT WEEKS -->
+            {% for task in tasks_to_do_next_weeks %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit" href="{% url 'task_update' task.id %}">
+                        <div class="with-date">
+                            <p class="task-title">{{ task.title }}</p>
+                            <small>{{ task.date_to_do }}</small>
+                        </div>
+                    </a>
+                    <a class="blue-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if tasks_not_completed_no_date %}
+            <h3><i class="fa-solid fa-mug-hot"></i> No date</h3>
+            <!-- NO DATE -->
+            {% for task in tasks_not_completed_no_date %}
+                <div class="task">
+                    <a class="blue-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square"></i></a>
+                    <a class="edit-n" href="{% url 'task_update' task.id %}"><p class="task-title">{{ task.title }}</p></a>
+                    <a class="blue-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% for task in tasks_to_do %}
+        {% empty %}
+            <!-- EMPTY CONDITION -->
+            <p class="no-items">No reminders</p>
+        {% endfor %}
+    </div>
+
+    {% if user.option.show_completed_task == True %}
+        <!-- Completed task -->
+        <div class="completed-task">
+            <h2 class="title-completed">Completed task </h2>
+            <!-- COMPLETED TASK -->
+            {% for task in tasks_completed %}
+                {% if admin %}
+                    {{ task.user }} -
+                    {{ task.creation_date }}
+                {% endif %}
+                <div class="task-completed">
+                    <a class="dark-icon" href="{% url 'task_completed' task.id user.id %}"><i class="fa-regular fa-square-check"></i></a>
+
+                    <a class="edit-completed" href="{% url 'task_update' task.id %}"><p class="task-title">
+                        {{ task.title }}
+                    </p></a>
+                    <a class="dark-icon" href="{% url 'task_delete' task.id %}"><i class="fa-solid fa-trash"></i></a>
+                </div>
+
+            {% empty %}
+                <p class="no-items">Nothing to report</p>
+            {% endfor %}
+        </div>
+    {% endif %}
+{% endblock %}
