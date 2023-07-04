@@ -25,13 +25,14 @@
 /* hero */
 .title-home{
     cursor: default;
-    background: linear-gradient(#3584ff, #77b8d3);
+    background: #3584ff;
     padding-top: 5%;
     padding-bottom: 5%;
     margin-top: -1rem;
     background-size: cover;
     margin-bottom: 3rem;
-    border-radius: 0 0 5rem 5rem;
+    text-align: center;
+    /*border-radius: 0 0 0rem 0rem;*/
 }
 
 body{
@@ -42,13 +43,33 @@ body{
 .title-top {
     padding: 7px;
     color: white;
-    font-family: "Poppins-Light", monospace;
+    font-family: "Poppins-Bold", monospace;
     font-size: 1.8rem;
-    font-weight: 900;
+    font-weight: 1000;
     letter-spacing: .07em;
-    margin: 7rem 0;
+    margin: 7rem 0rem 1rem 0;
     text-align: center;
 }
+
+.learn-more {
+    padding: 7px 15px;
+    color: white;
+    font-family: "Poppins-Regular", monospace;
+    font-size: 1rem;
+    font-weight: 800;
+    letter-spacing: .07em;
+    margin: 0rem auto 5rem auto;
+    display: inline-block;
+    text-align: center;
+    border: 2px solid white;
+    border-radius: 10px;
+}
+
+.learn-more:hover {
+    background-color: white;
+    color: #3584ff;
+}
+
 
 .title-top strong{
     font-family: "Poppins-bold", monospace;
@@ -88,7 +109,8 @@ body{
 .box p{
     color: white;
     border-radius: 15px;
-    background-image: radial-gradient(100% 100% at 100% 0, #77b8d3 0, #2589B4 100%);
+    /*background-image: radial-gradient(100% 100% at 100% 0, #77b8d3 0, #2589B4 100%);*/
+    background-color: #3584ff;
     padding: 1rem 1rem 1rem 9rem;
     margin-left: -8rem;
     font: 1rem "Poppins-Light";
@@ -300,6 +322,9 @@ body{
 }
 
 @media all and (min-width: 991px) {
+        .title-top{
+    font-size: 3rem;
+    }
 
     .bg-img {
         height:30rem;
@@ -320,6 +345,7 @@ body{
 }
 
 @media all and (min-width: 1600px) {
+
     .margin {
         max-width: 1000px;
         margin-left: auto;

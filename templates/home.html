@@ -1,0 +1,81 @@
+{% extends 'main_footer.html' %}
+{% load static %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}" />
+    <script src="{% static 'js/home.js' %}" defer></script>
+{% endblock %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block body_content %}
+    <div class="title-home">
+        <div class="margin">
+            <h2 class="title-top">
+                <p id="">Todooli <i class='fa-solid fa-feather-pointed'></i>, Revolutionize Your Management</p>
+{#                <strong id="live-text2"></strong>#}
+            </h2>
+            <a class="learn-more" href="/article/use-it/">Lean more <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+    </div>
+
+    <div class="margin box mb-3">
+        <div class="img-column">
+            <img class="image mb-1" src="/static/img/img2.png" alt="">
+            <img class="image mt-1" src="/static/img/img1.png" alt="">
+        </div>
+        <p>
+            <i class="fa-sharp fa-solid fa-quote-left"></i>
+            Todooli is a way to focus on what is important and achieve your goals in an efficient and organized manner.
+        </p>
+    </div>
+
+    <div class="margin mb-3">
+        <div class="bg-img"></div>
+    </div>
+
+    <div class="margin mb-3">
+        <ul class="list">
+            <li><p>{{ globalTaskCount }}+</p><small>Tasks </small></li>
+            <li><p>{{ globalTaskCountCompleted }}</p><small>Tasks <i class="fa-solid fa-check"></i></small></li>
+            <li><p>{{ globalTagCount }}</p><small>Tags</small></li>
+        </ul>
+    </div>
+
+    {% if user.is_authenticated == False %}
+        <div class="margin call-to-action mb-3">
+            <p>Don’t have an account yet ?</p>
+            <button class="blueButton" onclick="location.href='{% url 'register' %}'">Register</button>
+            <a href="{% url 'login' %}">log in</a>
+        </div>
+    {% endif %}
+
+    <div class="article-zone">
+        <div class="article margin mb-3">
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Good Task ?</h3>
+                    <p>How to set up a good Task ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-task' %}'">Read more</button>
+                </div>
+            </div>
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Productivity ?</h3>
+                    <p>3 ways to improve your productivity ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-productivity' %}'">Read more</button>
+                </div>
+            </div>
+            <div class="article-box-sol">
+                <div class="article-box">
+                    <h3>Use it !</h3>
+                    <p>How to use Todooli ?</p>
+                    <button class="readmore" onclick="location.href='{% url 'article-use-it' %}'">Read more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
